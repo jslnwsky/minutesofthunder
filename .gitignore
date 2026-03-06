@@ -1,5 +1,5 @@
 # Ignore Historical folder
-../Historical/
+historical/
 
 # Ignore old development files
 index-modern.html
