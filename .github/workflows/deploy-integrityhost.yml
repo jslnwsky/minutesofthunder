@@ -1,0 +1,81 @@
+name: Deploy to IntegrityHost
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        
+    - name: Install FTP dependencies
+      run: npm install --global ftp-deploy
+      
+    - name: Deploy to IntegrityHost via FTP
+      env:
+        FTP_HOST: ${{ secrets.FTP_HOST }}
+        FTP_USER: ${{ secrets.FTP_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        FTP_PATH: ${{ secrets.FTP_PATH }}
+      run: |
+        echo "🚀 Deploying MinutesofThunder to IntegrityHost..."
+        
+        # Create FTP deployment script
+        cat > deploy.js << 'EOF'
+        const FtpDeploy = require('ftp-deploy');
+        const ftpDeploy = new FtpDeploy();
+        
+        const config = {
+          user: process.env.FTP_USER,
+          password: process.env.FTP_PASSWORD,
+          host: process.env.FTP_HOST,
+          port: 21,
+          localRoot: __dirname,
+          remoteRoot: process.env.FTP_PATH || '/',
+          include: ['*', '*/**/*'],
+          exclude: ['historical/**', '.git/**', '.github/**', '.gitignore', 'README.md'],
+          deleteRemote: false,
+          forcePasv: true
+        };
+        
+        ftpDeploy.deploy(config)
+          .then(res => console.log('✅ Deployment completed:', res))
+          .catch(err => console.error('❌ Deployment failed:', err));
+        EOF
+        
+        node deploy.js
+        
+    - name: Verify Deployment
+      run: |
+        echo "📊 Deployment Summary:"
+        echo "📍 Host: ${{ secrets.FTP_HOST }}"
+        echo "👤 User: ${{ secrets.FTP_USER }}"
+        echo "📁 Path: ${{ secrets.FTP_PATH || '/' }}"
+        echo "🌐 Website will be live at your domain"
+        
+    - name: Create Deployment Summary
+      run: |
+        echo "## 🎉 Deployment Complete!" >> $GITHUB_STEP_SUMMARY
+        echo "**Host**: IntegrityHost" >> $GITHUB_STEP_SUMMARY
+        echo "**Server**: ${{ secrets.FTP_HOST }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Path**: ${{ secrets.FTP_PATH || '/' }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Time**: $(date)" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📋 Files Deployed" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ index.html (Modern homepage)" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ article-template.html (Article template)" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ css/modern-styles.css (Custom styles)" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Google Analytics tracking" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Responsive design with Tailwind CSS" >> $GITHUB_STEP_SUMMARY
