@@ -1,6 +1,6 @@
-# RC Car Information - Modernized 2025 Edition
+# MinutesofThunder - Modernized 2025 Edition
 
-A complete modernization of the RC Car Information website featuring the latest web technologies and 2025 RC car trends.
+A complete modernization of the MinutesofThunder RC car website featuring the latest web technologies and 2025 RC car trends.
 
 ## 🚀 Project Overview
 
