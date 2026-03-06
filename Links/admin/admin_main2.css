@@ -1,0 +1,176 @@
+body {
+  font-family: verdana, helvetica, arial, sans-serif;
+  font-size: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+html > body {
+  font-family: verdana, helvetica, arial, sans-serif;
+  font-size: 10px;
+}
+
+a, a:visited {
+  color: #125C86;
+  font: 10px Verdana;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #125C86;
+  font: 10px Verdana;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+/* ##### Main Header ##### */
+.headerTitle {
+  font-size: 170%;
+  margin: 0;
+  padding: 0;
+}
+
+.headerSubTitle {
+  font-size: 120%;
+  font-weight: normal;
+  font-style: italic;
+  margin: 0 0 1ex 0;
+  padding: 0;
+}
+
+.midHeader {
+  color: white;
+  background-color: #3D5C7A;
+  margin: 0;
+  padding: 0.26ex 10px;
+}
+
+.subHeader {
+  color: black;
+  background-color: #FFFFFF;
+  margin: 0;
+  padding: 0.5ex 10px;
+}
+
+/* ##### general ##### */
+
+table {
+    background-color: #DDDDDD;
+}
+
+tr, td {
+  font: 10px Verdana;
+  color: black;
+  text-decoration: none;
+  margin: 0;
+  background-color: #FFFFFF;
+}
+
+input, select, textarea, button {
+  font: 10px Verdana;
+  color: black;
+}
+
+th {
+  color: #555555;
+  font: 12px Verdana;
+  background-color: #EFEFEF;
+  text-decoration: none;
+  margin: 0;
+}
+
+.black_btn {
+	cursor:hand;
+	width: 150px;
+}
+
+.comment_text_area {
+	font: 10px Verdana;
+	color: #000000;
+	cursor:default;
+	width: 500px; height:200px;
+	border: solid 1px #000000;
+	padding: 1px;
+}
+
+/*  #### body #### */
+
+#main-copy h1 {
+  color: black;
+  background-color: transparent;
+  font-family: verdana, helvetica, arial, sans-serif;
+  font-size: 200%;
+  margin: 0;
+  padding: 0;
+}
+
+#main-copy {
+  margin: 0;
+  padding: 0.5em 10px;
+  clear: left;
+}
+
+#main-copy p {
+  line-height: 1.75em;
+  margin: 1em 0 1.5em 0;
+  padding: 0;
+}
+
+.quarter, .oneThird, .half, .twoThirds, .fullWidth {
+  margin: 1em 0;
+  float: left;
+  border-left: 1px solid #CCCCCC;
+}
+
+.quarter {
+  width: 21%;
+  padding: 0 1.9%;
+}
+
+.oneThird {
+  width: 75%;
+  padding: 0 1.6%;
+}
+
+.half {
+  text-align: justify;
+  width: 88%;
+  padding: 0 1.9%;
+}
+
+.twoThirds {
+  text-align: justify;
+  width: 98%;
+  padding: 0 1.6%;
+}
+
+.fullWidth {
+  text-align: justify;
+  width: 100%;
+  padding: 0 1.2em;
+  border-left: none;
+}
+
+.filler {  /* use with an empty <p> element to add padding to the end of a text box */
+  border: 1px solid white;
+}
+ 
+.noBorderOnLeft {
+  border-left: none;
+}
+
+.dividingBorderAbove {
+  border-top: 1px solid #CCCCCC;
+}
+
+
+
+/*  #### checkbacklink divs #### */
+.div_row1 { width:545px; background:#FFFFFF; }
+.div_row2 { width:545px; background:#EEEEEE; }
+
+.div_col1 { float: left; width:270px; height:20px; overflow:hidden; text-overflow:ellipsis; }
+.div_col2 { float: left; width:175px; height:20px; overflow:hidden; }
+.div_col3 { float: left; width:50px; height:20px;  overflow:hidden; text-align:center; }
+.div_col4 { float: left; width:50px; height:20px;  overflow:hidden; text-align:center; }

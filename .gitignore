@@ -1,8 +1,9 @@
 # Ignore Historical folder
 ../Historical/
 
-# Ignore old minutesofthunder folder
-../minutesofthunder/
+# Ignore old development files
+index-modern.html
+modern-styles.css
 
 # Common ignore patterns
 .DS_Store
