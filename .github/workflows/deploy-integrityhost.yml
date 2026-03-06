@@ -20,7 +20,9 @@ jobs:
         node-version: '18'
         
     - name: Install FTP dependencies
-      run: npm install --global ftp-deploy
+      run: |
+        npm init -y
+        npm install ftp-deploy
       
     - name: Deploy to IntegrityHost via FTP
       env:
