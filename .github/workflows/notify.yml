@@ -1,0 +1,33 @@
+name: Deployment Notification
+
+on:
+  workflow_run:
+    workflows: ["Deploy to GitHub Pages"]
+    types:
+      - completed
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
+    steps:
+    - name: Get deployment URL
+      id: deployment
+      run: |
+        echo "🚀 MinutesofThunder website updated successfully!"
+        echo "📍 View at: https://jslnwsky.github.io/minutesofthunder"
+        echo "📊 Commit: ${{ github.event.workflow_run.head_sha }}"
+        
+    - name: Create Summary
+      run: |
+        echo "## 🎉 Deployment Complete!" >> $GITHUB_STEP_SUMMARY
+        echo "**Website**: https://jslnwsky.github.io/minutesofthunder" >> $GITHUB_STEP_SUMMARY
+        echo "**Commit**: ${{ github.event.workflow_run.head_sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Time**: $(date)" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📋 Changes in this deployment" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Static HTML/CSS/JS files" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Google Analytics tracking" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Responsive design with Tailwind CSS" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ 2025 RC car technology content" >> $GITHUB_STEP_SUMMARY
