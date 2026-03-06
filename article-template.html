@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARTICLE_TITLE | RC Car Information - 2025 Edition</title>
+    <meta name="description" content="ARTICLE_DESCRIPTION">
+    <meta name="keywords" content="ARTICLE_KEYWORDS, RC car, brushless motor, LiPo battery, 2025">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .article-content {
+            line-height: 1.8;
+        }
+        .article-content h2 {
+            @apply text-2xl font-bold mt-8 mb-4 text-gray-800;
+        }
+        .article-content h3 {
+            @apply text-xl font-semibold mt-6 mb-3 text-gray-800;
+        }
+        .article-content p {
+            @apply mb-4 text-gray-600;
+        }
+        .article-content ul, .article-content ol {
+            @apply mb-4 pl-6 text-gray-600;
+        }
+        .article-content li {
+            @apply mb-2;
+        }
+        .article-content blockquote {
+            @apply border-l-4 border-purple-500 pl-4 italic text-gray-600 my-4;
+        }
+        .article-content code {
+            @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono;
+        }
+        .article-content pre {
+            @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-4;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold">
+                        <a href="/" class="text-white hover:text-purple-200">RC Car Information</a>
+                    </h1>
+                    <p class="text-purple-100 mt-1">Your Complete 2025 RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">ARTICLE_CATEGORY</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">READING_TIME</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex space-x-1">
+                    <a href="/" class="px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition font-medium">Home</a>
+                    <a href="/articles/" class="px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition font-medium">Articles</a>
+                    <a href="/Links/" class="px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition font-medium">Links</a>
+                </div>
+                <div class="search-container">
+                    <input type="search" placeholder="Search articles..." class="search-input">
+                    <svg class="search-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="container mx-auto px-4 py-4">
+        <nav class="breadcrumb">
+            <a href="/">Home</a>
+            <span class="separator">›</span>
+            <a href="/articles/">Articles</a>
+            <span class="separator">›</span>
+            <span class="text-gray-800">ARTICLE_TITLE</span>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Table of Contents -->
+            <aside class="lg:col-span-1">
+                <div class="bg-white rounded-xl shadow-md p-6 sticky top-24">
+                    <h2 class="text-xl font-bold mb-4 text-gray-800">Table of Contents</h2>
+                    <div id="tableOfContents" class="space-y-2">
+                        <!-- TOC items will be generated dynamically -->
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Article Content -->
+            <article class="lg:col-span-3">
+                <div class="bg-white rounded-xl shadow-md p-8">
+                    <!-- Article Header -->
+                    <header class="mb-8">
+                        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-900">ARTICLE_TITLE</h1>
+                        <div class="article-meta">
+                            <span class="text-gray-500">PUBLISHED_DATE</span>
+                            <span class="separator"></span>
+                            <span class="text-gray-500">AUTHOR</span>
+                            <span class="separator"></span>
+                            <span class="text-gray-500">READING_TIME min read</span>
+                            <span class="separator"></span>
+                            <span class="text-purple-600 font-medium">ARTICLE_CATEGORY</span>
+                        </div>
+                        
+                        <!-- Article Summary -->
+                        <div class="bg-purple-50 border-l-4 border-purple-500 p-4 mt-6 rounded">
+                            <p class="text-gray-700 font-medium">ARTICLE_SUMMARY</p>
+                        </div>
+                    </header>
+
+                    <!-- Article Body -->
+                    <div class="article-content">
+                        ARTICLE_CONTENT
+                    </div>
+
+                    <!-- Article Footer -->
+                    <footer class="mt-12 pt-8 border-t border-gray-200">
+                        <div class="flex flex-col md:flex-row justify-between items-center">
+                            <div class="mb-4 md:mb-0">
+                                <h3 class="font-bold text-gray-800 mb-2">Share this article</h3>
+                                <div class="flex space-x-4">
+                                    <button class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition">Share</button>
+                                    <button class="bg-gray-600 text-white px-4 py-2 rounded hover:bg-gray-700 transition">Copy Link</button>
+                                </div>
+                            </div>
+                            <div class="text-center md:text-right">
+                                <h3 class="font-bold text-gray-800 mb-2">Related Articles</h3>
+                                <div class="space-y-1">
+                                    <a href="#" class="text-purple-600 hover:text-purple-700 block">RELATED_ARTICLE_1</a>
+                                    <a href="#" class="text-purple-600 hover:text-purple-700 block">RELATED_ARTICLE_2</a>
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+
+                <!-- Author Bio -->
+                <div class="bg-white rounded-xl shadow-md p-6 mt-8">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-16 h-16 bg-purple-200 rounded-full flex items-center justify-center">
+                            <span class="text-purple-800 font-bold text-xl">AUTHOR_INITIAL</span>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-gray-800">AUTHOR_NAME</h3>
+                            <p class="text-gray-600 text-sm">AUTHOR_BIO</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">RC Car Information</h3>
+                    <p class="text-gray-400">Your comprehensive resource for RC car technology and reviews in 2025.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">All Articles</a></li>
+                        <li><a href="/Links/" class="hover:text-white">RC Links</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/articles/brushless.html" class="hover:text-white">Brushless Motors</a></li>
+                        <li><a href="/articles/batteries.html" class="hover:text-white">LiPo Batteries</a></li>
+                        <li><a href="/articles/3d-printing.html" class="hover:text-white">3D Printing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <p class="text-gray-400">Stay updated with the latest RC technology trends and reviews.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 RC Car Information. All rights reserved. | Updated for 2025 RC technology trends</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Reading progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        // Generate table of contents
+        function generateTOC() {
+            const headings = document.querySelectorAll('.article-content h2, .article-content h3');
+            const tocContainer = document.getElementById('tableOfContents');
+            
+            headings.forEach((heading, index) => {
+                const id = `heading-${index}`;
+                heading.id = id;
+                
+                const link = document.createElement('a');
+                link.href = `#${id}`;
+                link.textContent = heading.textContent;
+                link.className = heading.tagName === 'H2' 
+                    ? 'block text-purple-600 hover:text-purple-700 font-medium mb-2'
+                    : 'block text-gray-600 hover:text-purple-600 ml-4 mb-1 text-sm';
+                
+                tocContainer.appendChild(link);
+            });
+        }
+
+        // Initialize TOC when DOM is loaded
+        document.addEventListener('DOMContentLoaded', generateTOC);
+
+        // Search functionality
+        document.querySelector('.search-input').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            // Implement search logic here
+            console.log('Searching for:', searchTerm);
+        });
+    </script>
+</body>
+</html>
