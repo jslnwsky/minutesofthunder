@@ -48,7 +48,12 @@ jobs:
           include: ['*', '*/**/*'],
           exclude: ['historical/**', '.git/**', '.github/**', '.gitignore', 'README.md'],
           deleteRemote: false,
-          forcePasv: true
+          forcePasv: true,
+          secure: false,
+          secureOptions: undefined,
+          connTimeout: 60000,
+          pasvTimeout: 60000,
+          keepalive: 60000
         };
         
         ftpDeploy.deploy(config)

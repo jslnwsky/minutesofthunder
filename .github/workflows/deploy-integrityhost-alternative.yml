@@ -1,0 +1,81 @@
+name: Deploy to IntegrityHost (Alternative)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Deploy to IntegrityHost via lftp
+      env:
+        FTP_HOST: ${{ secrets.FTP_HOST }}
+        FTP_USER: ${{ secrets.FTP_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        FTP_PATH: ${{ secrets.FTP_PATH }}
+      run: |
+        echo "🚀 Deploying MinutesofThunder to IntegrityHost with lftp..."
+        
+        # Install lftp (more reliable FTP client)
+        sudo apt-get update
+        sudo apt-get install -y lftp
+        
+        # Create lftp script
+        cat > deploy.sh << 'EOF'
+        #!/bin/bash
+        
+        set -e
+        
+        FTP_HOST="$1"
+        FTP_USER="$2"
+        FTP_PASSWORD="$3"
+        FTP_PATH="$4"
+        
+        echo "Connecting to $FTP_HOST..."
+        echo "Uploading to $FTP_PATH"
+        
+        lftp -c "
+          set ftp:ssl-allow no
+          set ftp:passive-mode on
+          set ftp:list-options -a
+          set cmd:fail-exit true
+          open -u $FTP_USER,$FTP_PASSWORD $FTP_HOST
+          cd $FTP_PATH
+          mirror --reverse --verbose --delete --parallel=4 --ignore-gid . .
+          quit
+        "
+        
+        echo "✅ Deployment completed!"
+        EOF
+        
+        chmod +x deploy.sh
+        ./deploy.sh "$FTP_HOST" "$FTP_USER" "$FTP_PASSWORD" "${FTP_PATH:-/}"
+        
+    - name: Verify Deployment
+      run: |
+        echo "📊 Deployment Summary:"
+        echo "📍 Host: ${{ secrets.FTP_HOST }}"
+        echo "👤 User: ${{ secrets.FTP_USER }}"
+        echo "📁 Path: ${{ secrets.FTP_PATH || '/' }}"
+        echo "🌐 Website will be live at your domain"
+        
+    - name: Create Deployment Summary
+      run: |
+        echo "## 🎉 Deployment Complete!" >> $GITHUB_STEP_SUMMARY
+        echo "**Method**: lftp (Alternative FTP)" >> $GITHUB_STEP_SUMMARY
+        echo "**Host**: ${{ secrets.FTP_HOST }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Path**: ${{ secrets.FTP_PATH || '/' }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+        echo "**Time**: $(date)" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "### 📋 Files Deployed" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ index.html (Modern homepage)" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ article-template.html (Article template)" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ css/modern-styles.css (Custom styles)" >> $GITHUB_STEP_SUMMARY
+        echo "- ✅ Google Analytics tracking" >> $GITHUB_STEP_SUMMARY
