@@ -1,0 +1,157 @@
+name: Deploy to IntegrityHost (Robust)
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 2  # Get previous commit for comparison
+    
+    - name: Detect Changed Files
+      id: changed-files
+      run: |
+        echo "🔍 Detecting changed files..."
+        
+        # Handle first-time deployment (no previous commit)
+        if ! git rev-parse --verify HEAD~1 >/dev/null 2>&1; then
+          echo "📦 First-time deployment - deploying all web files"
+          WEB_FILES="index.html article-template.html css/modern-styles.css articles/getting-started-rc-cars.html tools/motor-comparison.html"
+        else
+          # Get list of changed files
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD)
+          
+          # Filter for web files only (fixed patterns)
+          WEB_FILES=""
+          for file in $CHANGED_FILES; do
+            if [[ $file == "index.html" || $file == "article-template.html" || $file == css/* || $file == articles/* || $file == tools/* ]]; then
+              WEB_FILES="$WEB_FILES $file"
+            fi
+          done
+        fi
+        
+        echo "files=$WEB_FILES" >> $GITHUB_OUTPUT
+        echo "📁 Web files to deploy: $WEB_FILES"
+        
+        # Set output for next steps
+        if [[ -n "$WEB_FILES" ]]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Deploy Changed Files via cURL FTP
+      env:
+        FTP_HOST: ${{ secrets.FTP_HOST }}
+        FTP_USER: ${{ secrets.FTP_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      run: |
+        if [[ "${{ steps.changed-files.outputs.changed }}" == "false" ]]; then
+          echo "⏭️ No web files changed, skipping deployment"
+          exit 0
+        fi
+        
+        echo "🚀 Deploying files via cURL FTP..."
+        
+        # Get the list of files to deploy
+        WEB_FILES="${{ steps.changed-files.outputs.files }}"
+        
+        # Deployment counter and error tracking
+        DEPLOYED_COUNT=0
+        ERROR_COUNT=0
+        
+        for file in $WEB_FILES; do
+          echo "📤 Uploading $file..."
+          
+          # Check if file exists
+          if [[ ! -f "$file" ]]; then
+            echo "❌ File not found: $file"
+            ((ERROR_COUNT++))
+            continue
+          fi
+          
+          # Extract directory and filename
+          DIR=$(dirname "$file")
+          FILENAME=$(basename "$file")
+          
+          # Create directory structure and upload file
+          if [[ "$DIR" == "." ]]; then
+            # Root directory
+            echo "📁 Uploading to root: $FILENAME"
+            if curl -T "$file" "ftp://$FTP_HOST/" --user "$FTP_USER:$FTP_PASSWORD" --ftp-create-dirs --silent --show-error; then
+              echo "✅ Uploaded $file"
+              ((DEPLOYED_COUNT++))
+            else
+              echo "❌ Failed to upload $file"
+              ((ERROR_COUNT++))
+            fi
+          else
+            # Subdirectory - create nested directories
+            echo "📁 Creating directory structure: $DIR"
+            
+            # Create each directory level
+            IFS='/' read -ra DIR_PARTS <<< "$DIR"
+            CURRENT_PATH=""
+            for part in "${DIR_PARTS[@]}"; do
+              if [[ -n "$part" ]]; then
+                CURRENT_PATH="$CURRENT_PATH$part/"
+                echo "📁 Creating: $CURRENT_PATH"
+                curl -Q "MKD $CURRENT_PATH" "ftp://$FTP_HOST/" --user "$FTP_USER:$FTP_PASSWORD" --silent 2>/dev/null || true
+              fi
+            done
+            
+            # Upload the file
+            if curl -T "$file" "ftp://$FTP_HOST/$DIR/" --user "$FTP_USER:$FTP_PASSWORD" --ftp-create-dirs --silent --show-error; then
+              echo "✅ Uploaded $file"
+              ((DEPLOYED_COUNT++))
+            else
+              echo "❌ Failed to upload $file"
+              ((ERROR_COUNT++))
+            fi
+          fi
+        done
+        
+        echo "🎉 Deployment completed!"
+        echo "📊 Summary: $DEPLOYED_COUNT files uploaded, $ERROR_COUNT errors"
+        
+        # Exit with error if any uploads failed
+        if [[ $ERROR_COUNT -gt 0 ]]; then
+          echo "❌ Deployment had $ERROR_COUNT errors"
+          exit 1
+        fi
+        
+    - name: Verify Deployment
+      run: |
+        if [[ "${{ steps.changed-files.outputs.changed }}" == "false" ]]; then
+          echo "📊 Deployment Summary: No deployment needed"
+        else
+          echo "📊 Deployment Summary:"
+          echo "📍 Host: ${{ secrets.FTP_HOST }}"
+          echo "👤 User: ${{ secrets.FTP_USER }}"
+          echo "📁 Path: / (root directory)"
+          echo "📤 Files deployed: ${{ steps.changed-files.outputs.files }}"
+          echo "🌐 Website will be live at your domain"
+        fi
+        
+    - name: Create Deployment Summary
+      run: |
+        if [[ "${{ steps.changed-files.outputs.changed }}" == "false" ]]; then
+          echo "## ⏭️ No Deployment Needed" >> $GITHUB_STEP_SUMMARY
+          echo "**Reason**: No web files changed in this commit" >> $GITHUB_STEP_SUMMARY
+          echo "**Files checked**: index.html, article-template.html, css/, articles/, tools/" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "## 🎉 Robust Deployment Complete!" >> $GITHUB_STEP_SUMMARY
+          echo "**Method**: cURL FTP (Robust with Error Handling)" >> $GITHUB_STEP_SUMMARY
+          echo "**Host**: ${{ secrets.FTP_HOST }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Path**: / (root directory)" >> $GITHUB_STEP_SUMMARY
+          echo "**Files deployed**: ${{ steps.changed-files.outputs.files }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Features**: First-time deployment, nested directories, error detection" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Time**: $(date)" >> $GITHUB_STEP_SUMMARY
+        fi
