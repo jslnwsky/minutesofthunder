@@ -1,0 +1,159 @@
+name: Deploy to IntegrityHost (Smart Manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      deploy_since:
+        description: 'Deploy commits since (format: YYYY-MM-DD or leave empty for all changes)'
+        required: false
+        default: ''
+      reason:
+        description: 'Reason for deployment'
+        required: false
+        default: 'Manual deployment'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # Get full history for tracking
+    
+    - name: Find Last Deployment
+      id: last-deployment
+      run: |
+        echo "🔍 Finding last successful deployment..."
+        
+        # Try to find last deployment marker
+        if git log --grep="DEPLOYED:" --oneline -n 1 2>/dev/null; then
+          LAST_DEPLOY=$(git log --grep="DEPLOYED:" --oneline -n 1 --pretty=format:"%H")
+          echo "Found last deployment: $LAST_DEPLOY"
+          echo "last_deploy=$LAST_DEPLOY" >> $GITHUB_OUTPUT
+        else
+          echo "No previous deployment found, deploying all files"
+          echo "last_deploy=none" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Detect Changed Files Since Last Deployment
+      id: changed-files
+      run: |
+        echo "🔍 Detecting files since last deployment..."
+        
+        LAST_DEPLOY="${{ steps.last-deployment.outputs.last_deploy }}"
+        
+        if [[ "$LAST_DEPLOY" == "none" ]]; then
+          # First deployment - get all web files
+          WEB_FILES="index.html article-template.html css/modern-styles.css articles/getting-started-rc-cars.html tools/motor-comparison.html .htaccess"
+          echo "📦 First deployment - all files"
+        else
+          # Get files changed since last deployment
+          CHANGED_FILES=$(git diff --name-only $LAST_DEPLOY..HEAD)
+          
+          # Filter for web files only
+          WEB_FILES=""
+          for file in $CHANGED_FILES; do
+            if [[ $file == "index.html" || $file == "article-template.html" || $file == css/* || $file == articles/* || $file == tools/* || $file == ".htaccess" ]]; then
+              WEB_FILES="$WEB_FILES $file"
+            fi
+          done
+          
+          if [[ -z "$WEB_FILES" ]]; then
+            echo "📝 No web files changed since last deployment"
+            WEB_FILES=""
+          fi
+        fi
+        
+        echo "files=$WEB_FILES" >> $GITHUB_OUTPUT
+        echo "📁 Files to deploy: $WEB_FILES"
+        
+        if [[ -n "$WEB_FILES" ]]; then
+          echo "changed=true" >> $GITHUB_OUTPUT
+        else
+          echo "changed=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Deploy Changed Files
+      env:
+        FTP_HOST: ${{ secrets.FTP_HOST }}
+        FTP_USER: ${{ secrets.FTP_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      run: |
+        if [[ "${{ steps.changed-files.outputs.changed }}" == "false" ]]; then
+          echo "⏭️ No files to deploy"
+          exit 0
+        fi
+        
+        echo "🚀 Manual deployment: ${{ github.event.inputs.reason }}"
+        echo "📅 Deploying since: ${{ steps.last-deployment.outputs.last_deploy }}"
+        
+        WEB_FILES="${{ steps.changed-files.outputs.files }}"
+        DEPLOYED_COUNT=0
+        ERROR_COUNT=0
+        
+        for file in $WEB_FILES; do
+          if [[ ! -f "$file" ]]; then
+            echo "⚠️ File not found: $file"
+            continue
+          fi
+          
+          echo "📤 Uploading $file..."
+          
+          # Extract directory
+          DIR=$(dirname "$file")
+          
+          if [[ "$DIR" == "." ]]; then
+            # Root directory
+            if curl -T "$file" "ftp://$FTP_HOST/" --user "$FTP_USER:$FTP_PASSWORD" --ftp-create-dirs --silent --show-error; then
+              curl -Q "CHMOD 644 $(basename "$file")" "ftp://$FTP_HOST/" --user "$FTP_USER:$FTP_PASSWORD" --silent 2>/dev/null || true
+              echo "✅ Uploaded $file"
+              ((DEPLOYED_COUNT++))
+              sleep 3
+            else
+              echo "❌ Failed to upload $file"
+              ((ERROR_COUNT++))
+            fi
+          else
+            # Subdirectory
+            curl -Q "MKD $DIR" "ftp://$FTP_HOST/" --user "$FTP_USER:$FTP_PASSWORD" --silent 2>/dev/null || true
+            if curl -T "$file" "ftp://$FTP_HOST/$DIR/" --user "$FTP_USER:$FTP_PASSWORD" --ftp-create-dirs --silent --show-error; then
+              curl -Q "CHMOD 644 $DIR/$(basename "$file")" "ftp://$FTP_HOST/" --user "$FTP_USER:$FTP_PASSWORD" --silent 2>/dev/null || true
+              echo "✅ Uploaded $file"
+              ((DEPLOYED_COUNT++))
+              sleep 3
+            else
+              echo "❌ Failed to upload $file"
+              ((ERROR_COUNT++))
+            fi
+          fi
+        done
+        
+        echo "🎉 Deployment completed!"
+        echo "📊 Summary: $DEPLOYED_COUNT files uploaded, $ERROR_COUNT errors"
+        
+        if [[ $ERROR_COUNT -gt 0 ]]; then
+          echo "❌ Deployment had $ERROR_COUNT errors"
+          exit 1
+        fi
+    
+    - name: Mark Deployment Complete
+      run: |
+        if [[ "${{ steps.changed-files.outputs.changed }}" == "true" ]]; then
+          echo "🏷️ Marking deployment complete..."
+          
+          # Create a deployment marker commit
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          DEPLOYED_FILES="${{ steps.changed-files.outputs.files }}"
+          COMMIT_SHA="${{ github.sha }}"
+          
+          echo "DEPLOYED: $COMMIT_SHA - Files: $DEPLOYED_FILES" > deployment-marker.txt
+          git add deployment-marker.txt
+          git commit -m "🚀 DEPLOYED: $COMMIT_SHA - Files: $DEPLOYED_FILES"
+          git push
+          
+          echo "✅ Deployment marked in git history"
+        fi
