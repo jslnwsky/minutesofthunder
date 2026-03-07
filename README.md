@@ -1,6 +1,6 @@
-# MinutesofThunder - Modernized 2025 Edition
+# MinutesofThunder - Modern RC Car Information Website
 
-A complete modernization of the MinutesofThunder RC car website featuring the latest web technologies and 2025 RC car trends.
+A comprehensive, modern website for RC car enthusiasts featuring the latest technology, reviews, and community resources.
 
 ## 🚀 Project Overview
 
@@ -10,7 +10,7 @@ This project transforms the legacy HTML4/PHP-based RC car website into a modern,
 - **Tailwind CSS** for responsive design
 - **Google Analytics 4** integration
 - **Mobile-first** responsive design
-- **2025 RC technology** content focus
+- **RC technology** content focus
 
 ## 📁 Project Structure
 
