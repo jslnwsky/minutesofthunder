@@ -39,10 +39,10 @@ jobs:
               --retry-delay 5 \
               --silent --show-error 2>&1; then
               echo "  ✅ $file"
-              ((DEPLOYED++))
+              DEPLOYED=$((DEPLOYED+1))
             else
               echo "  ❌ $file"
-              ((ERRORS++))
+              ERRORS=$((ERRORS+1))
             fi
           else
             # Ensure remote directory exists
@@ -59,10 +59,10 @@ jobs:
               --retry-delay 5 \
               --silent --show-error 2>&1; then
               echo "  ✅ $file"
-              ((DEPLOYED++))
+              DEPLOYED=$((DEPLOYED+1))
             else
               echo "  ❌ $file"
-              ((ERRORS++))
+              ERRORS=$((ERRORS+1))
             fi
           fi
 
