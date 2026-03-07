@@ -1,46 +1,18 @@
-# Basic .htaccess for MinutesofThunder
-# Ensure proper access to all files
+# Minimal .htaccess to avoid ModSecurity triggers
 
-# DirectoryIndex - Set default file
+# Basic directory index
 DirectoryIndex index.html
 
-# Allow access to common file types
-<Files "*.html">
-    Order allow,deny
-    Allow from all
-</Files>
+# Disable server signatures
+ServerSignature Off
+ServerTokens Prod
 
-<Files "*.css">
-    Order allow,deny
-    Allow from all
-</Files>
-
-<Files "*.js">
-    Order allow,deny
-    Allow from all
-</Files>
-
-# Allow access to directories
-<Directory "articles">
-    Order allow,deny
-    Allow from all
-</Directory>
-
-<Directory "tools">
-    Order allow,deny
-    Allow from all
-</Directory>
-
-<Directory "css">
-    Order allow,deny
-    Allow from all
-</Directory>
-
-# Error documents
+# Basic error handling
 ErrorDocument 404 /index.html
 ErrorDocument 403 /index.html
 ErrorDocument 500 /index.html
 
-# Basic security
+# Disable directory listing
 Options -Indexes
-ServerSignature Off
+
+# No complex rules that might trigger ModSecurity

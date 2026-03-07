@@ -1,0 +1,46 @@
+# Basic .htaccess for MinutesofThunder
+# Ensure proper access to all files
+
+# DirectoryIndex - Set default file
+DirectoryIndex index.html
+
+# Allow access to common file types
+<Files "*.html">
+    Order allow,deny
+    Allow from all
+</Files>
+
+<Files "*.css">
+    Order allow,deny
+    Allow from all
+</Files>
+
+<Files "*.js">
+    Order allow,deny
+    Allow from all
+</Files>
+
+# Allow access to directories
+<Directory "articles">
+    Order allow,deny
+    Allow from all
+</Directory>
+
+<Directory "tools">
+    Order allow,deny
+    Allow from all
+</Directory>
+
+<Directory "css">
+    Order allow,deny
+    Allow from all
+</Directory>
+
+# Error documents
+ErrorDocument 404 /index.html
+ErrorDocument 403 /index.html
+ErrorDocument 500 /index.html
+
+# Basic security
+Options -Indexes
+ServerSignature Off
