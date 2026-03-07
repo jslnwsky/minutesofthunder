@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Car Parts & Upgrades Guide: What to Upgrade and When | MinutesofThunder</title>
+    <meta name="description" content="Complete guide to RC car parts and upgrades. Learn which upgrades actually improve performance, which are a waste of money, and the smart upgrade path for any RC vehicle.">
+    <meta name="keywords" content="RC car parts, RC upgrades, RC car upgrade guide, brushless upgrade, LiPo upgrade, RC suspension, RC tires, RC servo, ESC upgrade">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    
+    <style type="text/css">
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9333ea, #3b82f6);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold">
+                        <a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a>
+                    </h1>
+                    <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Upgrade Guide</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">10 min read</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
+                    <a href="/articles/" class="text-purple-600 font-medium">Articles</a>
+                    <a href="/tools/" class="text-gray-600 hover:text-purple-600 font-medium">Tools</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <nav class="flex text-sm text-gray-600">
+                <a href="/" class="hover:text-purple-600">Home</a>
+                <span class="mx-2">/</span>
+                <a href="/articles/" class="hover:text-purple-600">Articles</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">RC Car Parts & Upgrades Guide</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Sidebar Table of Contents -->
+            <aside class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <h3 class="font-bold text-lg mb-4">Table of Contents</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#upgrade-philosophy" class="text-purple-600 hover:text-purple-700 font-medium">→ Upgrade Philosophy</a></li>
+                        <li><a href="#tier-one" class="text-purple-600 hover:text-purple-700 font-medium">→ Tier 1: High Impact</a></li>
+                        <li><a href="#tier-two" class="text-purple-600 hover:text-purple-700 font-medium">→ Tier 2: Worthwhile</a></li>
+                        <li><a href="#tier-three" class="text-purple-600 hover:text-purple-700 font-medium">→ Tier 3: Situational</a></li>
+                        <li><a href="#skip-these" class="text-purple-600 hover:text-purple-700 font-medium">→ Skip These</a></li>
+                        <li><a href="#where-to-buy" class="text-purple-600 hover:text-purple-700 font-medium">→ Where to Buy</a></li>
+                        <li><a href="#upgrade-order" class="text-purple-600 hover:text-purple-700 font-medium">→ Smart Upgrade Order</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Article Content -->
+            <div class="lg:col-span-3">
+                <article class="bg-white rounded-xl shadow-md p-8">
+                    <!-- Article Header -->
+                    <header class="mb-8">
+                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">RC Car Parts & Upgrades Guide: What to Upgrade and When</h1>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span>Upgrade Guide</span>
+                            <span class="mx-2">•</span>
+                            <span>10 minute read</span>
+                            <span class="mx-2">•</span>
+                            <span>Updated for modern RC technology</span>
+                        </div>
+                    </header>
+
+                    <!-- Article Body -->
+                    <div class="prose prose-lg max-w-none text-gray-700">
+                        <p class="text-lg leading-relaxed mb-6">
+                            Every RC car owner eventually catches the upgrade bug. You see a shiny aluminum part or a higher-KV motor and think, "that would make my car so much better." Sometimes that's true. Other times you're spending $40 on a part that adds weight and does nothing for performance. After years of upgrading cars (and wasting money on parts that didn't matter), here's my honest guide to what's worth your money and what isn't.
+                        </p>
+
+                        <section id="upgrade-philosophy" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">The Upgrade Philosophy</h2>
+                            <p class="mb-4">
+                                Before you spend a dollar on upgrades, understand this principle: <strong>fix what breaks, upgrade what limits you.</strong>
+                            </p>
+                            <p class="mb-4">
+                                If a plastic steering knuckle keeps snapping, replace it with an aluminum one. That's a smart durability upgrade. But if your stock steering knuckles are holding up fine, swapping them for aluminum just because they look cool is wasted money — and aluminum parts don't flex, so they transfer impact forces to adjacent parts, which then break instead.
+                            </p>
+                            <p class="mb-4">
+                                Similarly, if you're new to RC and still learning to drive, a faster motor won't make you faster. It'll make your crashes faster. Get comfortable with your stock setup first, then upgrade as your skills demand more from the car.
+                            </p>
+                        </section>
+
+                        <section id="tier-one" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Tier 1: High-Impact Upgrades</h2>
+                            <p class="mb-4">These upgrades make a noticeable, measurable difference in how your car performs or how long it lasts.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-green-50 border-l-4 border-green-500 p-4">
+                                    <h3 class="font-bold text-green-800 mb-2">Tires</h3>
+                                    <p class="text-gray-700 text-sm mb-2">Tires are the single biggest performance upgrade on any RC car. The stock tires that come with most RTR vehicles are mediocre at best. Swapping to a quality tire matched to your surface (clay, carpet, dirt, asphalt) transforms how the car handles.</p>
+                                    <p class="text-gray-700 text-sm">For off-road, brands like JConcepts, Pro-Line, and AKA make excellent tires in various compounds and tread patterns. For on-road, Sweep, Sorex, and Ride are popular choices. Learn what tires the fast guys at your local track are running and start there.</p>
+                                </div>
+
+                                <div class="bg-green-50 border-l-4 border-green-500 p-4">
+                                    <h3 class="font-bold text-green-800 mb-2">Brushless Motor & ESC</h3>
+                                    <p class="text-gray-700 text-sm mb-2">If your car came with a brushed motor, upgrading to brushless is a dramatic improvement in power, efficiency, and durability. A brushless motor paired with a compatible ESC will give you more speed, more torque, better throttle response, and longer runtime on the same battery.</p>
+                                    <p class="text-gray-700 text-sm">Combo deals (motor + ESC together) from brands like Hobbywing, Castle Creations, and Spektrum are the easiest way to do this. Make sure the ESC can handle your battery cell count and the motor's current draw.</p>
+                                </div>
+
+                                <div class="bg-green-50 border-l-4 border-green-500 p-4">
+                                    <h3 class="font-bold text-green-800 mb-2">LiPo Battery</h3>
+                                    <p class="text-gray-700 text-sm mb-2">If you're still running a NiMH battery pack, a LiPo upgrade is one of the most cost-effective performance gains. A 2S (7.4V) LiPo delivers more consistent voltage throughout the discharge, which means your car maintains speed throughout the run instead of gradually slowing down as the NiMH pack drains.</p>
+                                    <p class="text-gray-700 text-sm">Make sure your ESC has a LiPo cutoff feature before making this switch. Running a LiPo below 3.0V per cell can damage the pack permanently. You'll also need a balance charger — never charge a LiPo with a basic NiMH charger.</p>
+                                </div>
+
+                                <div class="bg-green-50 border-l-4 border-green-500 p-4">
+                                    <h3 class="font-bold text-green-800 mb-2">Steering Servo</h3>
+                                    <p class="text-gray-700 text-sm">The stock servo in most RTR cars is often the weakest link. A good servo upgrade gives you faster, more precise steering response and enough torque to hold the front wheels where you point them, especially under load. Look for a servo with adequate speed (measured in sec/60°) and torque (measured in kg-cm or oz-in) for your vehicle weight. Savox, Spektrum, and ProTek are reliable choices.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="tier-two" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Tier 2: Worthwhile Upgrades</h2>
+                            <p class="mb-4">These improve your experience and durability, but the performance gain is less dramatic than Tier 1.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                                    <h3 class="font-bold text-blue-800 mb-2">Ball Bearings</h3>
+                                    <p class="text-gray-700 text-sm">Some budget RTR cars come with plastic bushings instead of ball bearings. Upgrading to a full bearing kit reduces friction throughout the drivetrain, which means less wasted energy, less heat, and slightly more speed. It's a cheap upgrade that pays for itself in smoother operation. Bearing kits specific to most popular cars are readily available.</p>
+                                </div>
+
+                                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                                    <h3 class="font-bold text-blue-800 mb-2">Shock Upgrades</h3>
+                                    <p class="text-gray-700 text-sm">Stock plastic shocks are functional but limited. Threaded aluminum body shocks allow you to adjust ride height precisely and hold their oil seal better. They're a big improvement in consistency, especially if you're racing. You don't need to buy the most expensive shocks on the market — even mid-range threaded shocks are a major step up from stock.</p>
+                                </div>
+
+                                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                                    <h3 class="font-bold text-blue-800 mb-2">Radio System</h3>
+                                    <p class="text-gray-700 text-sm">The radio that comes with most RTR cars works, but a mid-range radio system gives you better range, more channels, adjustable endpoints, exponential curves, and model memory. Brands like Futaba, Sanwa/Airtronics, and Spektrum make excellent systems at various price points. If you plan to own multiple cars, a good transmitter with model memory is a worthwhile investment.</p>
+                                </div>
+
+                                <div class="bg-blue-50 border-l-4 border-blue-500 p-4">
+                                    <h3 class="font-bold text-blue-800 mb-2">Spur/Pinion Gears</h3>
+                                    <p class="text-gray-700 text-sm">Changing your gear ratio is a free (or nearly free) performance mod. A larger pinion or smaller spur gear gives you more top speed at the expense of acceleration. A smaller pinion or larger spur does the opposite. Having a few different pinion sizes on hand lets you tune for different tracks and conditions.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="tier-three" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Tier 3: Situational Upgrades</h2>
+                            <p class="mb-4">These make sense in specific situations but aren't universal recommendations.</p>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4">
+                                    <h3 class="font-bold text-yellow-800 mb-2">Aluminum Chassis Parts</h3>
+                                    <p class="text-gray-700 text-sm">Aluminum A-arms, knuckles, and hubs look great and are more durable than plastic. But they're also heavier and don't absorb impacts as well — they transfer force to the next weakest part. Only upgrade the specific part that keeps breaking on you. Don't do a full aluminum conversion unless you're building a show car.</p>
+                                </div>
+
+                                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4">
+                                    <h3 class="font-bold text-yellow-800 mb-2">Carbon Fiber Parts</h3>
+                                    <p class="text-gray-700 text-sm">Carbon fiber shock towers, top plates, and chassis plates are lighter and stiffer than their plastic or aluminum equivalents. They're common in competition but overkill for casual bashing. They also tend to shatter on hard impacts rather than flex, so they're not inherently more durable than plastic.</p>
+                                </div>
+
+                                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4">
+                                    <h3 class="font-bold text-yellow-800 mb-2">Sway Bars</h3>
+                                    <p class="text-gray-700 text-sm">Sway bars (anti-roll bars) reduce body roll in corners and can significantly change how the car handles. If your car feels too "rolly" in turns, sway bars are a targeted fix. But they add complexity and are really only worth it if you're tuning for racing.</p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="skip-these" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Upgrades to Skip (Usually)</h2>
+                            
+                            <div class="bg-red-50 border-l-4 border-red-500 p-4 mb-4">
+                                <ul class="text-gray-700 space-y-2 text-sm">
+                                    <li>• <strong>LED light kits</strong> — Look cool, add zero performance. Fine if aesthetics are your thing, but don't expect them to help you at the track.</li>
+                                    <li>• <strong>Full aluminum conversion kits</strong> — Expensive, heavy, and often create more problems than they solve. Cherry-pick only the parts you actually need.</li>
+                                    <li>• <strong>Massive motor upgrades on a stock drivetrain</strong> — Dropping a high-KV motor into a car with a stock plastic spur gear, stock diffs, and stock driveshafts is a recipe for stripped gears and broken parts. Upgrade the drivetrain to match.</li>
+                                    <li>• <strong>Anything purely cosmetic when your car still has stock tires</strong> — Tires first. Always tires first.</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="where-to-buy" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Where to Buy Parts</h2>
+                            <p class="mb-4">
+                                Your local hobby shop is the best first stop — they carry parts for popular vehicles, can order what they don't have, and offer advice. Supporting local shops keeps the RC community alive.
+                            </p>
+                            <p class="mb-4">
+                                For online shopping, AMain Hobbies, Tower Hobbies, and Horizon Hobby have massive selections. Amazon carries many common parts but watch for counterfeit products from no-name sellers. For used and hard-to-find parts, eBay and RC-specific forums with for-sale sections are useful.
+                            </p>
+                            <p class="mb-4">
+                                Always check that the part number matches your specific vehicle model. Many RC cars share similar-looking parts that are not interchangeable. When in doubt, reference your car's parts exploded view diagram — every manufacturer publishes these.
+                            </p>
+                        </section>
+
+                        <section id="upgrade-order" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">The Smart Upgrade Order</h2>
+                            <p class="mb-4">
+                                If you're starting with a stock RTR and want to upgrade methodically, here's the order I'd recommend:
+                            </p>
+                            <div class="space-y-3 mb-4">
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-purple-100 text-purple-800 font-bold rounded-full w-8 h-8 flex items-center justify-center text-sm flex-shrink-0">1</span>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800">Tires</h3>
+                                        <p class="text-sm text-gray-700">Biggest bang for your buck. Match them to your surface.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-purple-100 text-purple-800 font-bold rounded-full w-8 h-8 flex items-center justify-center text-sm flex-shrink-0">2</span>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800">Battery (NiMH to LiPo)</h3>
+                                        <p class="text-sm text-gray-700">More power, more consistent, more runtime. Get a balance charger too.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-purple-100 text-purple-800 font-bold rounded-full w-8 h-8 flex items-center justify-center text-sm flex-shrink-0">3</span>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800">Brushless Motor & ESC</h3>
+                                        <p class="text-sm text-gray-700">If you're still on brushed, this is a transformative upgrade.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-purple-100 text-purple-800 font-bold rounded-full w-8 h-8 flex items-center justify-center text-sm flex-shrink-0">4</span>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800">Steering Servo</h3>
+                                        <p class="text-sm text-gray-700">Faster, stronger steering for better control.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-purple-100 text-purple-800 font-bold rounded-full w-8 h-8 flex items-center justify-center text-sm flex-shrink-0">5</span>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800">Bearings (if needed)</h3>
+                                        <p class="text-sm text-gray-700">Replace bushings with bearings for smoother drivetrain.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-purple-100 text-purple-800 font-bold rounded-full w-8 h-8 flex items-center justify-center text-sm flex-shrink-0">6</span>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800">Shocks</h3>
+                                        <p class="text-sm text-gray-700">Threaded aluminum body shocks for adjustability and consistency.</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <span class="bg-purple-100 text-purple-800 font-bold rounded-full w-8 h-8 flex items-center justify-center text-sm flex-shrink-0">7</span>
+                                    <div>
+                                        <h3 class="font-bold text-gray-800">Everything Else</h3>
+                                        <p class="text-sm text-gray-700">Durability parts as needed, radio upgrade, fine-tuning parts.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="mb-4">
+                                Upgrade smart, not fast. Let each upgrade settle in before moving to the next. You'll learn more about your car and spend less money in the long run.
+                            </p>
+                        </section>
+
+                        <!-- Related Articles -->
+                        <div class="border-t pt-8 mt-8">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Related Articles</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <a href="/articles/electric-vs-nitro-vs-brushless.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                    <h4 class="font-semibold text-gray-900">Electric vs Nitro vs Brushless</h4>
+                                    <p class="text-sm text-gray-600">Choose the right power system</p>
+                                </a>
+                                <a href="/articles/rc-motor-guide.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                    <h4 class="font-semibold text-gray-900">RC Motor Guide: Brushless vs Brushed</h4>
+                                    <p class="text-sm text-gray-600">Deep dive into motor technology and KV ratings</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">MinutesofThunder</h3>
+                    <p class="text-gray-400">Your comprehensive guide to RC car technology, reviews, and the latest innovations in radio control vehicles.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">All Articles</a></li>
+                        <li><a href="/tools/" class="hover:text-white">Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/articles/" class="hover:text-white">Beginner Guides</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Electric RC</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Nitro RC</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <p class="text-gray-400">Join the RC community and stay updated with the latest technology and reviews.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 MinutesofThunder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

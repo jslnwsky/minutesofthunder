@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Motor Guide: Brushless vs Brushed — Everything You Need to Know | MinutesofThunder</title>
+    <meta name="description" content="Complete guide to RC car motors. Understand brushed vs brushless, KV ratings, turns, sensored vs sensorless, and how to choose the right motor for your RC vehicle.">
+    <meta name="keywords" content="RC motor, brushless motor, brushed motor, KV rating, sensored brushless, sensorless brushless, RC motor turns, RC ESC, motor selection guide">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    
+    <style type="text/css">
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9333ea, #3b82f6);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold">
+                        <a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a>
+                    </h1>
+                    <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Technical Guide</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">10 min read</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
+                    <a href="/articles/" class="text-purple-600 font-medium">Articles</a>
+                    <a href="/tools/" class="text-gray-600 hover:text-purple-600 font-medium">Tools</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <nav class="flex text-sm text-gray-600">
+                <a href="/" class="hover:text-purple-600">Home</a>
+                <span class="mx-2">/</span>
+                <a href="/articles/" class="hover:text-purple-600">Articles</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">RC Motor Guide: Brushless vs Brushed</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Sidebar Table of Contents -->
+            <aside class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <h3 class="font-bold text-lg mb-4">Table of Contents</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#how-motors-work" class="text-purple-600 hover:text-purple-700 font-medium">→ How RC Motors Work</a></li>
+                        <li><a href="#brushed-motors" class="text-purple-600 hover:text-purple-700 font-medium">→ Brushed Motors</a></li>
+                        <li><a href="#brushless-motors" class="text-purple-600 hover:text-purple-700 font-medium">→ Brushless Motors</a></li>
+                        <li><a href="#kv-ratings" class="text-purple-600 hover:text-purple-700 font-medium">→ Understanding KV</a></li>
+                        <li><a href="#turns" class="text-purple-600 hover:text-purple-700 font-medium">→ Motor Turns</a></li>
+                        <li><a href="#sensored-vs-sensorless" class="text-purple-600 hover:text-purple-700 font-medium">→ Sensored vs Sensorless</a></li>
+                        <li><a href="#motor-sizes" class="text-purple-600 hover:text-purple-700 font-medium">→ Motor Sizes</a></li>
+                        <li><a href="#esc-pairing" class="text-purple-600 hover:text-purple-700 font-medium">→ ESC Pairing</a></li>
+                        <li><a href="#choosing-a-motor" class="text-purple-600 hover:text-purple-700 font-medium">→ Choosing a Motor</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Article Content -->
+            <div class="lg:col-span-3">
+                <article class="bg-white rounded-xl shadow-md p-8">
+                    <!-- Article Header -->
+                    <header class="mb-8">
+                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">RC Motor Guide: Brushless vs Brushed — Everything You Need to Know</h1>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span>Technical Guide</span>
+                            <span class="mx-2">•</span>
+                            <span>10 minute read</span>
+                            <span class="mx-2">•</span>
+                            <span>Updated for modern RC technology</span>
+                        </div>
+                    </header>
+
+                    <!-- Article Body -->
+                    <div class="prose prose-lg max-w-none text-gray-700">
+                        <p class="text-lg leading-relaxed mb-6">
+                            The motor is the heart of any electric RC car. It determines your top speed, your acceleration, your runtime, and in many ways, how much fun you'll have driving. But motor specs can be confusing — KV ratings, turns, sensored, sensorless, 540 size, 550 size — it's a lot of jargon if you're new to this. Let's cut through the confusion and explain what actually matters when choosing an RC motor.
+                        </p>
+
+                        <section id="how-motors-work" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">How RC Motors Work (The Short Version)</h2>
+                            <p class="mb-4">
+                                All electric motors work on the same basic principle: electricity flowing through a coil of wire creates a magnetic field. That magnetic field interacts with permanent magnets to create rotational force (torque). The differences between motor types come down to how that electrical energy gets to the coils and how the magnetic fields are managed.
+                            </p>
+                            <p class="mb-4">
+                                In RC, you'll encounter two fundamental motor designs: brushed and brushless. Both do the same job, but they do it very differently.
+                            </p>
+                        </section>
+
+                        <section id="brushed-motors" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Brushed Motors: The Original</h2>
+                            <p class="mb-4">
+                                Brushed motors have been around for over a century. In a brushed motor, the coils (windings) are on the rotor — the part that spins. Electricity reaches these coils through carbon brushes that physically slide against a rotating commutator. As the rotor spins, the commutator segments switch which coils are energized, keeping the motor turning.
+                            </p>
+                            <p class="mb-4">
+                                The key specification for a brushed motor is its <strong>turn count</strong>. This refers to how many times the wire is wound around each pole of the armature. More turns means more torque but lower RPM. Fewer turns means higher RPM but less torque. A stock 27-turn motor is slow and torquey. A modified 12-turn motor is fast and aggressive.
+                            </p>
+                            <p class="mb-4">
+                                Brushed motors are simple and cheap, but the physical contact between brushes and commutator creates friction, heat, and wear. The brushes erode over time and need replacement. The commutator surface can become pitted or glazed. For serious performance, brushed motors need regular maintenance — cutting the commutator, replacing springs, and truing the armature.
+                            </p>
+                            <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                                <h3 class="font-bold text-gray-800 mb-2">Common Brushed Motor Types</h3>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• <strong>Stock (27T)</strong> — Standard entry-level motor, found in most budget RTR cars</li>
+                                    <li>• <strong>Sport/Modified (12T-20T)</strong> — Faster, used in club racing and upgrades</li>
+                                    <li>• <strong>Double-wind vs Single-wind</strong> — Double-wind uses two thinner wires per turn for smoother power delivery; single-wind uses one thicker wire for more aggressive response</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="brushless-motors" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Brushless Motors: The Modern Standard</h2>
+                            <p class="mb-4">
+                                Brushless motors flip the brushed design inside out. The windings are on the stator (the stationary part), and the permanent magnets are on the rotor (the part that spins). There are no brushes and no commutator. Instead, the ESC electronically switches the current through the stator windings in a precise sequence to spin the rotor.
+                            </p>
+                            <p class="mb-4">
+                                This design eliminates the friction and wear of brushes, which means brushless motors are more efficient, run cooler, produce more power for their size, and last significantly longer. A well-maintained brushless motor can run for years without needing any service beyond occasionally cleaning the bearings.
+                            </p>
+                            <p class="mb-4">
+                                The trade-off is that brushless motors require a brushless-compatible ESC (you can't run a brushless motor on a brushed ESC). Brushless ESCs are more complex and more expensive, but the motor/ESC combo is still a better value proposition over time because of the drastically lower maintenance and longer lifespan.
+                            </p>
+                        </section>
+
+                        <section id="kv-ratings" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Understanding KV Ratings</h2>
+                            <p class="mb-4">
+                                KV is the most important spec on a brushless motor. It stands for the motor's velocity constant and is measured in RPM per volt. A 3000KV motor spins at 3,000 RPM for every volt applied to it (under no load).
+                            </p>
+                            <p class="mb-4">
+                                On a 2S LiPo (7.4V nominal), that 3000KV motor would theoretically spin at 22,200 RPM unloaded. On a 3S LiPo (11.1V), it would hit 33,300 RPM. In practice, under load, actual RPM will be lower — but the math gives you a relative comparison between motors.
+                            </p>
+                            <div class="overflow-x-auto mb-4">
+                                <table class="w-full text-sm border-collapse">
+                                    <thead>
+                                        <tr class="bg-gray-100">
+                                            <th class="text-left p-3 font-bold">KV Range</th>
+                                            <th class="text-left p-3 font-bold">Character</th>
+                                            <th class="text-left p-3 font-bold">Best For</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-t">
+                                            <td class="p-3">1000-2500 KV</td>
+                                            <td class="p-3">High torque, low RPM</td>
+                                            <td class="p-3">Crawlers, heavy trucks, 1/8 scale buggies</td>
+                                        </tr>
+                                        <tr class="border-t bg-gray-50">
+                                            <td class="p-3">2500-4000 KV</td>
+                                            <td class="p-3">Balanced torque and speed</td>
+                                            <td class="p-3">General bashing, short course trucks, 1/10 buggies</td>
+                                        </tr>
+                                        <tr class="border-t">
+                                            <td class="p-3">4000-5700 KV</td>
+                                            <td class="p-3">High RPM, moderate torque</td>
+                                            <td class="p-3">1/10 on-road, speed runs (on 2S)</td>
+                                        </tr>
+                                        <tr class="border-t bg-gray-50">
+                                            <td class="p-3">5700+ KV</td>
+                                            <td class="p-3">Very high RPM</td>
+                                            <td class="p-3">Speed runs, lightweight 1/10 cars, typically 2S only</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4">
+                                <h3 class="font-bold text-yellow-800 mb-2">Important Note</h3>
+                                <p class="text-gray-700 text-sm">Higher KV does not always mean faster in practice. A very high KV motor on a high cell count battery can overwhelm your tires and drivetrain. Matching the KV to your voltage, gearing, and vehicle weight is what actually determines performance. Use our <a href="/tools/motor-comparison.html" class="text-purple-600 hover:text-purple-700 underline">Motor Comparison Tool</a> to compare different setups.</p>
+                            </div>
+                        </section>
+
+                        <section id="turns" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Motor Turns (T Rating)</h2>
+                            <p class="mb-4">
+                                Brushless motors are also sometimes rated in "turns" — you'll see specs like 13.5T, 17.5T, 21.5T, etc. In a brushless motor, turns refer to the number of wire winds around each stator pole. The relationship between turns and KV is inverse: more turns equals lower KV (more torque, less speed), and fewer turns equals higher KV (more speed, less torque).
+                            </p>
+                            <p class="mb-4">
+                                The turn rating is especially important in racing because many race classes are defined by motor turns. A "17.5T stock" class means everyone runs a 17.5-turn brushless motor, keeping the playing field level. A "13.5T" class is faster. Modified classes may have no motor restrictions at all.
+                            </p>
+                            <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                                <h3 class="font-bold text-gray-800 mb-2">Common Racing Specs</h3>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• <strong>21.5T (~2000KV)</strong> — Slower spec class, great for beginners learning to race</li>
+                                    <li>• <strong>17.5T (~2200-2400KV)</strong> — Most popular stock class, good balance of speed and control</li>
+                                    <li>• <strong>13.5T (~2800-3200KV)</strong> — Fast stock class, competitive racing</li>
+                                    <li>• <strong>Modified (open)</strong> — No limit, typically 3.5T-8.5T motors for maximum power</li>
+                                </ul>
+                            </div>
+                        </section>
+
+                        <section id="sensored-vs-sensorless" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Sensored vs Sensorless</h2>
+                            <p class="mb-4">
+                                This is one of the most common questions newcomers have, and the difference is meaningful.
+                            </p>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                                <div class="bg-blue-50 p-4 rounded-lg">
+                                    <h3 class="font-bold text-blue-800 mb-2">Sensored</h3>
+                                    <p class="text-sm text-gray-700 mb-2">
+                                        Sensored motors have small Hall-effect sensors built into the motor that tell the ESC the exact position of the rotor at all times. This allows the ESC to deliver current with precise timing, which results in:
+                                    </p>
+                                    <ul class="text-sm text-gray-700 space-y-1">
+                                        <li>• Smooth, predictable startup (no cogging)</li>
+                                        <li>• Better low-speed throttle control</li>
+                                        <li>• More consistent power delivery</li>
+                                        <li>• Required for most racing classes</li>
+                                    </ul>
+                                    <p class="text-sm text-gray-700 mt-2">The downside is the extra sensor wire connecting motor to ESC, and sensored motors tend to cost slightly more.</p>
+                                </div>
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <h3 class="font-bold text-green-800 mb-2">Sensorless</h3>
+                                    <p class="text-sm text-gray-700 mb-2">
+                                        Sensorless motors rely on the ESC detecting the motor's back-EMF (the voltage generated by the spinning motor) to determine rotor position. This works well at speed but has limitations:
+                                    </p>
+                                    <ul class="text-sm text-gray-700 space-y-1">
+                                        <li>• May "cog" or stutter at very low speeds</li>
+                                        <li>• Less precise throttle at startup</li>
+                                        <li>• Simpler wiring (just 3 motor wires)</li>
+                                        <li>• Generally cheaper</li>
+                                        <li>• Fine for bashing, crawling at moderate speeds</li>
+                                    </ul>
+                                    <p class="text-sm text-gray-700 mt-2">Many modern ESCs handle sensorless motors extremely well, and for non-racing applications, the startup stutter is barely noticeable.</p>
+                                </div>
+                            </div>
+                            <p class="mb-4">
+                                <strong>Bottom line:</strong> If you race, go sensored. If you bash, either works fine. Many modern motors are "sensored-ready," meaning they have the sensor port but can also run sensorless if you don't connect the sensor wire.
+                            </p>
+                        </section>
+
+                        <section id="motor-sizes" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Motor Sizes</h2>
+                            <p class="mb-4">
+                                RC motors are classified by their can diameter, measured in millimeters. The most common sizes you'll encounter:
+                            </p>
+                            <div class="bg-gray-50 p-4 rounded-lg mb-4">
+                                <ul class="text-sm text-gray-700 space-y-2">
+                                    <li>• <strong>540 size (36mm diameter)</strong> — The standard for 1/10 scale cars and trucks. This is what fits in the vast majority of 1/10 vehicles. When someone says "540 motor," this is what they mean.</li>
+                                    <li>• <strong>550 size (36mm diameter, longer)</strong> — Same width as a 540 but slightly longer. Found in some trucks and SCTs that need more torque. Check your motor mount clearance before swapping.</li>
+                                    <li>• <strong>1/8 scale motors (larger)</strong> — Physically bigger motors for 1/8 scale buggies and truggies. Common sizes are 4-pole designs with 1700-2200KV ratings.</li>
+                                    <li>• <strong>Mini/Micro motors</strong> — Smaller motors for 1/18 and 1/24 scale vehicles. Different mounting patterns and shaft sizes than 540-class.</li>
+                                </ul>
+                            </div>
+                            <p class="mb-4">
+                                Always verify the motor size fits your vehicle before buying. Most 1/10 scale cars accept 540 motors, but some have tight motor mounts that won't accommodate longer-can motors.
+                            </p>
+                        </section>
+
+                        <section id="esc-pairing" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Pairing Your Motor with an ESC</h2>
+                            <p class="mb-4">
+                                The ESC (Electronic Speed Controller) is the motor's partner. It takes the signal from your radio receiver and converts battery power into the precise electrical patterns the motor needs. A mismatched ESC and motor is a recipe for problems — overheating, poor performance, or outright failure.
+                            </p>
+                            <p class="mb-4">
+                                Key things to match:
+                            </p>
+                            <ul class="list-disc pl-6 mb-4 space-y-2">
+                                <li><strong>Motor type compatibility.</strong> A brushed ESC cannot run a brushless motor and vice versa. Some ESCs support both, but check the specs.</li>
+                                <li><strong>Current rating.</strong> The ESC needs to handle the current your motor draws. Low-turn (high KV) motors draw more current. If your motor can pull 80 amps, your ESC needs to be rated for at least 80 amps continuous.</li>
+                                <li><strong>Cell count.</strong> ESCs are rated for specific LiPo cell counts (2S, 3S, 4S, etc.). Running more cells than the ESC supports will damage it.</li>
+                                <li><strong>Sensor support.</strong> If you're running a sensored motor for racing, your ESC must have a sensor port.</li>
+                            </ul>
+                            <p class="mb-4">
+                                The easiest approach for beginners is to buy a motor/ESC combo from the same brand. Companies like Hobbywing, Castle Creations, Spektrum, and Tekin sell pre-matched combos that are guaranteed to work together. This takes the guesswork out of the equation.
+                            </p>
+                        </section>
+
+                        <section id="choosing-a-motor" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Choosing the Right Motor for Your Car</h2>
+                            <p class="mb-4">
+                                Here's a quick decision framework:
+                            </p>
+                            <div class="space-y-3 mb-4">
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h3 class="font-bold text-gray-800 mb-1">Backyard Basher / First Upgrade</h3>
+                                    <p class="text-sm text-gray-700">A 3300-3500KV sensorless brushless motor with a compatible ESC on 2S LiPo. Plenty of speed, easy to drive, affordable. Good combo options available from Hobbywing or Castle.</p>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h3 class="font-bold text-gray-800 mb-1">Club Racer (Stock Class)</h3>
+                                    <p class="text-sm text-gray-700">A 17.5T or 13.5T sensored brushless motor matched to your racing class rules. Pair with a sensored ESC. Brands like Hobbywing, Fantom, Trinity, and Tekin are popular in competition.</p>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h3 class="font-bold text-gray-800 mb-1">Speed Runner</h3>
+                                    <p class="text-sm text-gray-700">High KV (4000-5700KV) on appropriate cell count, with gearing calculated for your target speed. Make sure your ESC and drivetrain can handle the current and RPM. Heat management becomes critical.</p>
+                                </div>
+                                <div class="bg-gray-50 p-4 rounded-lg">
+                                    <h3 class="font-bold text-gray-800 mb-1">Crawler</h3>
+                                    <p class="text-sm text-gray-700">Low KV (1200-2200KV) sensored motor for smooth, controllable low-speed operation. Crawlers need precise throttle control at walking speed, which is where sensored motors shine.</p>
+                                </div>
+                            </div>
+                            <p class="mb-4">
+                                Whatever you choose, remember that the motor is just one part of the system. The battery voltage, gearing, vehicle weight, and tire grip all interact with the motor's characteristics. A 5000KV motor on 3S with tall gearing in a lightweight car is a very different experience than the same motor on 2S with short gearing in a heavy truck. Experiment, take notes, and enjoy the process of dialing it in.
+                            </p>
+                            <div class="bg-purple-50 border-l-4 border-purple-500 p-4 mb-4">
+                                <h3 class="font-bold text-purple-800 mb-2">Try the Motor Comparison Tool</h3>
+                                <p class="text-gray-700 text-sm">Want to compare motors side by side? Check out our <a href="/tools/motor-comparison.html" class="text-purple-600 hover:text-purple-700 underline font-medium">Motor Comparison Tool</a> to analyze KV ratings, calculate RPM at different voltages, and find the right motor for your setup.</p>
+                            </div>
+                        </section>
+
+                        <!-- Related Articles -->
+                        <div class="border-t pt-8 mt-8">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Related Articles</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <a href="/articles/electric-vs-nitro-vs-brushless.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                    <h4 class="font-semibold text-gray-900">Electric vs Nitro vs Brushless</h4>
+                                    <p class="text-sm text-gray-600">Compare all three RC power systems</p>
+                                </a>
+                                <a href="/articles/rc-car-parts-upgrades.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                    <h4 class="font-semibold text-gray-900">RC Car Parts & Upgrades Guide</h4>
+                                    <p class="text-sm text-gray-600">Smart upgrade path for any RC vehicle</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">MinutesofThunder</h3>
+                    <p class="text-gray-400">Your comprehensive guide to RC car technology, reviews, and the latest innovations in radio control vehicles.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">All Articles</a></li>
+                        <li><a href="/tools/" class="hover:text-white">Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/articles/" class="hover:text-white">Beginner Guides</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Electric RC</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Nitro RC</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <p class="text-gray-400">Join the RC community and stay updated with the latest technology and reviews.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 MinutesofThunder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

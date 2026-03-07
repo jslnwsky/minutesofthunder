@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Tools | MinutesofThunder</title>
+    <meta name="description" content="Interactive tools for RC car enthusiasts. Motor comparison calculators, battery runtime estimators, and performance analyzers.">
+    <meta name="keywords" content="RC tools, motor calculator, battery calculator, RC car tools, performance analyzer">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    
+    <style type="text/css">
+        @apply bg-gradient-to-r from-purple-600 to-blue-600;
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold">
+                        <a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a>
+                    </h1>
+                    <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Interactive Tools</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Calculators</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
+                    <a href="/articles/" class="text-gray-600 hover:text-purple-600 font-medium">Articles</a>
+                    <a href="/tools/" class="text-purple-600 font-medium">Tools</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <nav class="flex text-sm text-gray-600">
+                <a href="/" class="hover:text-purple-600">Home</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">Tools</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Tools Header -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">RC Car Tools</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Interactive calculators and comparison tools to help you make the best decisions for your RC car setup. 
+                Analyze performance, compare motors, and optimize your configuration.
+            </p>
+        </div>
+
+        <!-- Available Tools -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Motor Comparison Tool -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-3"></div>
+                <div class="p-6">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Motor Comparison Tool</h3>
+                    <p class="text-gray-600 mb-4">
+                        Compare brushless motors side by side. Analyze KV ratings, power output, RPM, and find the perfect motor for your RC car.
+                    </p>
+                    <ul class="text-sm text-gray-500 mb-4 space-y-1">
+                        <li>• KV rating comparison</li>
+                        <li>• RPM calculations</li>
+                        <li>• Performance recommendations</li>
+                        <li>• Motor type analysis</li>
+                    </ul>
+                    <a href="/tools/motor-comparison.html" class="inline-block bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition">
+                        Try Tool →
+                    </a>
+                </div>
+            </div>
+
+            <!-- Battery Calculator (Coming Soon) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow opacity-75">
+                <div class="bg-gradient-to-r from-green-500 to-yellow-500 h-3"></div>
+                <div class="p-6">
+                    <div class="text-4xl mb-4">🔋</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Battery Runtime Calculator</h3>
+                    <p class="text-gray-600 mb-4">
+                        Calculate battery runtime based on capacity, discharge rate, and motor power consumption. Plan your racing sessions perfectly.
+                    </p>
+                    <ul class="text-sm text-gray-500 mb-4 space-y-1">
+                        <li>• Runtime estimation</li>
+                        <li>• Capacity calculations</li>
+                        <li>• Discharge analysis</li>
+                        <li>• Session planning</li>
+                    </ul>
+                    <button class="inline-block bg-gray-400 text-white px-4 py-2 rounded-lg cursor-not-allowed" disabled>
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+
+            <!-- Gear Ratio Calculator (Coming Soon) -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow opacity-75">
+                <div class="bg-gradient-to-r from-red-500 to-orange-500 h-3"></div>
+                <div class="p-6">
+                    <div class="text-4xl mb-4">⚙️</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Gear Ratio Calculator</h3>
+                    <p class="text-gray-600 mb-4">
+                        Calculate optimal gear ratios for speed vs torque. Find the perfect balance for your track conditions and racing style.
+                    </p>
+                    <ul class="text-sm text-gray-500 mb-4 space-y-1">
+                        <li>• Gear ratio analysis</li>
+                        <li>• Speed calculations</li>
+                        <li>• Torque optimization</li>
+                        <li>• Track recommendations</li>
+                    </ul>
+                    <button class="inline-block bg-gray-400 text-white px-4 py-2 rounded-lg cursor-not-allowed" disabled>
+                        Coming Soon
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tool Features -->
+        <div class="bg-white rounded-xl shadow-md p-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Tool Features</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="text-3xl mb-3">🎯</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Accurate Calculations</h3>
+                    <p class="text-gray-600 text-sm">
+                        Based on real RC car specifications and industry standards for reliable results.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-3">📊</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Detailed Analysis</h3>
+                    <p class="text-gray-600 text-sm">
+                        Comprehensive breakdowns and recommendations to optimize your RC setup.
+                    </p>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl mb-3">🚀</div>
+                    <h3 class="font-bold text-gray-900 mb-2">Performance Focus</h3>
+                    <p class="text-gray-600 text-sm">
+                        Designed to help you get the maximum performance from your RC car equipment.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">MinutesofThunder</h3>
+                    <p class="text-gray-400">Your comprehensive guide to RC car technology, reviews, and the latest innovations in radio control vehicles.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Tools</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/tools/motor-comparison.html" class="hover:text-white">Motor Comparison</a></li>
+                        <li><a href="/tools/" class="hover:text-white">All Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Articles</a></li>
+                        <li><a href="/articles/getting-started-rc-cars.html" class="hover:text-white">RC Guide</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <p class="text-gray-400">Join the RC community and stay updated with the latest technology and reviews.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 MinutesofThunder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
