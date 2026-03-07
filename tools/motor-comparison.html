@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Motor Comparison Tool | MinutesofThunder</title>
+    <meta name="description" content="Compare RC brushless motors side by side. Compare KV ratings, power, efficiency, and performance to find the perfect motor for your RC car.">
+    <meta name="keywords" content="RC motor comparison, brushless motor, KV rating, motor calculator, RC car motor">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    
+    <style type="text/css">
+        @apply bg-gradient-to-r from-purple-600 to-blue-600;
+        .motor-card {
+            transition: all 0.3s ease;
+        }
+        .motor-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        .comparison-row:hover {
+            background-color: #f9fafb;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold">
+                        <a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a>
+                    </h1>
+                    <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Interactive Tool</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Motor Comparison</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
+                    <a href="/articles/" class="text-gray-600 hover:text-purple-600 font-medium">Articles</a>
+                    <a href="/tools/" class="text-purple-600 font-medium">Tools</a>
+                    <a href="/Links/" class="text-gray-600 hover:text-purple-600 font-medium">Links</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Tool Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">RC Motor Comparison Tool</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Compare brushless motors side by side to find the perfect match for your RC car. Analyze KV ratings, power output, efficiency, and performance characteristics.
+            </p>
+        </div>
+
+        <!-- Motor Selection -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+            <!-- Motor 1 -->
+            <div class="bg-white rounded-xl shadow-md p-6 motor-card">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Motor 1</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Brand</label>
+                        <select id="motor1-brand" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="">Select Brand</option>
+                            <option value="castle">Castle Creations</option>
+                            <option value="hobbywing">Hobbywing</option>
+                            <option value="tekin">Tekin</option>
+                            <option value="prophet">Prophet</option>
+                            <option value="leopard">Leopard</option>
+                            <option value="custom">Custom Specs</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">KV Rating</label>
+                        <input type="number" id="motor1-kv" placeholder="e.g., 4600" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Motor Size</label>
+                        <select id="motor1-size" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="">Select Size</option>
+                            <option value="540">540 (1/10 Scale)</option>
+                            <option value="550">550 (1/10 Scale)</option>
+                            <option value="380">380 (1/18 Scale)</option>
+                            <option value="240">240 (1/16 Scale)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Voltage (Cells)</label>
+                        <select id="motor1-voltage" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="">Select Voltage</option>
+                            <option value="2s">2S (7.4V)</option>
+                            <option value="3s">3S (11.1V)</option>
+                            <option value="4s">4S (14.8V)</option>
+                            <option value="6s">6S (22.2V)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VS Divider -->
+            <div class="flex items-center justify-center">
+                <div class="text-center">
+                    <div class="text-3xl font-bold text-purple-600 mb-2">VS</div>
+                    <button onclick="compareMotors()" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition font-medium">
+                        Compare Motors
+                    </button>
+                </div>
+            </div>
+
+            <!-- Motor 2 -->
+            <div class="bg-white rounded-xl shadow-md p-6 motor-card">
+                <h3 class="text-xl font-bold text-gray-900 mb-4">Motor 2</h3>
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Brand</label>
+                        <select id="motor2-brand" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="">Select Brand</option>
+                            <option value="castle">Castle Creations</option>
+                            <option value="hobbywing">Hobbywing</option>
+                            <option value="tekin">Tekin</option>
+                            <option value="prophet">Prophet</option>
+                            <option value="leopard">Leopard</option>
+                            <option value="custom">Custom Specs</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">KV Rating</label>
+                        <input type="number" id="motor2-kv" placeholder="e.g., 5700" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Motor Size</label>
+                        <select id="motor2-size" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="">Select Size</option>
+                            <option value="540">540 (1/10 Scale)</option>
+                            <option value="550">550 (1/10 Scale)</option>
+                            <option value="380">380 (1/18 Scale)</option>
+                            <option value="240">240 (1/16 Scale)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Voltage (Cells)</label>
+                        <select id="motor2-voltage" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                            <option value="">Select Voltage</option>
+                            <option value="2s">2S (7.4V)</option>
+                            <option value="3s">3S (11.1V)</option>
+                            <option value="4s">4S (14.8V)</option>
+                            <option value="6s">6S (22.2V)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Results -->
+        <div id="comparisonResults" class="hidden">
+            <div class="bg-white rounded-xl shadow-md p-6 mb-8">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Comparison Results</h2>
+                
+                <!-- Performance Comparison -->
+                <div class="mb-8">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Performance Metrics</h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50">
+                                    <th class="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-700">Metric</th>
+                                    <th class="border border-gray-200 px-4 py-3 text-center text-sm font-medium text-gray-700">Motor 1</th>
+                                    <th class="border border-gray-200 px-4 py-3 text-center text-sm font-medium text-gray-700">Motor 2</th>
+                                    <th class="border border-gray-200 px-4 py-3 text-center text-sm font-medium text-gray-700">Winner</th>
+                                </tr>
+                            </thead>
+                            <tbody id="performanceTable">
+                                <!-- Dynamically populated -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div id="motor1-recommendation" class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                        <h4 class="font-bold text-blue-800 mb-2">Motor 1 Best For:</h4>
+                        <ul class="text-sm text-gray-700 space-y-1" id="motor1-uses">
+                            <!-- Dynamically populated -->
+                        </ul>
+                    </div>
+                    <div id="motor2-recommendation" class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                        <h4 class="font-bold text-green-800 mb-2">Motor 2 Best For:</h4>
+                        <ul class="text-sm text-gray-700 space-y-1" id="motor2-uses">
+                            <!-- Dynamically populated -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Popular Motor Comparisons -->
+        <div class="bg-white rounded-xl shadow-md p-6">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Popular Motor Comparisons</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <button onclick="loadPresetComparison('castle-4600', 'hobbywing-5700')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                    <h4 class="font-semibold text-gray-900">Castle 4600 vs Hobbywing 5700</h4>
+                    <p class="text-sm text-gray-600">Popular 1/10 scale comparison</p>
+                </button>
+                <button onclick="loadPresetComparison('tekin-4600', 'prophet-5500')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                    <h4 class="font-semibold text-gray-900">Tekin 4600 vs Prophet 5500</h4>
+                    <p class="text-sm text-gray-600">Premium motor comparison</p>
+                </button>
+                <button onclick="loadPresetComparison('hobbywing-3650', 'leopard-4068')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                    <h4 class="font-semibold text-gray-900">Hobbywing 3650 vs Leopard 4068</h4>
+                    <p class="text-sm text-gray-600">1/8 scale motor comparison</p>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">MinutesofThunder</h3>
+                    <p class="text-gray-400">Your comprehensive guide to RC car technology, reviews, and the latest innovations in radio control vehicles.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Tools</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/tools/motor-comparison.html" class="hover:text-white">Motor Comparison</a></li>
+                        <li><a href="/tools/battery-calculator.html" class="hover:text-white">Battery Calculator</a></li>
+                        <li><a href="/tools/" class="hover:text-white">All Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Articles</a></li>
+                        <li><a href="/Links/" class="hover:text-white">RC Links</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <p class="text-gray-400">Join the RC community and stay updated with the latest technology and reviews.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 MinutesofThunder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const voltageMap = {
+            '2s': 7.4,
+            '3s': 11.1,
+            '4s': 14.8,
+            '6s': 22.2
+        };
+
+        const motorPresets = {
+            'castle-4600': { brand: 'castle', kv: 4600, size: '540', voltage: '2s' },
+            'hobbywing-5700': { brand: 'hobbywing', kv: 5700, size: '540', voltage: '2s' },
+            'tekin-4600': { brand: 'tekin', kv: 4600, size: '540', voltage: '3s' },
+            'prophet-5500': { brand: 'prophet', kv: 5500, size: '540', voltage: '3s' },
+            'hobbywing-3650': { brand: 'hobbywing', kv: 3650, size: '550', voltage: '6s' },
+            'leopard-4068': { brand: 'leopard', kv: 4068, size: '550', voltage: '6s' }
+        };
+
+        function loadPresetComparison(motor1Key, motor2Key) {
+            const motor1 = motorPresets[motor1Key];
+            const motor2 = motorPresets[motor2Key];
+            
+            // Set motor 1
+            document.getElementById('motor1-brand').value = motor1.brand;
+            document.getElementById('motor1-kv').value = motor1.kv;
+            document.getElementById('motor1-size').value = motor1.size;
+            document.getElementById('motor1-voltage').value = motor1.voltage;
+            
+            // Set motor 2
+            document.getElementById('motor2-brand').value = motor2.brand;
+            document.getElementById('motor2-kv').value = motor2.kv;
+            document.getElementById('motor2-size').value = motor2.size;
+            document.getElementById('motor2-voltage').value = motor2.voltage;
+            
+            // Auto compare
+            compareMotors();
+        }
+
+        function calculateRPM(kv, voltage) {
+            return kv * voltage;
+        }
+
+        function getMotorType(kv) {
+            if (kv < 3000) return 'High Torque';
+            if (kv < 5000) return 'Balanced';
+            return 'High Speed';
+        }
+
+        function getBestUse(kv, voltage) {
+            const rpm = calculateRPM(kv, voltage);
+            const uses = [];
+            
+            if (rpm < 20000) {
+                uses.push('Crawling', 'Rock Racing');
+            }
+            if (rpm >= 20000 && rpm < 35000) {
+                uses.push('Track Racing', 'Bashing');
+            }
+            if (rpm >= 35000) {
+                uses.push('Speed Runs', 'Drag Racing');
+            }
+            
+            if (kv < 3000) {
+                uses.push('Heavy Vehicles');
+            }
+            if (kv > 5000) {
+                uses.push('Lightweight Vehicles');
+            }
+            
+            return uses;
+        }
+
+        function compareMotors() {
+            const motor1KV = parseInt(document.getElementById('motor1-kv').value) || 0;
+            const motor2KV = parseInt(document.getElementById('motor2-kv').value) || 0;
+            const motor1Voltage = document.getElementById('motor1-voltage').value;
+            const motor2Voltage = document.getElementById('motor2-voltage').value;
+            
+            if (!motor1KV || !motor2KV || !motor1Voltage || !motor2Voltage) {
+                alert('Please fill in all motor specifications');
+                return;
+            }
+            
+            const v1 = voltageMap[motor1Voltage];
+            const v2 = voltageMap[motor2Voltage];
+            
+            const rpm1 = calculateRPM(motor1KV, v1);
+            const rpm2 = calculateRPM(motor2KV, v2);
+            
+            const type1 = getMotorType(motor1KV);
+            const type2 = getMotorType(motor2KV);
+            
+            const uses1 = getBestUse(motor1KV, v1);
+            const uses2 = getBestUse(motor2KV, v2);
+            
+            // Update performance table
+            const performanceTable = document.getElementById('performanceTable');
+            performanceTable.innerHTML = `
+                <tr class="comparison-row">
+                    <td class="border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700">KV Rating</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${motor1KV} KV</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${motor2KV} KV</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm font-medium ${motor1KV > motor2KV ? 'text-green-600' : 'text-blue-600'}">${motor1KV > motor2KV ? 'Motor 1' : 'Motor 2'}</td>
+                </tr>
+                <tr class="comparison-row">
+                    <td class="border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700">Max RPM</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${rpm1.toLocaleString()} RPM</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${rpm2.toLocaleString()} RPM</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm font-medium ${rpm1 > rpm2 ? 'text-green-600' : 'text-blue-600'}">${rpm1 > rpm2 ? 'Motor 1' : 'Motor 2'}</td>
+                </tr>
+                <tr class="comparison-row">
+                    <td class="border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700">Motor Type</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${type1}</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${type2}</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm text-gray-500">-</td>
+                </tr>
+                <tr class="comparison-row">
+                    <td class="border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700">Voltage</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${motor1Voltage} (${v1}V)</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${motor2Voltage} (${v2}V)</td>
+                    <td class="border border-gray-200 px-4 py-3 text-center text-sm font-medium ${v1 > v2 ? 'text-green-600' : 'text-blue-600'}">${v1 > v2 ? 'Motor 1' : 'Motor 2'}</td>
+                </tr>
+            `;
+            
+            // Update recommendations
+            document.getElementById('motor1-uses').innerHTML = uses1.map(use => `<li>• ${use}</li>`).join('');
+            document.getElementById('motor2-uses').innerHTML = uses2.map(use => `<li>• ${use}</li>`).join('');
+            
+            // Show results
+            document.getElementById('comparisonResults').classList.remove('hidden');
+            
+            // Scroll to results
+            document.getElementById('comparisonResults').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

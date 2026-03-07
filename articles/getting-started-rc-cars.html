@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started With Radio Control Cars | MinutesofThunder</title>
+    <meta name="description" content="Complete beginner's guide to getting started with RC cars. Learn about nitro vs electric, kits vs RTR, and essential tips for new RC enthusiasts.">
+    <meta name="keywords" content="RC cars, radio control, beginner guide, nitro RC, electric RC, RC hobby, getting started RC">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    
+    <style type="text/css">
+        @apply bg-gradient-to-r from-purple-600 to-blue-600;
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #9333ea, #3b82f6);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold">
+                        <a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a>
+                    </h1>
+                    <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Beginner Guide</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">8 min read</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
+                    <a href="/articles/" class="text-purple-600 font-medium">Articles</a>
+                    <a href="/Links/" class="text-gray-600 hover:text-purple-600 font-medium">Links</a>
+                </div>
+                <button id="mobileMenuBtn" class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <nav class="flex text-sm text-gray-600">
+                <a href="/" class="hover:text-purple-600">Home</a>
+                <span class="mx-2">/</span>
+                <a href="/articles/" class="hover:text-purple-600">Articles</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">Getting Started With Radio Control Cars</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Sidebar Table of Contents -->
+            <aside class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <h3 class="font-bold text-lg mb-4">Table of Contents</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#choosing-your-rc" class="text-purple-600 hover:text-purple-700 font-medium">→ Choosing Your RC</a></li>
+                        <li><a href="#nitro-vs-electric" class="text-purple-600 hover:text-purple-700 font-medium">→ Nitro vs Electric</a></li>
+                        <li><a href="#kit-vs-rtr" class="text-purple-600 hover:text-purple-700 font-medium">→ Kit vs RTR</a></li>
+                        <li><a href="#budget-considerations" class="text-purple-600 hover:text-purple-700 font-medium">→ Budget Planning</a></li>
+                        <li><a href="#getting-help" class="text-purple-600 hover:text-purple-700 font-medium">→ Getting Help</a></li>
+                        <li><a href="#final-tips" class="text-purple-600 hover:text-purple-700 font-medium">→ Final Tips</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Article Content -->
+            <div class="lg:col-span-3">
+                <article class="bg-white rounded-xl shadow-md p-8">
+                    <!-- Article Header -->
+                    <header class="mb-8">
+                        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Getting Started With Radio Control Cars</h1>
+                        <div class="flex items-center text-gray-600 text-sm">
+                            <span>Beginner Guide</span>
+                            <span class="mx-2">•</span>
+                            <span>8 minute read</span>
+                            <span class="mx-2">•</span>
+                            <span>Updated for modern RC technology</span>
+                        </div>
+                    </header>
+
+                    <!-- Article Body -->
+                    <div class="prose prose-lg max-w-none text-gray-700">
+                        <p class="text-lg leading-relaxed mb-6">
+                            Take note that you need to decide whether you want a radio control nitro or gas car or perhaps one that has an electric engine. You could purchase either one which is ready to run (rtr) or a kit. Now, knowing how much you would want to spend start going shopping for a vehicle that fits your specifications. Like me passion is what drew me to this exciting hobby and there's a lot you are going to learn before you can get behind the wheel.
+                        </p>
+
+                        <section id="getting-help" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Start at Your Local Hobby Store</h2>
+                            <p class="mb-4">
+                                It is always good to start at a nearby hobby store - look for one that specializes in radio control vehicles. Speak to people you'll find working in the store and chances are that these people are true blue RC hobbyists as well. There is much you can learn from them, so pick their brains well. You'll find these machines to be sleek and powerful, tearing up the terrain in a jiffy and it's certainly a lot of fun watching them go.
+                            </p>
+                        </section>
+
+                        <section id="choosing-your-rc" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Types of RC Vehicles</h2>
+                            <p class="mb-4">
+                                The types of radio control vehicles that you need to get acquainted with are nitro and electric cars, monster trucks, stadium trucks, minis and micros. If you want to get your feet wet and don't wish to spend a whole lot of money, go and get a used vehicle - this is the cheapest way of building your skills. To find used radio control vehicles for sale, ask your friends, check the local newspapers, read RC magazines or browse through listings at auction sites like eBay.
+                            </p>
+                        </section>
+
+                        <section id="kit-vs-rtr" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Kit vs Ready-to-Run</h2>
+                            <p class="mb-4">
+                                If you decide that you want a new vehicle, you can choose a kit, an ARR (almost ready to run) model, or an RTR (ready to run) model. What's the difference?
+                            </p>
+                            
+                            <div class="bg-blue-50 border-l-4 border-blue-500 p-4 mb-4">
+                                <h3 class="font-bold text-blue-800 mb-2">Kit Models</h3>
+                                <p class="text-gray-700">A kit will take you time and a certain amount of expertise to assemble. The advantage of a kit, of course is that once you're finished, you'll know exactly how your vehicle is built and therefore how to repair any damage.</p>
+                            </div>
+
+                            <div class="bg-green-50 border-l-4 border-green-500 p-4 mb-4">
+                                <h3 class="font-bold text-green-800 mb-2">ARR and RTR Models</h3>
+                                <p class="text-gray-700">ARR and RTR models come already assembled. The difference is usually that the ARR model doesn't have a radio system installed, while an RTR model does. So don't be fooled by the difference in price. When you buy an ARR car, you're going to have to add the cost of the radio system to your final cost.</p>
+                            </div>
+                        </section>
+
+                        <section id="nitro-vs-electric" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Nitro vs Electric Power</h2>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-red-50 p-4 rounded-lg">
+                                    <h3 class="font-bold text-red-800 mb-2">Nitro/Gas Cars</h3>
+                                    <ul class="text-sm text-gray-700 space-y-1">
+                                        <li>• Realistic engine sound</li>
+                                        <li>• Longer run times</li>
+                                        <li>• More maintenance required</li>
+                                        <li>• Higher speeds</li>
+                                        <li>• Fuel costs</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="bg-green-50 p-4 rounded-lg">
+                                    <h3 class="font-bold text-green-800 mb-2">Electric Cars</h3>
+                                    <ul class="text-sm text-gray-700 space-y-1">
+                                        <li>• Cleaner operation</li>
+                                        <li>• Easy to maintain</li>
+                                        <li>• Instant torque</li>
+                                        <li>• Battery charging required</li>
+                                        <li>• Quiet operation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section id="budget-considerations" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Budget Considerations</h2>
+                            <p class="mb-4">
+                                The expense of operating your radio control car can be as little as an occasional replacement battery pack. But as with any hobby, the more you play the more you pay. If you become a dedicated radio control vehicle fan, be prepared for repairs, upgrades, special tools, magazine subscriptions, books, racing entry fees, association dues, travel expenses to the big meets and races - the list can be endless.
+                            </p>
+                            
+                            <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 mb-4">
+                                <h3 class="font-bold text-yellow-800 mb-2">Best Advice</h3>
+                                <p class="text-gray-700">The best advice is to start small, and let your radio control hobby grow little by little to whatever level you find most satisfying.</p>
+                            </div>
+                        </section>
+
+                        <section id="final-tips" class="mb-8">
+                            <h2 class="text-2xl font-bold text-gray-900 mb-4">Final Tips for Success</h2>
+                            <p class="mb-4">
+                                So all in all, what's the best advice for getting started in radio control? Start small, get to know experienced radio control drivers, and learn as you go. Make a list before you buy anything, and make sure have all the accessories and parts you're going to need to use your vehicle. Most of all, have fun - RC is a wonderful way to meet people, to challenge yourself, and to fulfill your driving fantasies.
+                            </p>
+                        </section>
+
+                        <!-- Related Articles -->
+                        <div class="border-t pt-8 mt-8">
+                            <h3 class="text-xl font-bold text-gray-900 mb-4">Related Articles</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <a href="/articles/electric-rc-cars-guide.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                    <h4 class="font-semibold text-gray-900">Electric RC Cars Guide</h4>
+                                    <p class="text-sm text-gray-600">Complete guide to electric RC car technology</p>
+                                </a>
+                                <a href="/articles/nitro-rc-cars-tips.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                    <h4 class="font-semibold text-gray-900">Nitro RC Car Tips</h4>
+                                    <p class="text-sm text-gray-600">Essential tips for nitro RC car owners</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">MinutesofThunder</h3>
+                    <p class="text-gray-400">Your comprehensive guide to RC car technology, reviews, and the latest innovations in radio control vehicles.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">All Articles</a></li>
+                        <li><a href="/Links/" class="hover:text-white">RC Links</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/articles/" class="hover:text-white">Beginner Guides</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Electric RC</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Nitro RC</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <p class="text-gray-400">Join the RC community and stay updated with the latest technology and reviews.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 MinutesofThunder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Reading progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('readingProgress').style.width = scrolled + '%';
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
