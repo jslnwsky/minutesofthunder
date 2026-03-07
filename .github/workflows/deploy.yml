@@ -1,0 +1,101 @@
+name: Deploy to IntegrityHost
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Deploy all web files via FTP
+      env:
+        FTP_HOST: ${{ secrets.FTP_HOST }}
+        FTP_USER: ${{ secrets.FTP_USER }}
+        FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+      run: |
+        echo "🚀 Deploying all web files to IntegrityHost..."
+
+        DEPLOYED=0
+        ERRORS=0
+
+        upload_file() {
+          local file="$1"
+          local dir=$(dirname "$file")
+
+          if [[ "$dir" == "." ]]; then
+            # Root file
+            if curl -T "$file" "ftp://$FTP_HOST/" \
+              --user "$FTP_USER:$FTP_PASSWORD" \
+              --ftp-create-dirs \
+              --connect-timeout 30 \
+              --max-time 120 \
+              --retry 3 \
+              --retry-delay 5 \
+              --silent --show-error 2>&1; then
+              echo "  ✅ $file"
+              ((DEPLOYED++))
+            else
+              echo "  ❌ $file"
+              ((ERRORS++))
+            fi
+          else
+            # Ensure remote directory exists
+            curl -Q "MKD $dir" "ftp://$FTP_HOST/" \
+              --user "$FTP_USER:$FTP_PASSWORD" \
+              --silent 2>/dev/null || true
+
+            if curl -T "$file" "ftp://$FTP_HOST/$dir/" \
+              --user "$FTP_USER:$FTP_PASSWORD" \
+              --ftp-create-dirs \
+              --connect-timeout 30 \
+              --max-time 120 \
+              --retry 3 \
+              --retry-delay 5 \
+              --silent --show-error 2>&1; then
+              echo "  ✅ $file"
+              ((DEPLOYED++))
+            else
+              echo "  ❌ $file"
+              ((ERRORS++))
+            fi
+          fi
+
+          sleep 2
+        }
+
+        # --- Root files ---
+        echo "📁 Root files..."
+        for f in index.html article-template.html .htaccess; do
+          [[ -f "$f" ]] && upload_file "$f"
+        done
+
+        # --- CSS ---
+        echo "📁 css/"
+        for f in css/*; do
+          [[ -f "$f" ]] && upload_file "$f"
+        done
+
+        # --- Articles ---
+        echo "📁 articles/"
+        for f in articles/*; do
+          [[ -f "$f" ]] && upload_file "$f"
+        done
+
+        # --- Tools ---
+        echo "📁 tools/"
+        for f in tools/*; do
+          [[ -f "$f" ]] && upload_file "$f"
+        done
+
+        echo ""
+        echo "🎉 Deployment complete: $DEPLOYED uploaded, $ERRORS errors"
+
+        if [[ $ERRORS -gt 0 ]]; then
+          exit 1
+        fi
