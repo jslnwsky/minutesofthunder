@@ -68,7 +68,9 @@ jobs:
             # Root directory
             curl -T "$file" "ftp://$FTP_HOST/" --user "$FTP_USER:$FTP_PASSWORD" --ftp-create-dirs
           else
-            # Subdirectory
+            # Subdirectory - ensure directory exists first
+            echo "📁 Creating directory: $DIR"
+            curl -Q "MKD $DIR" "ftp://$FTP_HOST/" --user "$FTP_USER:$FTP_PASSWORD" 2>/dev/null || true
             curl -T "$file" "ftp://$FTP_HOST/$DIR/" --user "$FTP_USER:$FTP_PASSWORD" --ftp-create-dirs
           fi
           
