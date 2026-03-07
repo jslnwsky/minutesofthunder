@@ -46,7 +46,7 @@ jobs:
           localRoot: __dirname,
           remoteRoot: process.env.FTP_PATH || '/',
           include: ['*', '*/**/*'],
-          exclude: ['historical/**', '.git/**', '.github/**', '.gitignore', 'README.md'],
+          exclude: ['historical/**', '.git/**', '.github/**', '.gitignore', 'README.md', 'node_modules/**', 'package*.json', 'deploy.js', 'SETUP_INTEGRITYHOST.md'],
           deleteRemote: false,
           forcePasv: true,
           secure: false,

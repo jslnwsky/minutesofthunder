@@ -47,7 +47,7 @@ jobs:
           set cmd:fail-exit true
           open -u $FTP_USER,$FTP_PASSWORD $FTP_HOST
           cd $FTP_PATH
-          mirror --reverse --verbose --delete --parallel=4 --ignore-gid . .
+          mirror --reverse --verbose --delete --parallel=4 --ignore-gid --exclude node_modules/ --exclude .git/ --exclude .github/ --exclude historical/ --exclude package*.json --exclude deploy.js --exclude SETUP_INTEGRITYHOST.md . .
           quit
         "
         
