@@ -89,6 +89,8 @@ jobs:
               # Set file permissions (if FTP server supports it)
               curl -Q "CHMOD 644 $FILENAME" "ftp://$FTP_HOST/" --user "$FTP_USER:$FTP_PASSWORD" --silent 2>/dev/null || true
               ((DEPLOYED_COUNT++))
+              # Add delay between uploads to avoid triggering security
+              sleep 2
             else
               echo "❌ Failed to upload $file"
               ((ERROR_COUNT++))
@@ -114,6 +116,8 @@ jobs:
               # Set file permissions (if FTP server supports it)
               curl -Q "CHMOD 644 $DIR/$FILENAME" "ftp://$FTP_HOST/" --user "$FTP_USER:$FTP_PASSWORD" --silent 2>/dev/null || true
               ((DEPLOYED_COUNT++))
+              # Add delay between uploads to avoid triggering security
+              sleep 2
             else
               echo "❌ Failed to upload $file"
               ((ERROR_COUNT++))
