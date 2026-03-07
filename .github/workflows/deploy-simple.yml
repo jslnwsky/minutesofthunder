@@ -32,6 +32,14 @@ jobs:
         echo "Uploading css/modern-styles.css..."
         curl -T css/modern-styles.css ftp://$FTP_HOST/css/ --user $FTP_USER:$FTP_PASSWORD --ftp-create-dirs
         
+        # Upload new article
+        echo "Uploading articles/getting-started-rc-cars.html..."
+        curl -T articles/getting-started-rc-cars.html ftp://$FTP_HOST/articles/ --user $FTP_USER:$FTP_PASSWORD --ftp-create-dirs
+        
+        # Upload new tool
+        echo "Uploading tools/motor-comparison.html..."
+        curl -T tools/motor-comparison.html ftp://$FTP_HOST/tools/ --user $FTP_USER:$FTP_PASSWORD --ftp-create-dirs
+        
         echo "✅ Deployment completed!"
         
     - name: Verify Deployment
@@ -48,6 +56,6 @@ jobs:
         echo "**Method**: cURL FTP (Simple)" >> $GITHUB_STEP_SUMMARY
         echo "**Host**: ${{ secrets.FTP_HOST }}" >> $GITHUB_STEP_SUMMARY
         echo "**Path**: / (root directory)" >> $GITHUB_STEP_SUMMARY
-        echo "**Files**: index.html, article-template.html, css/modern-styles.css" >> $GITHUB_STEP_SUMMARY
+        echo "**Files**: index.html, article-template.html, css/modern-styles.css, articles/getting-started-rc-cars.html, tools/motor-comparison.html" >> $GITHUB_STEP_SUMMARY
         echo "**Commit**: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
         echo "**Time**: $(date)" >> $GITHUB_STEP_SUMMARY
