@@ -1,18 +1,11 @@
-# Minimal .htaccess to avoid ModSecurity triggers
+# Minimal .htaccess for shared hosting
 
 # Basic directory index
 DirectoryIndex index.html
 
-# Disable server signatures
-ServerSignature Off
-ServerTokens Prod
-
 # Basic error handling
 ErrorDocument 404 /index.html
 ErrorDocument 403 /index.html
-ErrorDocument 500 /index.html
 
 # Disable directory listing
 Options -Indexes
-
-# No complex rules that might trigger ModSecurity
