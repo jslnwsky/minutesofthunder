@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RC Motor Comparison Tool | MinutesofThunder</title>
-    <meta name="description" content="Compare RC brushless motors side by side. Compare KV ratings, power, efficiency, and performance to find the perfect motor for your RC car.">
-    <meta name="keywords" content="RC motor comparison, brushless motor, KV rating, motor calculator, RC car motor">
+    <title>RC Motor Comparison & Speed Calculator | MinutesofThunder</title>
+    <meta name="description" content="Compare RC brushless motors, calculate RPM, estimate top speed with gearing, and find the right motor for your RC car. Includes gear ratio and speed calculators.">
+    <meta name="keywords" content="RC motor comparison, brushless motor, KV rating, motor calculator, RC speed calculator, gear ratio calculator, RC car motor, brushless vs brushed">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
@@ -16,27 +16,29 @@
       gtag('config', 'G-LYGNC6WBGL');
     </script>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="/css/modern-styles.css">
     
     <style type="text/css">
-        @apply bg-gradient-to-r from-purple-600 to-blue-600;
-        .motor-card {
-            transition: all 0.3s ease;
-        }
-        .motor-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .comparison-row:hover {
-            background-color: #f9fafb;
-        }
+        .motor-card { transition: all 0.3s ease; }
+        .motor-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .comparison-row:hover { background-color: #f9fafb; }
+        .bar-fill { transition: width 0.6s ease; height: 24px; border-radius: 4px; }
+        .tab-btn { cursor: pointer; padding: 12px 24px; font-size: 14px; font-weight: 500; border-bottom: 3px solid transparent; color: #6b7280; transition: all 0.2s; }
+        .tab-btn:hover { color: #9333ea; border-bottom-color: #e9d5ff; }
+        .tab-btn.active { border-bottom-color: #9333ea; color: #9333ea; font-weight: 600; }
+        .tab-panel { display: none; }
+        .tab-panel.active { display: block; }
+        .input-field { width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; }
+        .input-field:focus { outline: none; border-color: #9333ea; box-shadow: 0 0 0 2px rgba(147,51,234,0.2); }
+        .btn-primary { background: #9333ea; color: white; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: background 0.2s; }
+        .btn-primary:hover { background: #7e22ce; }
     </style>
 </head>
 <body class="bg-gray-50">
+
     <!-- Header -->
-    <header class="gradient-bg text-white">
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
         <div class="container mx-auto px-4 py-6">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div class="mb-4 md:mb-0">
@@ -46,8 +48,8 @@
                     <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
                 </div>
                 <div class="flex space-x-4">
-                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Interactive Tool</span>
-                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Motor Comparison</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Interactive Tools</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Calculators</span>
                 </div>
             </div>
         </div>
@@ -61,180 +63,434 @@
                     <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
                     <a href="/articles/" class="text-gray-600 hover:text-purple-600 font-medium">Articles</a>
                     <a href="/tools/" class="text-purple-600 font-medium">Tools</a>
-                    <a href="/Links/" class="text-gray-600 hover:text-purple-600 font-medium">Links</a>
                 </div>
+                <button class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
             </div>
         </div>
     </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <nav class="flex text-sm text-gray-600">
+                <a href="/" class="hover:text-purple-600">Home</a>
+                <span class="mx-2">/</span>
+                <a href="/tools/" class="hover:text-purple-600">Tools</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">Motor Comparison & Speed Calculator</span>
+            </nav>
+        </div>
+    </div>
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
         <!-- Tool Header -->
         <div class="text-center mb-8">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">RC Motor Comparison Tool</h1>
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">RC Motor & Speed Calculator</h1>
             <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                Compare brushless motors side by side to find the perfect match for your RC car. Analyze KV ratings, power output, efficiency, and performance characteristics.
+                Compare motors side by side, calculate RPM and top speed, or figure out your gear ratio. All the math, none of the guesswork.
             </p>
         </div>
 
-        <!-- Motor Selection -->
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-            <!-- Motor 1 -->
-            <div class="bg-white rounded-xl shadow-md p-6 motor-card">
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Motor 1</h3>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Brand</label>
-                        <select id="motor1-brand" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            <option value="">Select Brand</option>
-                            <option value="castle">Castle Creations</option>
-                            <option value="hobbywing">Hobbywing</option>
-                            <option value="tekin">Tekin</option>
-                            <option value="prophet">Prophet</option>
-                            <option value="leopard">Leopard</option>
-                            <option value="custom">Custom Specs</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">KV Rating</label>
-                        <input type="number" id="motor1-kv" placeholder="e.g., 4600" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Motor Size</label>
-                        <select id="motor1-size" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            <option value="">Select Size</option>
-                            <option value="540">540 (1/10 Scale)</option>
-                            <option value="550">550 (1/10 Scale)</option>
-                            <option value="380">380 (1/18 Scale)</option>
-                            <option value="240">240 (1/16 Scale)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Voltage (Cells)</label>
-                        <select id="motor1-voltage" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            <option value="">Select Voltage</option>
-                            <option value="2s">2S (7.4V)</option>
-                            <option value="3s">3S (11.1V)</option>
-                            <option value="4s">4S (14.8V)</option>
-                            <option value="6s">6S (22.2V)</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
-
-            <!-- VS Divider -->
-            <div class="flex items-center justify-center">
-                <div class="text-center">
-                    <div class="text-3xl font-bold text-purple-600 mb-2">VS</div>
-                    <button onclick="compareMotors()" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition font-medium">
-                        Compare Motors
-                    </button>
-                </div>
-            </div>
-
-            <!-- Motor 2 -->
-            <div class="bg-white rounded-xl shadow-md p-6 motor-card">
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Motor 2</h3>
-                <div class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Brand</label>
-                        <select id="motor2-brand" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            <option value="">Select Brand</option>
-                            <option value="castle">Castle Creations</option>
-                            <option value="hobbywing">Hobbywing</option>
-                            <option value="tekin">Tekin</option>
-                            <option value="prophet">Prophet</option>
-                            <option value="leopard">Leopard</option>
-                            <option value="custom">Custom Specs</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">KV Rating</label>
-                        <input type="number" id="motor2-kv" placeholder="e.g., 5700" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Motor Size</label>
-                        <select id="motor2-size" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            <option value="">Select Size</option>
-                            <option value="540">540 (1/10 Scale)</option>
-                            <option value="550">550 (1/10 Scale)</option>
-                            <option value="380">380 (1/18 Scale)</option>
-                            <option value="240">240 (1/16 Scale)</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Voltage (Cells)</label>
-                        <select id="motor2-voltage" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-                            <option value="">Select Voltage</option>
-                            <option value="2s">2S (7.4V)</option>
-                            <option value="3s">3S (11.1V)</option>
-                            <option value="4s">4S (14.8V)</option>
-                            <option value="6s">6S (22.2V)</option>
-                        </select>
-                    </div>
-                </div>
-            </div>
+        <!-- Tabs -->
+        <div class="flex border-b border-gray-200 mb-8 overflow-x-auto">
+            <button class="tab-btn active" onclick="switchTab('compare')">Motor Comparison</button>
+            <button class="tab-btn" onclick="switchTab('speed')">Speed Calculator</button>
+            <button class="tab-btn" onclick="switchTab('rpm')">RPM Calculator</button>
+            <button class="tab-btn" onclick="switchTab('gearing')">Gear Ratio</button>
         </div>
 
-        <!-- Comparison Results -->
-        <div id="comparisonResults" class="hidden">
-            <div class="bg-white rounded-xl shadow-md p-6 mb-8">
-                <h2 class="text-2xl font-bold text-gray-900 mb-6">Comparison Results</h2>
-                
-                <!-- Performance Comparison -->
-                <div class="mb-8">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Performance Metrics</h3>
+        <!-- ==================== TAB 1: MOTOR COMPARISON ==================== -->
+        <div id="tab-compare" class="tab-panel active">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <!-- Motor 1 -->
+                <div class="bg-white rounded-xl shadow-md p-6 motor-card">
+                    <h3 class="text-lg font-bold text-purple-700 mb-4">Motor 1</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">KV Rating <span class="text-gray-400">(or enter turns below)</span></label>
+                            <input type="number" id="m1-kv" placeholder="e.g., 3300" class="input-field" oninput="kvToTurns('m1')">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Turns (T)</label>
+                            <input type="number" id="m1-turns" placeholder="e.g., 13.5" step="0.5" class="input-field" oninput="turnsToKv('m1')">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Motor Type</label>
+                            <select id="m1-type" class="input-field">
+                                <option value="brushless-sensored">Brushless Sensored</option>
+                                <option value="brushless-sensorless">Brushless Sensorless</option>
+                                <option value="brushed">Brushed</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Motor Size</label>
+                            <select id="m1-size" class="input-field">
+                                <option value="540">540 (Standard 1/10)</option>
+                                <option value="550">550 (Long-can 1/10)</option>
+                                <option value="4pole">4-Pole (1/8 Scale)</option>
+                                <option value="380">380 (1/18 Scale)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Battery</label>
+                            <select id="m1-voltage" class="input-field">
+                                <option value="7.4">2S LiPo (7.4V)</option>
+                                <option value="11.1">3S LiPo (11.1V)</option>
+                                <option value="14.8">4S LiPo (14.8V)</option>
+                                <option value="22.2">6S LiPo (22.2V)</option>
+                                <option value="7.2">6-cell NiMH (7.2V)</option>
+                                <option value="8.4">7-cell NiMH (8.4V)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- VS + Compare Button -->
+                <div class="flex items-center justify-center">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-purple-600 mb-4">VS</div>
+                        <button onclick="compareMotors()" class="btn-primary">Compare Motors</button>
+                        <div class="mt-4">
+                            <button onclick="clearCompare()" class="text-sm text-gray-500 hover:text-gray-700">Clear All</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Motor 2 -->
+                <div class="bg-white rounded-xl shadow-md p-6 motor-card">
+                    <h3 class="text-lg font-bold text-blue-700 mb-4">Motor 2</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">KV Rating <span class="text-gray-400">(or enter turns below)</span></label>
+                            <input type="number" id="m2-kv" placeholder="e.g., 5700" class="input-field" oninput="kvToTurns('m2')">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Turns (T)</label>
+                            <input type="number" id="m2-turns" placeholder="e.g., 8.5" step="0.5" class="input-field" oninput="turnsToKv('m2')">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Motor Type</label>
+                            <select id="m2-type" class="input-field">
+                                <option value="brushless-sensored">Brushless Sensored</option>
+                                <option value="brushless-sensorless">Brushless Sensorless</option>
+                                <option value="brushed">Brushed</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Motor Size</label>
+                            <select id="m2-size" class="input-field">
+                                <option value="540">540 (Standard 1/10)</option>
+                                <option value="550">550 (Long-can 1/10)</option>
+                                <option value="4pole">4-Pole (1/8 Scale)</option>
+                                <option value="380">380 (1/18 Scale)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Battery</label>
+                            <select id="m2-voltage" class="input-field">
+                                <option value="7.4">2S LiPo (7.4V)</option>
+                                <option value="11.1">3S LiPo (11.1V)</option>
+                                <option value="14.8">4S LiPo (14.8V)</option>
+                                <option value="22.2">6S LiPo (22.2V)</option>
+                                <option value="7.2">6-cell NiMH (7.2V)</option>
+                                <option value="8.4">7-cell NiMH (8.4V)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Comparison Results -->
+            <div id="compareResults" class="hidden">
+                <!-- Results Table -->
+                <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Comparison Results</h2>
                     <div class="overflow-x-auto">
-                        <table class="w-full border-collapse">
+                        <table class="w-full text-sm border-collapse">
                             <thead>
                                 <tr class="bg-gray-50">
-                                    <th class="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-700">Metric</th>
-                                    <th class="border border-gray-200 px-4 py-3 text-center text-sm font-medium text-gray-700">Motor 1</th>
-                                    <th class="border border-gray-200 px-4 py-3 text-center text-sm font-medium text-gray-700">Motor 2</th>
-                                    <th class="border border-gray-200 px-4 py-3 text-center text-sm font-medium text-gray-700">Winner</th>
+                                    <th class="text-left p-3 font-semibold text-gray-700 w-1/4">Metric</th>
+                                    <th class="text-center p-3 font-semibold text-purple-700 w-1/4">Motor 1</th>
+                                    <th class="text-center p-3 font-semibold text-blue-700 w-1/4">Motor 2</th>
+                                    <th class="text-center p-3 font-semibold text-gray-700 w-1/4">Advantage</th>
                                 </tr>
                             </thead>
-                            <tbody id="performanceTable">
-                                <!-- Dynamically populated -->
-                            </tbody>
+                            <tbody id="compareTable"></tbody>
                         </table>
                     </div>
                 </div>
 
+                <!-- Visual Bars -->
+                <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Visual Comparison</h2>
+                    <div id="compareBars" class="space-y-5"></div>
+                </div>
+
                 <!-- Recommendations -->
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div id="motor1-recommendation" class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-                        <h4 class="font-bold text-blue-800 mb-2">Motor 1 Best For:</h4>
-                        <ul class="text-sm text-gray-700 space-y-1" id="motor1-uses">
-                            <!-- Dynamically populated -->
-                        </ul>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-purple-50 border-l-4 border-purple-500 p-5 rounded-lg">
+                        <h4 class="font-bold text-purple-800 mb-2">Motor 1 — Best For:</h4>
+                        <ul class="text-sm text-gray-700 space-y-1" id="m1-uses"></ul>
                     </div>
-                    <div id="motor2-recommendation" class="bg-green-50 border-l-4 border-green-500 p-4 rounded">
-                        <h4 class="font-bold text-green-800 mb-2">Motor 2 Best For:</h4>
-                        <ul class="text-sm text-gray-700 space-y-1" id="motor2-uses">
-                            <!-- Dynamically populated -->
-                        </ul>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-5 rounded-lg">
+                        <h4 class="font-bold text-blue-800 mb-2">Motor 2 — Best For:</h4>
+                        <ul class="text-sm text-gray-700 space-y-1" id="m2-uses"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Presets -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Quick Presets</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <button onclick="loadPreset(3300,'17.5','brushless-sensored','540','7.4', 2200,'21.5','brushless-sensored','540','7.4')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                        <h4 class="font-semibold text-gray-900">17.5T vs 21.5T Stock</h4>
+                        <p class="text-sm text-gray-600">Common club racing classes on 2S</p>
+                    </button>
+                    <button onclick="loadPreset(3300,'13.5','brushless-sensored','540','7.4', 5700,'8.5','brushless-sensorless','540','7.4')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                        <h4 class="font-semibold text-gray-900">13.5T Racing vs 8.5T Modified</h4>
+                        <p class="text-sm text-gray-600">Stock class vs modified on 2S</p>
+                    </button>
+                    <button onclick="loadPreset(2400,'17.5','brushless-sensored','540','11.1', 3300,'13.5','brushless-sensored','540','7.4')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                        <h4 class="font-semibold text-gray-900">17.5T on 3S vs 13.5T on 2S</h4>
+                        <p class="text-sm text-gray-600">Different voltage, different motor</p>
+                    </button>
+                    <button onclick="loadPreset(1900,'','brushless-sensored','4pole','14.8', 2200,'','brushless-sensorless','4pole','14.8')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                        <h4 class="font-semibold text-gray-900">1900KV vs 2200KV (1/8 Scale)</h4>
+                        <p class="text-sm text-gray-600">4-pole motors on 4S for 1/8 buggy</p>
+                    </button>
+                    <button onclick="loadPreset(1200,'','brushless-sensored','540','7.4', 2700,'','brushless-sensorless','540','7.4')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                        <h4 class="font-semibold text-gray-900">Crawler vs Basher (2S)</h4>
+                        <p class="text-sm text-gray-600">1200KV crawler motor vs 2700KV basher</p>
+                    </button>
+                    <button onclick="loadPreset(5700,'8.5','brushless-sensorless','540','7.4', 3300,'','brushless-sensorless','540','11.1')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                        <h4 class="font-semibold text-gray-900">High KV 2S vs Mid KV 3S</h4>
+                        <p class="text-sm text-gray-600">Two ways to get speed</p>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== TAB 2: SPEED CALCULATOR ==================== -->
+        <div id="tab-speed" class="tab-panel">
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-2">Estimated Top Speed Calculator</h2>
+                    <p class="text-sm text-gray-600 mb-6">Enter your motor, battery, gearing, and tire size to estimate theoretical top speed. Real-world speed will be lower due to rolling resistance, drag, and drivetrain losses.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Motor KV</label>
+                            <input type="number" id="speed-kv" placeholder="e.g., 3300" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Battery Voltage</label>
+                            <select id="speed-voltage" class="input-field">
+                                <option value="7.4">2S LiPo (7.4V)</option>
+                                <option value="11.1">3S LiPo (11.1V)</option>
+                                <option value="14.8">4S LiPo (14.8V)</option>
+                                <option value="22.2">6S LiPo (22.2V)</option>
+                                <option value="7.2">6-cell NiMH (7.2V)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Pinion Teeth</label>
+                            <input type="number" id="speed-pinion" placeholder="e.g., 22" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Spur Teeth</label>
+                            <input type="number" id="speed-spur" placeholder="e.g., 76" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Internal Gear Ratio (if any)</label>
+                            <input type="number" id="speed-internal" placeholder="e.g., 2.6 (leave blank if none)" step="0.1" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Tire Diameter (mm)</label>
+                            <input type="number" id="speed-tire" placeholder="e.g., 90" class="input-field">
+                        </div>
+                    </div>
+                    
+                    <button onclick="calculateSpeed()" class="btn-primary w-full">Calculate Speed</button>
+                </div>
+
+                <!-- Speed Results -->
+                <div id="speedResults" class="hidden">
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                        <div class="text-center mb-6">
+                            <div class="text-5xl font-bold text-purple-600" id="speed-mph">--</div>
+                            <div class="text-gray-500 text-lg">Estimated Top Speed (mph)</div>
+                            <div class="text-2xl font-semibold text-gray-600 mt-1" id="speed-kph">--</div>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            <div class="text-center bg-gray-50 p-3 rounded-lg">
+                                <div class="text-lg font-bold text-gray-800" id="speed-rpm">--</div>
+                                <div class="text-xs text-gray-500">Motor RPM</div>
+                            </div>
+                            <div class="text-center bg-gray-50 p-3 rounded-lg">
+                                <div class="text-lg font-bold text-gray-800" id="speed-wheelrpm">--</div>
+                                <div class="text-xs text-gray-500">Wheel RPM</div>
+                            </div>
+                            <div class="text-center bg-gray-50 p-3 rounded-lg">
+                                <div class="text-lg font-bold text-gray-800" id="speed-ratio">--</div>
+                                <div class="text-xs text-gray-500">Final Gear Ratio</div>
+                            </div>
+                            <div class="text-center bg-gray-50 p-3 rounded-lg">
+                                <div class="text-lg font-bold text-gray-800" id="speed-rollout">--</div>
+                                <div class="text-xs text-gray-500">Rollout (mm)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded-lg mb-6">
+                        <h4 class="font-bold text-yellow-800 mb-1">About This Estimate</h4>
+                        <p class="text-sm text-gray-700">This is the <strong>theoretical maximum</strong> assuming no losses. Real-world speed is typically 70-85% of theoretical due to drivetrain friction, aerodynamic drag, rolling resistance, and motor efficiency under load. For geared vehicles (like most buggies and trucks with a transmission), make sure to include the internal gear ratio.</p>
+                    </div>
+                </div>
+
+                <!-- Common Tire Sizes -->
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h3 class="font-bold text-gray-900 mb-3">Common Tire Diameters</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-2 text-sm">
+                        <div class="bg-gray-50 p-2 rounded"><strong>1/10 Buggy:</strong> 83-88mm</div>
+                        <div class="bg-gray-50 p-2 rounded"><strong>1/10 SCT:</strong> 105-110mm</div>
+                        <div class="bg-gray-50 p-2 rounded"><strong>1/10 Monster:</strong> 115-125mm</div>
+                        <div class="bg-gray-50 p-2 rounded"><strong>1/10 Touring:</strong> 63-66mm</div>
+                        <div class="bg-gray-50 p-2 rounded"><strong>1/8 Buggy:</strong> 110-115mm</div>
+                        <div class="bg-gray-50 p-2 rounded"><strong>1/10 Crawler:</strong> 110-120mm</div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Popular Motor Comparisons -->
-        <div class="bg-white rounded-xl shadow-md p-6">
-            <h2 class="text-2xl font-bold text-gray-900 mb-6">Popular Motor Comparisons</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <button onclick="loadPresetComparison('castle-4600', 'hobbywing-5700')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
-                    <h4 class="font-semibold text-gray-900">Castle 4600 vs Hobbywing 5700</h4>
-                    <p class="text-sm text-gray-600">Popular 1/10 scale comparison</p>
-                </button>
-                <button onclick="loadPresetComparison('tekin-4600', 'prophet-5500')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
-                    <h4 class="font-semibold text-gray-900">Tekin 4600 vs Prophet 5500</h4>
-                    <p class="text-sm text-gray-600">Premium motor comparison</p>
-                </button>
-                <button onclick="loadPresetComparison('hobbywing-3650', 'leopard-4068')" class="text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
-                    <h4 class="font-semibold text-gray-900">Hobbywing 3650 vs Leopard 4068</h4>
-                    <p class="text-sm text-gray-600">1/8 scale motor comparison</p>
-                </button>
+        <!-- ==================== TAB 3: RPM CALCULATOR ==================== -->
+        <div id="tab-rpm" class="tab-panel">
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-2">Motor RPM Calculator</h2>
+                    <p class="text-sm text-gray-600 mb-6">Calculate no-load RPM for any motor and battery combination. Enter KV rating or motor turns.</p>
+                    
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Motor KV Rating</label>
+                            <input type="number" id="rpm-kv" placeholder="e.g., 3300" class="input-field" oninput="rpmKvToTurns()">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Or Motor Turns (T)</label>
+                            <input type="number" id="rpm-turns" placeholder="e.g., 13.5" step="0.5" class="input-field" oninput="rpmTurnsToKv()">
+                        </div>
+                    </div>
+                    
+                    <h3 class="font-bold text-gray-800 mb-3">RPM at Different Voltages</h3>
+                    <button onclick="calculateAllRPM()" class="btn-primary w-full mb-4">Calculate</button>
+                </div>
+
+                <div id="rpmResults" class="hidden">
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                        <h3 class="font-bold text-gray-900 mb-4">Results for <span id="rpm-label">--</span></h3>
+                        <div class="space-y-3" id="rpmBars"></div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="font-bold text-gray-900 mb-3">Estimated Wattage</h3>
+                        <p class="text-sm text-gray-600 mb-4">Rough power estimates based on typical current draw for this KV range. Actual wattage depends on ESC, load, and motor efficiency.</p>
+                        <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="wattageCards"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== TAB 4: GEAR RATIO CALCULATOR ==================== -->
+        <div id="tab-gearing" class="tab-panel">
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-2">Gear Ratio Calculator</h2>
+                    <p class="text-sm text-gray-600 mb-6">Calculate your final drive ratio and see how pinion/spur changes affect it. Lower ratio = more torque/acceleration. Higher ratio = more top speed.</p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Pinion Gear Teeth</label>
+                            <input type="number" id="gear-pinion" placeholder="e.g., 22" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Spur Gear Teeth</label>
+                            <input type="number" id="gear-spur" placeholder="e.g., 76" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Internal Ratio (transmission)</label>
+                            <input type="number" id="gear-internal" placeholder="e.g., 2.6 or leave blank" step="0.1" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Tire Diameter (mm, optional)</label>
+                            <input type="number" id="gear-tire" placeholder="e.g., 90" class="input-field">
+                        </div>
+                    </div>
+                    
+                    <button onclick="calculateGearing()" class="btn-primary w-full">Calculate Gear Ratio</button>
+                </div>
+
+                <div id="gearResults" class="hidden">
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                        <div class="text-center mb-6">
+                            <div class="text-4xl font-bold text-purple-600" id="gear-fdr">--</div>
+                            <div class="text-gray-500">Final Drive Ratio</div>
+                        </div>
+                        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                            <div class="text-center bg-gray-50 p-3 rounded-lg">
+                                <div class="text-lg font-bold text-gray-800" id="gear-ext">--</div>
+                                <div class="text-xs text-gray-500">External Ratio (Spur/Pinion)</div>
+                            </div>
+                            <div class="text-center bg-gray-50 p-3 rounded-lg">
+                                <div class="text-lg font-bold text-gray-800" id="gear-int-display">--</div>
+                                <div class="text-xs text-gray-500">Internal Ratio</div>
+                            </div>
+                            <div class="text-center bg-gray-50 p-3 rounded-lg">
+                                <div class="text-lg font-bold text-gray-800" id="gear-rollout-display">--</div>
+                                <div class="text-xs text-gray-500">Rollout (mm per motor rev)</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Pinion swap table -->
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h3 class="font-bold text-gray-900 mb-3">Pinion Swap Chart</h3>
+                        <p class="text-sm text-gray-600 mb-4">See how changing pinion size affects your ratio with the same spur gear.</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="text-left p-2 font-semibold">Pinion</th>
+                                        <th class="text-center p-2 font-semibold">Ext. Ratio</th>
+                                        <th class="text-center p-2 font-semibold">Final Ratio</th>
+                                        <th class="text-center p-2 font-semibold">Change</th>
+                                        <th class="text-left p-2 font-semibold">Effect</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pinionTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Content -->
+        <div class="mt-12 bg-white rounded-xl shadow-md p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Learn More</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <a href="/articles/rc-motor-guide.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                    <h4 class="font-semibold text-gray-900">RC Motor Guide</h4>
+                    <p class="text-sm text-gray-600">Brushless vs brushed, KV, turns, sensored vs sensorless</p>
+                </a>
+                <a href="/articles/electric-vs-nitro-vs-brushless.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                    <h4 class="font-semibold text-gray-900">Electric vs Nitro vs Brushless</h4>
+                    <p class="text-sm text-gray-600">Compare all three power systems</p>
+                </a>
+                <a href="/articles/rc-car-parts-upgrades.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                    <h4 class="font-semibold text-gray-900">Parts & Upgrades Guide</h4>
+                    <p class="text-sm text-gray-600">Smart upgrade order for any RC car</p>
+                </a>
             </div>
         </div>
     </main>
@@ -251,7 +507,6 @@
                     <h4 class="font-bold mb-4">Tools</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="/tools/motor-comparison.html" class="hover:text-white">Motor Comparison</a></li>
-                        <li><a href="/tools/battery-calculator.html" class="hover:text-white">Battery Calculator</a></li>
                         <li><a href="/tools/" class="hover:text-white">All Tools</a></li>
                     </ul>
                 </div>
@@ -260,7 +515,7 @@
                     <ul class="space-y-2 text-gray-400">
                         <li><a href="/" class="hover:text-white">Home</a></li>
                         <li><a href="/articles/" class="hover:text-white">Articles</a></li>
-                        <li><a href="/Links/" class="hover:text-white">RC Links</a></li>
+                        <li><a href="/tools/" class="hover:text-white">Tools</a></li>
                     </ul>
                 </div>
                 <div>
@@ -274,140 +529,300 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        const voltageMap = {
-            '2s': 7.4,
-            '3s': 11.1,
-            '4s': 14.8,
-            '6s': 22.2
-        };
+    // ===== CONSTANTS =====
+    const VOLTAGES = [
+        { label: '2S LiPo (7.4V)', value: 7.4 },
+        { label: '3S LiPo (11.1V)', value: 11.1 },
+        { label: '4S LiPo (14.8V)', value: 14.8 },
+        { label: '6S LiPo (22.2V)', value: 22.2 },
+        { label: '6-cell NiMH (7.2V)', value: 7.2 },
+        { label: '7-cell NiMH (8.4V)', value: 8.4 }
+    ];
 
-        const motorPresets = {
-            'castle-4600': { brand: 'castle', kv: 4600, size: '540', voltage: '2s' },
-            'hobbywing-5700': { brand: 'hobbywing', kv: 5700, size: '540', voltage: '2s' },
-            'tekin-4600': { brand: 'tekin', kv: 4600, size: '540', voltage: '3s' },
-            'prophet-5500': { brand: 'prophet', kv: 5500, size: '540', voltage: '3s' },
-            'hobbywing-3650': { brand: 'hobbywing', kv: 3650, size: '550', voltage: '6s' },
-            'leopard-4068': { brand: 'leopard', kv: 4068, size: '550', voltage: '6s' }
-        };
+    // Approximate KV <-> Turns conversion for 540-size brushless
+    // This is an approximation: KV ≈ 1580 * (14 / turns) for typical 2-pole 540 motors
+    function turnsToKvValue(turns) {
+        if (!turns || turns <= 0) return 0;
+        return Math.round(1580 * (14 / turns));
+    }
+    function kvToTurnsValue(kv) {
+        if (!kv || kv <= 0) return 0;
+        return Math.round((1580 * 14 / kv) * 2) / 2; // round to nearest 0.5
+    }
 
-        function loadPresetComparison(motor1Key, motor2Key) {
-            const motor1 = motorPresets[motor1Key];
-            const motor2 = motorPresets[motor2Key];
-            
-            // Set motor 1
-            document.getElementById('motor1-brand').value = motor1.brand;
-            document.getElementById('motor1-kv').value = motor1.kv;
-            document.getElementById('motor1-size').value = motor1.size;
-            document.getElementById('motor1-voltage').value = motor1.voltage;
-            
-            // Set motor 2
-            document.getElementById('motor2-brand').value = motor2.brand;
-            document.getElementById('motor2-kv').value = motor2.kv;
-            document.getElementById('motor2-size').value = motor2.size;
-            document.getElementById('motor2-voltage').value = motor2.voltage;
-            
-            // Auto compare
-            compareMotors();
+    // ===== TAB SWITCHING =====
+    function switchTab(tabName) {
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.getElementById('tab-' + tabName).classList.add('active');
+        event.target.classList.add('active');
+    }
+
+    // ===== KV <-> TURNS SYNC =====
+    function kvToTurns(prefix) {
+        const kv = parseFloat(document.getElementById(prefix + '-kv').value);
+        if (kv > 0) {
+            document.getElementById(prefix + '-turns').value = kvToTurnsValue(kv);
+        }
+    }
+    function turnsToKv(prefix) {
+        const turns = parseFloat(document.getElementById(prefix + '-turns').value);
+        if (turns > 0) {
+            document.getElementById(prefix + '-kv').value = turnsToKvValue(turns);
+        }
+    }
+    function rpmKvToTurns() {
+        const kv = parseFloat(document.getElementById('rpm-kv').value);
+        if (kv > 0) document.getElementById('rpm-turns').value = kvToTurnsValue(kv);
+    }
+    function rpmTurnsToKv() {
+        const t = parseFloat(document.getElementById('rpm-turns').value);
+        if (t > 0) document.getElementById('rpm-kv').value = turnsToKvValue(t);
+    }
+
+    // ===== MOTOR COMPARISON =====
+    function getMotorCharacter(kv) {
+        if (kv <= 1500) return { label: 'Crawl / Scale', color: 'text-green-700' };
+        if (kv <= 2500) return { label: 'High Torque', color: 'text-blue-700' };
+        if (kv <= 4000) return { label: 'Balanced', color: 'text-purple-700' };
+        if (kv <= 5500) return { label: 'High Speed', color: 'text-orange-700' };
+        return { label: 'Extreme Speed', color: 'text-red-700' };
+    }
+
+    function getMotorUses(kv, voltage) {
+        const rpm = kv * voltage;
+        const uses = [];
+        if (kv <= 1500) uses.push('Rock crawling', 'Scale trail driving', 'Slow technical terrain');
+        else if (kv <= 2500) uses.push('Competition crawling', '1/8 scale buggies', 'Heavy trucks/truggies');
+        else if (kv <= 4000) uses.push('Club racing (stock class)', 'General bashing', 'Short course trucks', 'Buggies');
+        else if (kv <= 5500) uses.push('Modified racing', 'Speed runs on 2S', 'Fast bashing', 'Lightweight cars');
+        else uses.push('Drag racing', 'Top speed runs', 'Lightweight speed builds');
+        if (rpm > 50000) uses.push('⚠️ Very high RPM — check ESC/drivetrain limits');
+        return uses;
+    }
+
+    function estimateAmps(kv) {
+        if (kv <= 1500) return 15;
+        if (kv <= 2500) return 30;
+        if (kv <= 4000) return 50;
+        if (kv <= 5500) return 70;
+        return 90;
+    }
+
+    function clearCompare() {
+        ['m1-kv','m1-turns','m2-kv','m2-turns'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('compareResults').classList.add('hidden');
+    }
+
+    function loadPreset(kv1,t1,type1,size1,v1, kv2,t2,type2,size2,v2) {
+        document.getElementById('m1-kv').value = kv1;
+        document.getElementById('m1-turns').value = t1;
+        document.getElementById('m1-type').value = type1;
+        document.getElementById('m1-size').value = size1;
+        document.getElementById('m1-voltage').value = v1;
+        document.getElementById('m2-kv').value = kv2;
+        document.getElementById('m2-turns').value = t2;
+        document.getElementById('m2-type').value = type2;
+        document.getElementById('m2-size').value = size2;
+        document.getElementById('m2-voltage').value = v2;
+        compareMotors();
+    }
+
+    function compareMotors() {
+        const kv1 = parseInt(document.getElementById('m1-kv').value) || 0;
+        const kv2 = parseInt(document.getElementById('m2-kv').value) || 0;
+        const v1 = parseFloat(document.getElementById('m1-voltage').value) || 0;
+        const v2 = parseFloat(document.getElementById('m2-voltage').value) || 0;
+        const type1 = document.getElementById('m1-type').value;
+        const type2 = document.getElementById('m2-type').value;
+        const size1 = document.getElementById('m1-size').value;
+        const size2 = document.getElementById('m2-size').value;
+
+        if (!kv1 || !kv2) { alert('Please enter KV for both motors'); return; }
+
+        const rpm1 = kv1 * v1;
+        const rpm2 = kv2 * v2;
+        const char1 = getMotorCharacter(kv1);
+        const char2 = getMotorCharacter(kv2);
+        const amps1 = estimateAmps(kv1);
+        const amps2 = estimateAmps(kv2);
+        const watts1 = Math.round(v1 * amps1);
+        const watts2 = Math.round(v2 * amps2);
+        const typeLabel = t => t === 'brushless-sensored' ? 'Brushless (Sensored)' : t === 'brushless-sensorless' ? 'Brushless (Sensorless)' : 'Brushed';
+
+        function winner(a, b, higherBetter) {
+            if (a === b) return '<span class="text-gray-400">Tie</span>';
+            const m1wins = higherBetter ? a > b : a < b;
+            return m1wins ? '<span class="text-purple-600 font-medium">Motor 1</span>' : '<span class="text-blue-600 font-medium">Motor 2</span>';
         }
 
-        function calculateRPM(kv, voltage) {
-            return kv * voltage;
+        // Table
+        document.getElementById('compareTable').innerHTML = `
+            <tr class="comparison-row border-t"><td class="p-3 font-medium text-gray-700">KV Rating</td><td class="p-3 text-center">${kv1.toLocaleString()} KV</td><td class="p-3 text-center">${kv2.toLocaleString()} KV</td><td class="p-3 text-center">${winner(kv1,kv2,true)} <span class="text-xs text-gray-400">(speed)</span></td></tr>
+            <tr class="comparison-row border-t"><td class="p-3 font-medium text-gray-700">No-Load RPM</td><td class="p-3 text-center">${rpm1.toLocaleString()}</td><td class="p-3 text-center">${rpm2.toLocaleString()}</td><td class="p-3 text-center">${winner(rpm1,rpm2,true)}</td></tr>
+            <tr class="comparison-row border-t"><td class="p-3 font-medium text-gray-700">Battery</td><td class="p-3 text-center">${v1}V</td><td class="p-3 text-center">${v2}V</td><td class="p-3 text-center">${winner(v1,v2,true)} <span class="text-xs text-gray-400">(power)</span></td></tr>
+            <tr class="comparison-row border-t"><td class="p-3 font-medium text-gray-700">Character</td><td class="p-3 text-center"><span class="${char1.color} font-medium">${char1.label}</span></td><td class="p-3 text-center"><span class="${char2.color} font-medium">${char2.label}</span></td><td class="p-3 text-center text-gray-400">—</td></tr>
+            <tr class="comparison-row border-t"><td class="p-3 font-medium text-gray-700">Motor Type</td><td class="p-3 text-center">${typeLabel(type1)}</td><td class="p-3 text-center">${typeLabel(type2)}</td><td class="p-3 text-center text-gray-400">—</td></tr>
+            <tr class="comparison-row border-t"><td class="p-3 font-medium text-gray-700">Est. Peak Current</td><td class="p-3 text-center">~${amps1}A</td><td class="p-3 text-center">~${amps2}A</td><td class="p-3 text-center">${winner(amps1,amps2,false)} <span class="text-xs text-gray-400">(efficiency)</span></td></tr>
+            <tr class="comparison-row border-t"><td class="p-3 font-medium text-gray-700">Est. Power</td><td class="p-3 text-center">~${watts1}W</td><td class="p-3 text-center">~${watts2}W</td><td class="p-3 text-center">${winner(watts1,watts2,true)}</td></tr>
+            <tr class="comparison-row border-t"><td class="p-3 font-medium text-gray-700">Relative Torque</td><td class="p-3 text-center">${kv1 < kv2 ? '⬆️ Higher' : kv1 > kv2 ? '⬇️ Lower' : '= Equal'}</td><td class="p-3 text-center">${kv2 < kv1 ? '⬆️ Higher' : kv2 > kv1 ? '⬇️ Lower' : '= Equal'}</td><td class="p-3 text-center">${winner(kv1,kv2,false)} <span class="text-xs text-gray-400">(torque)</span></td></tr>
+        `;
+
+        // Visual bars
+        const maxRPM = Math.max(rpm1, rpm2);
+        const maxWatts = Math.max(watts1, watts2);
+        const maxKV = Math.max(kv1, kv2);
+        function bar(label, v1, v2, maxV, unit) {
+            const p1 = Math.round((v1/maxV)*100);
+            const p2 = Math.round((v2/maxV)*100);
+            return `<div>
+                <div class="text-sm font-medium text-gray-700 mb-1">${label}</div>
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="text-xs w-16 text-right text-purple-700 font-medium">M1</span>
+                    <div class="flex-1 bg-gray-100 rounded h-6"><div class="bar-fill bg-purple-500" style="width:${p1}%"></div></div>
+                    <span class="text-xs w-20">${v1.toLocaleString()} ${unit}</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <span class="text-xs w-16 text-right text-blue-700 font-medium">M2</span>
+                    <div class="flex-1 bg-gray-100 rounded h-6"><div class="bar-fill bg-blue-500" style="width:${p2}%"></div></div>
+                    <span class="text-xs w-20">${v2.toLocaleString()} ${unit}</span>
+                </div>
+            </div>`;
+        }
+        document.getElementById('compareBars').innerHTML =
+            bar('No-Load RPM', rpm1, rpm2, maxRPM, 'RPM') +
+            bar('KV Rating', kv1, kv2, maxKV, 'KV') +
+            bar('Est. Power', watts1, watts2, maxWatts, 'W');
+
+        // Uses
+        document.getElementById('m1-uses').innerHTML = getMotorUses(kv1,v1).map(u => `<li>• ${u}</li>`).join('');
+        document.getElementById('m2-uses').innerHTML = getMotorUses(kv2,v2).map(u => `<li>• ${u}</li>`).join('');
+
+        document.getElementById('compareResults').classList.remove('hidden');
+        document.getElementById('compareResults').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ===== SPEED CALCULATOR =====
+    function calculateSpeed() {
+        const kv = parseInt(document.getElementById('speed-kv').value) || 0;
+        const voltage = parseFloat(document.getElementById('speed-voltage').value) || 0;
+        const pinion = parseInt(document.getElementById('speed-pinion').value) || 0;
+        const spur = parseInt(document.getElementById('speed-spur').value) || 0;
+        const tire = parseFloat(document.getElementById('speed-tire').value) || 0;
+        const internal = parseFloat(document.getElementById('speed-internal').value) || 1;
+
+        if (!kv || !voltage || !pinion || !spur || !tire) {
+            alert('Please fill in KV, voltage, pinion, spur, and tire diameter');
+            return;
         }
 
-        function getMotorType(kv) {
-            if (kv < 3000) return 'High Torque';
-            if (kv < 5000) return 'Balanced';
-            return 'High Speed';
-        }
+        const motorRPM = kv * voltage;
+        const extRatio = spur / pinion;
+        const finalRatio = extRatio * internal;
+        const wheelRPM = motorRPM / finalRatio;
+        const tireCircumference = tire * Math.PI; // mm
+        const rollout = tireCircumference / finalRatio; // mm per motor rev
+        const speedMmPerMin = wheelRPM * tireCircumference;
+        const speedMPH = (speedMmPerMin / 1000 / 1000 * 60) / 1.60934;
+        const speedKPH = speedMmPerMin / 1000 / 1000 * 60;
 
-        function getBestUse(kv, voltage) {
-            const rpm = calculateRPM(kv, voltage);
-            const uses = [];
-            
-            if (rpm < 20000) {
-                uses.push('Crawling', 'Rock Racing');
-            }
-            if (rpm >= 20000 && rpm < 35000) {
-                uses.push('Track Racing', 'Bashing');
-            }
-            if (rpm >= 35000) {
-                uses.push('Speed Runs', 'Drag Racing');
-            }
-            
-            if (kv < 3000) {
-                uses.push('Heavy Vehicles');
-            }
-            if (kv > 5000) {
-                uses.push('Lightweight Vehicles');
-            }
-            
-            return uses;
-        }
+        document.getElementById('speed-mph').textContent = speedMPH.toFixed(1) + ' mph';
+        document.getElementById('speed-kph').textContent = speedKPH.toFixed(1) + ' km/h';
+        document.getElementById('speed-rpm').textContent = motorRPM.toLocaleString();
+        document.getElementById('speed-wheelrpm').textContent = Math.round(wheelRPM).toLocaleString();
+        document.getElementById('speed-ratio').textContent = finalRatio.toFixed(2) + ':1';
+        document.getElementById('speed-rollout').textContent = rollout.toFixed(1);
 
-        function compareMotors() {
-            const motor1KV = parseInt(document.getElementById('motor1-kv').value) || 0;
-            const motor2KV = parseInt(document.getElementById('motor2-kv').value) || 0;
-            const motor1Voltage = document.getElementById('motor1-voltage').value;
-            const motor2Voltage = document.getElementById('motor2-voltage').value;
-            
-            if (!motor1KV || !motor2KV || !motor1Voltage || !motor2Voltage) {
-                alert('Please fill in all motor specifications');
-                return;
-            }
-            
-            const v1 = voltageMap[motor1Voltage];
-            const v2 = voltageMap[motor2Voltage];
-            
-            const rpm1 = calculateRPM(motor1KV, v1);
-            const rpm2 = calculateRPM(motor2KV, v2);
-            
-            const type1 = getMotorType(motor1KV);
-            const type2 = getMotorType(motor2KV);
-            
-            const uses1 = getBestUse(motor1KV, v1);
-            const uses2 = getBestUse(motor2KV, v2);
-            
-            // Update performance table
-            const performanceTable = document.getElementById('performanceTable');
-            performanceTable.innerHTML = `
-                <tr class="comparison-row">
-                    <td class="border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700">KV Rating</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${motor1KV} KV</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${motor2KV} KV</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm font-medium ${motor1KV > motor2KV ? 'text-green-600' : 'text-blue-600'}">${motor1KV > motor2KV ? 'Motor 1' : 'Motor 2'}</td>
-                </tr>
-                <tr class="comparison-row">
-                    <td class="border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700">Max RPM</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${rpm1.toLocaleString()} RPM</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${rpm2.toLocaleString()} RPM</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm font-medium ${rpm1 > rpm2 ? 'text-green-600' : 'text-blue-600'}">${rpm1 > rpm2 ? 'Motor 1' : 'Motor 2'}</td>
-                </tr>
-                <tr class="comparison-row">
-                    <td class="border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700">Motor Type</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${type1}</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${type2}</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm text-gray-500">-</td>
-                </tr>
-                <tr class="comparison-row">
-                    <td class="border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700">Voltage</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${motor1Voltage} (${v1}V)</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm">${motor2Voltage} (${v2}V)</td>
-                    <td class="border border-gray-200 px-4 py-3 text-center text-sm font-medium ${v1 > v2 ? 'text-green-600' : 'text-blue-600'}">${v1 > v2 ? 'Motor 1' : 'Motor 2'}</td>
-                </tr>
-            `;
-            
-            // Update recommendations
-            document.getElementById('motor1-uses').innerHTML = uses1.map(use => `<li>• ${use}</li>`).join('');
-            document.getElementById('motor2-uses').innerHTML = uses2.map(use => `<li>• ${use}</li>`).join('');
-            
-            // Show results
-            document.getElementById('comparisonResults').classList.remove('hidden');
-            
-            // Scroll to results
-            document.getElementById('comparisonResults').scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('speedResults').classList.remove('hidden');
+        document.getElementById('speedResults').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ===== RPM CALCULATOR =====
+    function calculateAllRPM() {
+        const kv = parseInt(document.getElementById('rpm-kv').value) || 0;
+        if (!kv) { alert('Please enter a KV rating'); return; }
+
+        const turns = kvToTurnsValue(kv);
+        document.getElementById('rpm-label').textContent = kv + ' KV' + (turns ? ' (~' + turns + 'T)' : '');
+
+        const voltages = [
+            { label: '2S LiPo', v: 7.4, color: 'bg-green-500' },
+            { label: '3S LiPo', v: 11.1, color: 'bg-blue-500' },
+            { label: '4S LiPo', v: 14.8, color: 'bg-purple-500' },
+            { label: '6S LiPo', v: 22.2, color: 'bg-red-500' },
+            { label: '6c NiMH', v: 7.2, color: 'bg-yellow-500' }
+        ];
+
+        const maxRPM = kv * 22.2;
+        let barsHTML = '';
+        voltages.forEach(bat => {
+            const rpm = kv * bat.v;
+            const pct = Math.round((rpm / maxRPM) * 100);
+            barsHTML += `<div>
+                <div class="flex justify-between text-sm mb-1">
+                    <span class="font-medium text-gray-700">${bat.label} (${bat.v}V)</span>
+                    <span class="text-gray-900 font-bold">${rpm.toLocaleString()} RPM</span>
+                </div>
+                <div class="bg-gray-100 rounded h-6"><div class="bar-fill ${bat.color}" style="width:${pct}%"></div></div>
+            </div>`;
+        });
+        document.getElementById('rpmBars').innerHTML = barsHTML;
+
+        // Wattage cards
+        const amps = estimateAmps(kv);
+        let wattsHTML = '';
+        [7.4, 11.1, 14.8, 22.2].forEach(v => {
+            const w = Math.round(v * amps);
+            const label = v === 7.4 ? '2S' : v === 11.1 ? '3S' : v === 14.8 ? '4S' : '6S';
+            wattsHTML += `<div class="text-center bg-gray-50 p-3 rounded-lg">
+                <div class="text-lg font-bold text-gray-800">~${w}W</div>
+                <div class="text-xs text-gray-500">${label} (~${amps}A)</div>
+            </div>`;
+        });
+        document.getElementById('wattageCards').innerHTML = wattsHTML;
+
+        document.getElementById('rpmResults').classList.remove('hidden');
+        document.getElementById('rpmResults').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ===== GEAR RATIO CALCULATOR =====
+    function calculateGearing() {
+        const pinion = parseInt(document.getElementById('gear-pinion').value) || 0;
+        const spur = parseInt(document.getElementById('gear-spur').value) || 0;
+        const internal = parseFloat(document.getElementById('gear-internal').value) || 1;
+        const tire = parseFloat(document.getElementById('gear-tire').value) || 0;
+
+        if (!pinion || !spur) { alert('Please enter pinion and spur teeth'); return; }
+
+        const extRatio = spur / pinion;
+        const fdr = extRatio * internal;
+        const rollout = tire ? ((tire * Math.PI) / fdr).toFixed(1) + ' mm' : '—';
+
+        document.getElementById('gear-fdr').textContent = fdr.toFixed(2) + ':1';
+        document.getElementById('gear-ext').textContent = extRatio.toFixed(2) + ':1';
+        document.getElementById('gear-int-display').textContent = internal.toFixed(2) + ':1';
+        document.getElementById('gear-rollout-display').textContent = rollout;
+
+        // Pinion swap chart
+        let html = '';
+        for (let p = Math.max(pinion - 4, 10); p <= pinion + 4; p++) {
+            const ext = spur / p;
+            const fd = ext * internal;
+            const diff = fd - fdr;
+            const isCurrent = p === pinion;
+            const cls = isCurrent ? 'bg-purple-50 font-bold' : '';
+            const diffStr = isCurrent ? '<span class="text-purple-600">← Current</span>' :
+                (diff > 0 ? `<span class="text-green-600">+${diff.toFixed(2)} (more torque)</span>` :
+                `<span class="text-blue-600">${diff.toFixed(2)} (more speed)</span>`);
+            const effect = p < pinion ? '🐢 More torque, lower top speed' : p > pinion ? '🐇 More top speed, less torque' : '—';
+            html += `<tr class="${cls} border-t"><td class="p-2">${p}T</td><td class="p-2 text-center">${ext.toFixed(2)}</td><td class="p-2 text-center">${fd.toFixed(2)}</td><td class="p-2 text-center">${diffStr}</td><td class="p-2 text-sm text-gray-600">${effect}</td></tr>`;
         }
+        document.getElementById('pinionTable').innerHTML = html;
+
+        document.getElementById('gearResults').classList.remove('hidden');
+        document.getElementById('gearResults').scrollIntoView({ behavior: 'smooth' });
+    }
     </script>
 </body>
 </html>
