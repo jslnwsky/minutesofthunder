@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Car Suspension Tuning Guide — Shocks, Springs, Camber & More | MinutesofThunder</title>
+    <meta name="description" content="Learn how to tune your RC car suspension for better handling. Covers shock oil, springs, ride height, camber, toe, droop, anti-roll bars, and setup tips for racing and bashing.">
+    <meta name="keywords" content="RC suspension tuning, shock oil weight, RC springs, camber, toe angle, droop, ride height, anti-roll bar, RC racing setup">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    
+    <style type="text/css">
+        .reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #9333ea, #3b82f6); z-index: 1000; transition: width 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold">
+                        <a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a>
+                    </h1>
+                    <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Advanced Guide</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">10 min read</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
+                    <a href="/articles/" class="text-purple-600 font-medium">Articles</a>
+                    <a href="/tools/" class="text-gray-600 hover:text-purple-600 font-medium">Tools</a>
+                </div>
+                <button class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <nav class="flex text-sm text-gray-600">
+                <a href="/" class="hover:text-purple-600">Home</a>
+                <span class="mx-2">/</span>
+                <a href="/articles/" class="hover:text-purple-600">Articles</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">Suspension Tuning Guide</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Sidebar TOC -->
+            <aside class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <h3 class="font-bold text-lg mb-4">Table of Contents</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#why-tune" class="text-purple-600 hover:text-purple-700 font-medium">→ Why Suspension Matters</a></li>
+                        <li><a href="#shock-oil" class="text-purple-600 hover:text-purple-700 font-medium">→ Shock Oil Weight</a></li>
+                        <li><a href="#springs" class="text-purple-600 hover:text-purple-700 font-medium">→ Springs</a></li>
+                        <li><a href="#ride-height" class="text-purple-600 hover:text-purple-700 font-medium">→ Ride Height</a></li>
+                        <li><a href="#camber" class="text-purple-600 hover:text-purple-700 font-medium">→ Camber</a></li>
+                        <li><a href="#toe" class="text-purple-600 hover:text-purple-700 font-medium">→ Toe</a></li>
+                        <li><a href="#droop" class="text-purple-600 hover:text-purple-700 font-medium">→ Droop</a></li>
+                        <li><a href="#anti-roll" class="text-purple-600 hover:text-purple-700 font-medium">→ Anti-Roll Bars</a></li>
+                        <li><a href="#shock-position" class="text-purple-600 hover:text-purple-700 font-medium">→ Shock Mounting</a></li>
+                        <li><a href="#quick-reference" class="text-purple-600 hover:text-purple-700 font-medium">→ Quick Reference Chart</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Article Content -->
+            <article class="lg:col-span-3">
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">RC Car Suspension Tuning Guide</h1>
+                    <p class="text-gray-500 mb-8">Updated 2024 · By the MinutesofThunder Team</p>
+
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        Suspension tuning is where fast RC cars become winning RC cars. You can have the best motor and ESC in the field, but if your car bounces through corners and lands badly off jumps, none of that power helps. The good news is that suspension tuning follows logical principles — once you understand what each adjustment does, you can systematically dial in any vehicle.
+                    </p>
+
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded mb-6">
+                        <p class="text-sm text-gray-700"><strong>Golden rule of tuning:</strong> Change one thing at a time. If you change three settings at once and the car handles differently, you won't know which change made the difference. Be methodical.</p>
+                    </div>
+
+                    <!-- Why Suspension Matters -->
+                    <h2 id="why-tune" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Why Suspension Matters</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Your suspension has one job: keep the tires in contact with the ground with the right amount of pressure. Every bump, jump, corner, and acceleration event tries to upset that contact. The suspension absorbs those forces and controls how weight transfers across the car.
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        A well-tuned car feels predictable and planted. It corners without rolling over, lands jumps flat, accelerates without wheelieing (unless you want it to), and stops straight. A poorly tuned car feels like it's fighting you at every input.
+                    </p>
+
+                    <!-- Shock Oil Weight -->
+                    <h2 id="shock-oil" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Shock Oil Weight (Damping)</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Shock oil controls how fast the suspension compresses and rebounds. It's measured in weight (wt) or centistokes (cSt). Higher numbers = thicker oil = slower suspension movement.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+                        <li><strong>Thinner oil (20-30wt)</strong> — faster suspension action, more responsive over small bumps, but can bottom out on big hits and feel "bouncy"</li>
+                        <li><strong>Medium oil (35-45wt)</strong> — most common starting point for 1/10 off-road. Good balance of responsiveness and control</li>
+                        <li><strong>Thicker oil (50-70wt)</strong> — slower, more controlled action. Better for high-speed stability and heavy vehicles. Common for 1/8 scale and monster trucks</li>
+                    </ul>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Front and rear don't need to match. Many setups run slightly thinner oil in the front for quicker steering response, and thicker in the rear for stability. A common starting point for 1/10 buggy is 30wt front, 35wt rear.
+                    </p>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6">
+                        <p class="text-sm text-gray-700"><strong>Tip:</strong> When rebuilding shocks, fill them with oil and cycle the piston slowly several times to purge air bubbles before sealing. Air in the shock causes inconsistent damping and a "mushy" feel.</p>
+                    </div>
+
+                    <!-- Springs -->
+                    <h2 id="springs" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Springs</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Springs control how much the suspension compresses under a given force and determine ride height. They're typically color-coded by rate (stiffness), though the color system varies by manufacturer.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+                        <li><strong>Soft springs</strong> — more grip on smooth surfaces, better bump absorption, but more body roll in corners and the car may bottom out on rough tracks</li>
+                        <li><strong>Stiff springs</strong> — less body roll, more responsive handling, better for high-speed stability, but less grip on bumpy surfaces because the tires skip over imperfections</li>
+                    </ul>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Front spring rate affects steering response. Softer front springs give more initial steering ("turn-in") but can make the car twitchy. Stiffer front springs reduce steering but improve straight-line stability. Rear springs affect traction — softer rears give more rear grip but can make the car push (understeer) if too soft relative to the front.
+                    </p>
+
+                    <!-- Ride Height -->
+                    <h2 id="ride-height" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Ride Height</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Ride height is the distance between the chassis and the ground with the car at rest. It's adjusted using spring preload clips or threaded shock collars.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+                        <li><strong>Lower ride height</strong> — lower center of gravity, less body roll, better handling on smooth tracks. But the car bottoms out more on rough terrain</li>
+                        <li><strong>Higher ride height</strong> — more ground clearance for rough tracks, jumps, and bashing. But higher center of gravity means more body roll</li>
+                    </ul>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Front and rear should typically be close to the same height, or with the rear slightly higher (1-2mm) to promote a slight forward rake. Measure with a ruler under the chassis at both ends. Typical 1/10 buggy ride height is 25-30mm; touring cars run much lower at 5-7mm.
+                    </p>
+
+                    <!-- Camber -->
+                    <h2 id="camber" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Camber</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Camber is the inward or outward tilt of the wheels when viewed from the front. Negative camber means the tops of the tires tilt inward. Positive camber means they tilt outward. Nearly all RC cars run negative camber.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+                        <li><strong>More negative camber (-2° to -3°)</strong> — better cornering grip because the tire stays flat on the ground as the car rolls in corners. Standard for racing</li>
+                        <li><strong>Less negative camber (-0.5° to -1°)</strong> — better straight-line traction and acceleration because more tire contact patch is on the ground when the car is level</li>
+                        <li><strong>Zero or positive camber</strong> — rarely used except for specific drag racing or oval setups</li>
+                    </ul>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        A good starting point for most off-road racing is -1° to -2° front and -2° to -3° rear. Adjust using the upper camber link length — shortening the link increases negative camber. Use a camber gauge for accurate measurement.
+                    </p>
+
+                    <!-- Toe -->
+                    <h2 id="toe" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Toe</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Toe is the angle of the wheels when viewed from above. Toe-in means the front edges of the tires point toward each other. Toe-out means they point away from each other.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+                        <li><strong>Front toe-out (1°–2°)</strong> — increases initial steering response and turn-in. Standard for most off-road cars</li>
+                        <li><strong>Front toe-in</strong> — reduces steering, stabilizes the car in a straight line. Used on high-speed oval cars</li>
+                        <li><strong>Rear toe-in (2°–3°)</strong> — adds rear stability and straight-line tracking. Nearly all RC cars run rear toe-in. More toe-in = more stability but slightly more drag</li>
+                        <li><strong>Rear toe-out</strong> — makes the rear loose and unpredictable. Almost never used</li>
+                    </ul>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Toe is adjusted via the turnbuckle length on the steering links (front) or the rear hub carriers (rear). Some cars use fixed rear hub carriers with the toe angle built in.
+                    </p>
+
+                    <!-- Droop -->
+                    <h2 id="droop" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Droop (Down-Travel)</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Droop is how far the suspension extends downward from ride height. It determines how much the tire can drop when it goes over a dip or when the car leans in a corner. Droop screws on the suspension arm limit this travel.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+                        <li><strong>More droop</strong> — the suspension can extend further, keeping tires in contact over dips and rough terrain. More mechanical grip but more weight transfer</li>
+                        <li><strong>Less droop</strong> — limits weight transfer, makes the car more responsive and less "rolly." The car lifts the inside tire earlier in corners, which can actually help rotation</li>
+                    </ul>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        For racing, reducing rear droop slightly (1-2mm) can help the car rotate through corners without adding oversteer. For bashing, leave droop at maximum to keep all four tires on the ground as much as possible.
+                    </p>
+
+                    <!-- Anti-Roll Bars -->
+                    <h2 id="anti-roll" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Anti-Roll Bars (Sway Bars)</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Anti-roll bars connect the left and right suspension arms with a wire or plastic bar. When the car rolls to one side, the bar transfers some of that force to the opposite wheel, reducing body roll. They come in different thicknesses — thicker = stiffer = less roll.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+                        <li><strong>Thicker front anti-roll bar</strong> — reduces front body roll, which reduces steering (more understeer). Useful if the car is too "darty" or over-steers in corners</li>
+                        <li><strong>Thicker rear anti-roll bar</strong> — reduces rear body roll, which reduces rear grip in corners (more oversteer / more rotation). Useful if the car pushes through corners</li>
+                        <li><strong>No anti-roll bar</strong> — maximum independent suspension action. More grip on very bumpy tracks where each wheel needs to work independently</li>
+                    </ul>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Anti-roll bars are a powerful tuning tool because they affect handling without changing the overall spring rate or ride height. Many racers use them as their primary balance adjustment after setting springs and oil.
+                    </p>
+
+                    <!-- Shock Mounting Position -->
+                    <h2 id="shock-position" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Shock Mounting Position</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Most race-oriented RC cars have multiple mounting holes on the shock tower and suspension arm. Moving the shock changes its leverage:
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+                        <li><strong>Shock tower (top)</strong> — moving the top mount inward makes the shock more upright, effectively stiffening the suspension without changing springs or oil</li>
+                        <li><strong>Suspension arm (bottom)</strong> — moving the bottom mount outward increases the leverage on the shock, making the suspension feel softer for the same spring/oil combo</li>
+                    </ul>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        This is a more subtle adjustment than changing springs or oil, but it's useful for fine-tuning when you're already close to the right setup.
+                    </p>
+
+                    <!-- Quick Reference -->
+                    <h2 id="quick-reference" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Quick Reference: Handling Problems & Fixes</h2>
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full text-sm border-collapse">
+                            <thead><tr class="bg-gray-50"><th class="border p-3 text-left">Problem</th><th class="border p-3 text-left">Likely Cause</th><th class="border p-3 text-left">Adjustment</th></tr></thead>
+                            <tbody>
+                                <tr class="border"><td class="border p-3 font-medium">Car rolls over in corners</td><td class="border p-3">Too soft, too much body roll</td><td class="border p-3">Stiffer springs, thicker anti-roll bars, lower ride height</td></tr>
+                                <tr class="border bg-gray-50"><td class="border p-3 font-medium">Car bounces after jumps</td><td class="border p-3">Oil too thin or too thick</td><td class="border p-3">Increase oil weight slightly, check for air in shocks</td></tr>
+                                <tr class="border"><td class="border p-3 font-medium">Understeer (pushes wide in corners)</td><td class="border p-3">Not enough front grip or too much rear grip</td><td class="border p-3">Softer front springs, thicker rear anti-roll bar, more front camber</td></tr>
+                                <tr class="border bg-gray-50"><td class="border p-3 font-medium">Oversteer (rear kicks out)</td><td class="border p-3">Too much front grip relative to rear</td><td class="border p-3">Stiffer front springs, thicker front anti-roll bar, more rear toe-in</td></tr>
+                                <tr class="border"><td class="border p-3 font-medium">Car bottoms out on bumps</td><td class="border p-3">Springs too soft, ride height too low</td><td class="border p-3">Stiffer springs, increase ride height, add shock spacers</td></tr>
+                                <tr class="border bg-gray-50"><td class="border p-3 font-medium">Twitchy on straights</td><td class="border p-3">Too much front toe-out or camber</td><td class="border p-3">Reduce front toe-out, add rear toe-in, stiffen front</td></tr>
+                                <tr class="border"><td class="border p-3 font-medium">Nose dives under braking</td><td class="border p-3">Front too soft relative to rear</td><td class="border p-3">Stiffer front springs or thicker front shock oil</td></tr>
+                                <tr class="border bg-gray-50"><td class="border p-3 font-medium">Car lands nose-first off jumps</td><td class="border p-3">Rear too stiff or front too soft</td><td class="border p-3">Soften rear springs/oil, or stiffen front</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="bg-purple-50 border-l-4 border-purple-500 p-4 rounded mb-6">
+                        <p class="text-sm text-gray-700"><strong>Start with the kit setup.</strong> Manufacturers spend significant time developing their recommended baseline settings. Start there, drive the car, identify one specific handling issue, make one adjustment, and test again. Resist the urge to change everything at once.</p>
+                    </div>
+
+                    <!-- Related Articles -->
+                    <div class="border-t border-gray-200 pt-8 mt-10">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Related Articles</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <a href="/articles/getting-started-rc-racing.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <h4 class="font-semibold text-gray-900">Getting Started In RC Racing</h4>
+                                <p class="text-sm text-gray-600">Everything you need to know to start racing</p>
+                            </a>
+                            <a href="/articles/rc-car-parts-upgrades.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <h4 class="font-semibold text-gray-900">RC Car Parts & Upgrades Guide</h4>
+                                <p class="text-sm text-gray-600">Smart upgrade order for any RC vehicle</p>
+                            </a>
+                            <a href="/articles/how-to-build-your-own-rc-car.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <h4 class="font-semibold text-gray-900">How To Build Your Own RC Car</h4>
+                                <p class="text-sm text-gray-600">Kit building from unboxing to first run</p>
+                            </a>
+                            <a href="/articles/esc-programming-guide.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <h4 class="font-semibold text-gray-900">ESC Programming & Setup Guide</h4>
+                                <p class="text-sm text-gray-600">Throttle, timing, braking, and tuning your ESC</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">MinutesofThunder</h3>
+                    <p class="text-gray-400">Your comprehensive guide to RC car technology, reviews, and the latest innovations in radio control vehicles.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Articles</a></li>
+                        <li><a href="/tools/" class="hover:text-white">Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/articles/" class="hover:text-white">Beginner Guides</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Racing & Setup</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Technical Guides</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <p class="text-gray-400">Join the RC community and stay updated with the latest technology and reviews.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 MinutesofThunder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('readingProgress').style.width = (winScroll / height) * 100 + '%';
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

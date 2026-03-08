@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESC Programming & Setup Guide for RC Cars | MinutesofThunder</title>
+    <meta name="description" content="Learn how to program your RC car ESC. Covers throttle calibration, timing, braking, cutoff voltage, punch settings, and common ESC features from Castle, Hobbywing, and more.">
+    <meta name="keywords" content="ESC programming, RC ESC setup, throttle calibration, motor timing, LiPo cutoff, drag brake, Castle Creations, Hobbywing, Spektrum ESC">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    
+    <style type="text/css">
+        .reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #9333ea, #3b82f6); z-index: 1000; transition: width 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold">
+                        <a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a>
+                    </h1>
+                    <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">Technical Guide</span>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">9 min read</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
+                    <a href="/articles/" class="text-purple-600 font-medium">Articles</a>
+                    <a href="/tools/" class="text-gray-600 hover:text-purple-600 font-medium">Tools</a>
+                </div>
+                <button class="md:hidden text-gray-600">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumbs -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <nav class="flex text-sm text-gray-600">
+                <a href="/" class="hover:text-purple-600">Home</a>
+                <span class="mx-2">/</span>
+                <a href="/articles/" class="hover:text-purple-600">Articles</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">ESC Programming & Setup Guide</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+            <!-- Sidebar TOC -->
+            <aside class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow-md p-6 sticky top-24">
+                    <h3 class="font-bold text-lg mb-4">Table of Contents</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#what-esc-does" class="text-purple-600 hover:text-purple-700 font-medium">→ What an ESC Does</a></li>
+                        <li><a href="#throttle-calibration" class="text-purple-600 hover:text-purple-700 font-medium">→ Throttle Calibration</a></li>
+                        <li><a href="#motor-timing" class="text-purple-600 hover:text-purple-700 font-medium">→ Motor Timing</a></li>
+                        <li><a href="#brake-settings" class="text-purple-600 hover:text-purple-700 font-medium">→ Brake & Drag Brake</a></li>
+                        <li><a href="#cutoff-voltage" class="text-purple-600 hover:text-purple-700 font-medium">→ LiPo Cutoff Voltage</a></li>
+                        <li><a href="#throttle-curves" class="text-purple-600 hover:text-purple-700 font-medium">→ Throttle Curves & Punch</a></li>
+                        <li><a href="#programming-methods" class="text-purple-600 hover:text-purple-700 font-medium">→ Programming Methods</a></li>
+                        <li><a href="#common-esc" class="text-purple-600 hover:text-purple-700 font-medium">→ Popular ESC Brands</a></li>
+                        <li><a href="#troubleshooting" class="text-purple-600 hover:text-purple-700 font-medium">→ Troubleshooting</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Article Content -->
+            <article class="lg:col-span-3">
+                <div class="bg-white rounded-lg shadow-md p-8">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">ESC Programming & Setup Guide for RC Cars</h1>
+                    <p class="text-gray-500 mb-8">Updated 2024 · By the MinutesofThunder Team</p>
+
+                    <p class="text-lg text-gray-700 mb-6 leading-relaxed">
+                        Your Electronic Speed Controller (ESC) is the brain between your battery and motor. Out of the box, most ESCs work fine with default settings. But learning to program your ESC properly can mean smoother throttle response, better braking, longer battery life, and in racing scenarios, a real competitive advantage. This guide covers every setting you need to understand.
+                    </p>
+
+                    <!-- What an ESC Does -->
+                    <h2 id="what-esc-does" class="text-2xl font-bold text-gray-900 mt-10 mb-4">What an ESC Actually Does</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        An ESC converts the DC power from your battery into the precise electrical signals your motor needs. For brushless motors, it generates a three-phase AC signal at varying frequencies to control speed. For brushed motors, it modulates voltage using PWM (pulse width modulation).
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Beyond basic speed control, modern ESCs handle battery protection (cutoff voltage), braking, reverse, motor timing, current limiting, and thermal protection. Many also provide telemetry data back to your transmitter — real-time voltage, current, temperature, and RPM.
+                    </p>
+
+                    <!-- Throttle Calibration -->
+                    <h2 id="throttle-calibration" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Throttle Calibration</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Throttle calibration teaches the ESC the exact range of your transmitter's throttle signal. Without proper calibration, you might not get full throttle, or the neutral point might be slightly off, causing the car to creep forward or backward at rest.
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        The basic process is the same for nearly every ESC:
+                    </p>
+                    <ol class="list-decimal list-inside text-gray-700 mb-4 space-y-2">
+                        <li>Turn on the transmitter with the throttle at neutral</li>
+                        <li>Enter the ESC's calibration mode (usually by holding a button while powering on)</li>
+                        <li>Pull full throttle when prompted (ESC beeps or LED changes)</li>
+                        <li>Pull full brake/reverse when prompted</li>
+                        <li>Return to neutral — the ESC confirms with a tone</li>
+                    </ol>
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded mb-6">
+                        <p class="text-sm text-gray-700"><strong>Important:</strong> Always recalibrate after switching transmitters, receivers, or if you change endpoint settings on your radio. A miscalibrated ESC can cause unexpected full-throttle behavior.</p>
+                    </div>
+
+                    <!-- Motor Timing -->
+                    <h2 id="motor-timing" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Motor Timing</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Motor timing controls when the ESC fires each phase of the brushless motor relative to the rotor position. It's the electronic equivalent of adjusting ignition timing on a combustion engine.
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+                        <li><strong>Low timing (0°–5°)</strong> — more efficient, cooler running, less top-end RPM. Best for crawlers, endurance racing, and stock classes</li>
+                        <li><strong>Medium timing (10°–15°)</strong> — good balance of power and efficiency. Default for most ESCs</li>
+                        <li><strong>High timing (20°–30°)</strong> — more RPM and power at the expense of efficiency and heat. Used in modified racing</li>
+                    </ul>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Higher timing generates more heat in both the motor and ESC. If you increase timing, monitor temperatures closely. Most racing classes that specify "stock" motors also limit ESC timing — check your local track rules.
+                    </p>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6">
+                        <p class="text-sm text-gray-700"><strong>Sensored vs sensorless:</strong> Sensored motors give the ESC precise rotor position data, allowing smoother low-speed control and more accurate timing. Sensorless ESCs estimate position from back-EMF, which works fine at speed but can cause cogging at very low RPM.</p>
+                    </div>
+
+                    <!-- Brake Settings -->
+                    <h2 id="brake-settings" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Brake & Drag Brake Settings</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        ESCs offer two types of braking:
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        <strong>Proportional brake</strong> is what happens when you pull the trigger backward — the ESC shorts the motor windings to slow the car. Brake strength is adjustable as a percentage. Racing drivers often set this to 30-50% for controlled corner entry. Bashers may want less (or none) to avoid unexpected stops.
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        <strong>Drag brake</strong> is the braking force applied at neutral throttle (when you release the trigger). A small amount of drag brake (5-15%) keeps the car from rolling freely and helps maintain control. Racers tune this carefully — too much slows you down on straights, too little makes the car feel "loose" entering corners. Crawlers often run high drag brake (30-50%) to hold position on hills.
+                    </p>
+
+                    <!-- LiPo Cutoff -->
+                    <h2 id="cutoff-voltage" class="text-2xl font-bold text-gray-900 mt-10 mb-4">LiPo Cutoff Voltage</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        This is the single most important safety setting on your ESC. LiPo cells should never be discharged below 3.0V per cell — going lower causes permanent damage and can create a fire hazard during the next charge.
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Most ESCs offer cutoff options:
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+                        <li><strong>Hard cutoff</strong> — motor stops completely when voltage drops to the threshold. Safest for batteries but can leave you stranded mid-run</li>
+                        <li><strong>Soft cutoff (reduce power)</strong> — gradually reduces power as voltage drops, giving you time to drive back. This is the most common and recommended setting</li>
+                        <li><strong>No cutoff</strong> — only for NiMH batteries. Never use this with LiPo</li>
+                    </ul>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Set your cutoff to 3.2V per cell for a safe margin, or 3.0V per cell if you want maximum runtime. For a 2S pack, that's 6.4V or 6.0V total. For 3S, it's 9.6V or 9.0V.
+                    </p>
+
+                    <!-- Throttle Curves & Punch -->
+                    <h2 id="throttle-curves" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Throttle Curves & Punch Control</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        <strong>Punch control</strong> (also called initial acceleration or startup power) determines how aggressively the ESC responds to the first bit of throttle input. High punch gives an instant, snappy response — great for racing. Low punch provides a more gradual, controllable start — better for crawling or beginners.
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        <strong>Throttle curves</strong> shape the relationship between trigger position and motor output. A linear curve means 50% trigger = 50% power. An exponential curve means 50% trigger might only give 30% power, with most of the power concentrated at the end of the trigger range. This gives finer control at partial throttle.
+                    </p>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        Many drivers set throttle curves on the transmitter rather than the ESC, since it's easier to adjust at the track. But if your radio doesn't support curves, the ESC setting is the next best option.
+                    </p>
+
+                    <!-- Programming Methods -->
+                    <h2 id="programming-methods" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Programming Methods</h2>
+                    <p class="text-gray-700 mb-4 leading-relaxed">
+                        There are several ways to change ESC settings, depending on the brand:
+                    </p>
+                    <ul class="list-disc list-inside text-gray-700 mb-4 space-y-2">
+                        <li><strong>Set button</strong> — most ESCs have a physical button for cycling through settings. You count beeps or LED flashes to navigate menus. It works but it's tedious</li>
+                        <li><strong>Programming card</strong> — a small plug-in device with LCD screen and buttons. Much easier than the set button method. Usually $10-20 from the ESC manufacturer</li>
+                        <li><strong>Bluetooth/WiFi app</strong> — Castle Creations (Castle Link), Hobbywing (HW Link), and others offer smartphone or computer apps via a Bluetooth module. This is the easiest method by far</li>
+                        <li><strong>Built-in LCD</strong> — some high-end ESCs (like the Spektrum Firma Smart series) display settings via your transmitter's screen</li>
+                    </ul>
+                    <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded mb-6">
+                        <p class="text-sm text-gray-700"><strong>Recommendation:</strong> If you're buying a new ESC and plan to tune it, invest the extra $10-15 for the programming card or Bluetooth module. Counting beeps gets old fast, and it's easy to lose track and set the wrong value.</p>
+                    </div>
+
+                    <!-- Popular ESCs -->
+                    <h2 id="common-esc" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Popular ESC Brands & Their Software</h2>
+                    <div class="overflow-x-auto mb-6">
+                        <table class="w-full text-sm border-collapse">
+                            <thead><tr class="bg-gray-50"><th class="border p-3 text-left">Brand</th><th class="border p-3 text-left">Popular Models</th><th class="border p-3 text-left">Programming</th><th class="border p-3 text-left">Best For</th></tr></thead>
+                            <tbody>
+                                <tr class="border"><td class="border p-3 font-medium">Castle Creations</td><td class="border p-3">Mamba X, Sidewinder, Copperhead</td><td class="border p-3">Castle Link (USB/BT)</td><td class="border p-3">Racing, bashing, broad compatibility</td></tr>
+                                <tr class="border bg-gray-50"><td class="border p-3 font-medium">Hobbywing</td><td class="border p-3">XR10 Pro, Max10, Quicrun</td><td class="border p-3">LED card, HW Link (BT)</td><td class="border p-3">Competition, great value</td></tr>
+                                <tr class="border"><td class="border p-3 font-medium">Spektrum</td><td class="border p-3">Firma Smart series</td><td class="border p-3">Smart transmitter display</td><td class="border p-3">Plug-and-play ecosystem</td></tr>
+                                <tr class="border bg-gray-50"><td class="border p-3 font-medium">Tekin</td><td class="border p-3">RSX, RX8</td><td class="border p-3">HotWire (USB)</td><td class="border p-3">High-end racing</td></tr>
+                                <tr class="border"><td class="border p-3 font-medium">Traxxas</td><td class="border p-3">VXL-3s, VXL-6s</td><td class="border p-3">Set button only</td><td class="border p-3">Traxxas vehicles, simple setup</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Troubleshooting -->
+                    <h2 id="troubleshooting" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Common ESC Problems & Fixes</h2>
+                    <div class="space-y-4 mb-6">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-900 mb-1">Motor stutters or cogs at low speed</h4>
+                            <p class="text-sm text-gray-700">If running sensorless, this is normal at very low RPM. Switch to sensored motor+ESC combo for smooth low-speed control, or increase the "startup power" setting slightly.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-900 mb-1">ESC cuts out during hard acceleration</h4>
+                            <p class="text-sm text-gray-700">Likely hitting the current limit or thermal protection. Check ESC temperature, ensure it's rated for your motor, and verify battery C-rating is sufficient. Also check all solder joints and connections.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-900 mb-1">Car creeps forward or backward at neutral</h4>
+                            <p class="text-sm text-gray-700">Recalibrate throttle endpoints. Also check that your transmitter's throttle trim is centered. If using drag brake, a very small amount can feel like creeping on smooth surfaces.</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-900 mb-1">ESC flashes error code on startup</h4>
+                            <p class="text-sm text-gray-700">Check the manual for the specific blink pattern. Common causes: no throttle signal (receiver not bound), low battery voltage, or incompatible motor type setting (brushed vs brushless).</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-gray-900 mb-1">Battery dies quickly but ESC doesn't cut off</h4>
+                            <p class="text-sm text-gray-700">Verify the LiPo cutoff is enabled and set to the correct cell count. Some ESCs auto-detect cell count and can misread — manually set it if your ESC supports it.</p>
+                        </div>
+                    </div>
+
+                    <!-- Related Articles -->
+                    <div class="border-t border-gray-200 pt-8 mt-10">
+                        <h3 class="text-xl font-bold text-gray-900 mb-4">Related Articles</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <a href="/articles/rc-motor-guide.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <h4 class="font-semibold text-gray-900">RC Motor Guide: Brushless vs Brushed</h4>
+                                <p class="text-sm text-gray-600">Understanding KV, turns, and motor selection</p>
+                            </a>
+                            <a href="/articles/lipo-battery-guide.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <h4 class="font-semibold text-gray-900">LiPo Battery Guide</h4>
+                                <p class="text-sm text-gray-600">Cell counts, C-ratings, capacity, and choosing packs</p>
+                            </a>
+                            <a href="/articles/rc-car-parts-upgrades.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <h4 class="font-semibold text-gray-900">RC Car Parts & Upgrades Guide</h4>
+                                <p class="text-sm text-gray-600">Smart upgrade order for any RC vehicle</p>
+                            </a>
+                            <a href="/tools/motor-comparison.html" class="block p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition">
+                                <h4 class="font-semibold text-gray-900">Motor Comparison Tool</h4>
+                                <p class="text-sm text-gray-600">Compare motors, calculate speed, and figure gearing</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">MinutesofThunder</h3>
+                    <p class="text-gray-400">Your comprehensive guide to RC car technology, reviews, and the latest innovations in radio control vehicles.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Articles</a></li>
+                        <li><a href="/tools/" class="hover:text-white">Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/articles/" class="hover:text-white">Beginner Guides</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Electric RC</a></li>
+                        <li><a href="/articles/" class="hover:text-white">Technical Guides</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Connect</h4>
+                    <p class="text-gray-400">Join the RC community and stay updated with the latest technology and reviews.</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2024 MinutesofThunder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('readingProgress').style.width = (winScroll / height) * 100 + '%';
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
