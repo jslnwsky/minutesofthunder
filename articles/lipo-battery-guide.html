@@ -159,8 +159,87 @@
                             </tbody>
                         </table>
                     </div>
+                    <!-- LiPo Cell Configuration Diagram -->
+                    <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                        <h3 class="font-bold text-gray-800 mb-4 text-center">LiPo Cell Configurations</h3>
+                        <svg viewBox="0 0 580 300" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-lg mx-auto">
+                            <!-- 1S Cell -->
+                            <g transform="translate(30, 30)">
+                                <text x="40" y="-5" text-anchor="middle" fill="#6d28d9" font-size="13" font-weight="700">1S</text>
+                                <rect x="10" y="5" width="60" height="100" rx="5" fill="#a78bfa" stroke="#7c3aed" stroke-width="2"/>
+                                <rect x="28" y="0" width="24" height="8" rx="2" fill="#7c3aed"/>
+                                <text x="40" y="45" text-anchor="middle" fill="white" font-size="11" font-weight="600">3.7V</text>
+                                <text x="40" y="62" text-anchor="middle" fill="white" font-size="9">Cell</text>
+                                <text x="40" y="125" text-anchor="middle" fill="#4c1d95" font-size="11" font-weight="600">3.7V</text>
+                                <text x="40" y="140" text-anchor="middle" fill="#6b7280" font-size="9">nominal</text>
+                            </g>
+                            
+                            <!-- 2S Cells -->
+                            <g transform="translate(130, 30)">
+                                <text x="50" y="-5" text-anchor="middle" fill="#6d28d9" font-size="13" font-weight="700">2S</text>
+                                <rect x="10" y="5" width="35" height="100" rx="4" fill="#a78bfa" stroke="#7c3aed" stroke-width="2"/>
+                                <text x="28" y="55" text-anchor="middle" fill="white" font-size="9" font-weight="600">3.7V</text>
+                                <rect x="55" y="5" width="35" height="100" rx="4" fill="#a78bfa" stroke="#7c3aed" stroke-width="2"/>
+                                <text x="72" y="55" text-anchor="middle" fill="white" font-size="9" font-weight="600">3.7V</text>
+                                <!-- Series connection -->
+                                <line x1="45" y1="55" x2="55" y2="55" stroke="#ef4444" stroke-width="2"/>
+                                <text x="50" y="125" text-anchor="middle" fill="#4c1d95" font-size="11" font-weight="600">7.4V</text>
+                                <text x="50" y="140" text-anchor="middle" fill="#6b7280" font-size="9">nominal</text>
+                            </g>
+                            
+                            <!-- 3S Cells -->
+                            <g transform="translate(240, 30)">
+                                <text x="55" y="-5" text-anchor="middle" fill="#6d28d9" font-size="13" font-weight="700">3S</text>
+                                <rect x="5" y="5" width="30" height="100" rx="4" fill="#a78bfa" stroke="#7c3aed" stroke-width="2"/>
+                                <text x="20" y="55" text-anchor="middle" fill="white" font-size="8" font-weight="600">3.7V</text>
+                                <rect x="40" y="5" width="30" height="100" rx="4" fill="#a78bfa" stroke="#7c3aed" stroke-width="2"/>
+                                <text x="55" y="55" text-anchor="middle" fill="white" font-size="8" font-weight="600">3.7V</text>
+                                <rect x="75" y="5" width="30" height="100" rx="4" fill="#a78bfa" stroke="#7c3aed" stroke-width="2"/>
+                                <text x="90" y="55" text-anchor="middle" fill="white" font-size="8" font-weight="600">3.7V</text>
+                                <line x1="35" y1="55" x2="40" y2="55" stroke="#ef4444" stroke-width="2"/>
+                                <line x1="70" y1="55" x2="75" y2="55" stroke="#ef4444" stroke-width="2"/>
+                                <text x="55" y="125" text-anchor="middle" fill="#4c1d95" font-size="11" font-weight="600">11.1V</text>
+                                <text x="55" y="140" text-anchor="middle" fill="#6b7280" font-size="9">nominal</text>
+                            </g>
+                            
+                            <!-- 4S Cells -->
+                            <g transform="translate(360, 30)">
+                                <text x="60" y="-5" text-anchor="middle" fill="#6d28d9" font-size="13" font-weight="700">4S</text>
+                                <rect x="5" y="5" width="25" height="100" rx="3" fill="#a78bfa" stroke="#7c3aed" stroke-width="1.5"/>
+                                <rect x="33" y="5" width="25" height="100" rx="3" fill="#a78bfa" stroke="#7c3aed" stroke-width="1.5"/>
+                                <rect x="61" y="5" width="25" height="100" rx="3" fill="#a78bfa" stroke="#7c3aed" stroke-width="1.5"/>
+                                <rect x="89" y="5" width="25" height="100" rx="3" fill="#a78bfa" stroke="#7c3aed" stroke-width="1.5"/>
+                                <line x1="30" y1="55" x2="33" y2="55" stroke="#ef4444" stroke-width="1.5"/>
+                                <line x1="58" y1="55" x2="61" y2="55" stroke="#ef4444" stroke-width="1.5"/>
+                                <line x1="86" y1="55" x2="89" y2="55" stroke="#ef4444" stroke-width="1.5"/>
+                                <text x="60" y="125" text-anchor="middle" fill="#4c1d95" font-size="11" font-weight="600">14.8V</text>
+                                <text x="60" y="140" text-anchor="middle" fill="#6b7280" font-size="9">nominal</text>
+                            </g>
+                            
+                            <!-- 6S Cells -->
+                            <g transform="translate(480, 30)">
+                                <text x="42" y="-5" text-anchor="middle" fill="#6d28d9" font-size="13" font-weight="700">6S</text>
+                                <rect x="0" y="5" width="14" height="100" rx="2" fill="#a78bfa" stroke="#7c3aed" stroke-width="1.5"/>
+                                <rect x="16" y="5" width="14" height="100" rx="2" fill="#a78bfa" stroke="#7c3aed" stroke-width="1.5"/>
+                                <rect x="32" y="5" width="14" height="100" rx="2" fill="#a78bfa" stroke="#7c3aed" stroke-width="1.5"/>
+                                <rect x="48" y="5" width="14" height="100" rx="2" fill="#a78bfa" stroke="#7c3aed" stroke-width="1.5"/>
+                                <rect x="64" y="5" width="14" height="100" rx="2" fill="#a78bfa" stroke="#7c3aed" stroke-width="1.5"/>
+                                <rect x="80" y="5" width="14" height="100" rx="2" fill="#a78bfa" stroke="#7c3aed" stroke-width="1.5"/>
+                                <text x="45" y="125" text-anchor="middle" fill="#4c1d95" font-size="11" font-weight="600">22.2V</text>
+                                <text x="45" y="140" text-anchor="middle" fill="#6b7280" font-size="9">nominal</text>
+                            </g>
+                            
+                            <!-- Bottom legend -->
+                            <rect x="80" y="210" width="420" height="75" rx="8" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1"/>
+                            <text x="290" y="232" text-anchor="middle" fill="#6d28d9" font-size="10" font-weight="600">SERIES CONNECTION (S)</text>
+                            <text x="290" y="250" text-anchor="middle" fill="#4c1d95" font-size="10">Each cell adds 3.7V · Cells wired in series = higher voltage</text>
+                            <text x="290" y="268" text-anchor="middle" fill="#4c1d95" font-size="10">Fully charged: 4.2V/cell · Storage: 3.8V/cell · Min safe: 3.0V/cell</text>
+                        </svg>
+                        <p class="text-xs text-gray-500 text-center mt-3">LiPo cells wired in series increase total voltage. The "S" number tells you how many cells are connected.</p>
+                    </div>
+
                     <p class="text-gray-700 mb-4 leading-relaxed">
-                        Higher voltage means more RPM from the same motor. A 3300KV motor on 2S spins at about 24,400 RPM; on 3S that jumps to 36,600 RPM. But your <a href="/articles/esc-programming-guide.html" class="text-purple-600 hover:text-purple-700 font-medium">ESC</a> and <a href="/articles/rc-motor-guide.html" class="text-purple-600 hover:text-purple-700 font-medium">motor</a> must be rated for the voltage you're running. Running a higher cell count than your electronics support will destroy them.
+                        Higher voltage means more RPM from the same motor. A 3300KV motor on 2S spins at about 24,400 RPM; on 3S that jumps to 36,600 RPM. But your <a href="/articles/esc-programming-guide.html" class="text-purple-600 hover:text-purple-700 font-medium"></a>ESC</a> and <a href="/articles/rc-motor-guide.html" class="text-purple-600 hover:text-purple-700 font-medium">motor</a> must be rated for the voltage you're running. Running a higher cell count than your electronics support will destroy them.
                     </p>
 
                     <!-- Capacity -->

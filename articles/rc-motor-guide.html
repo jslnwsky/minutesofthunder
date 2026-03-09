@@ -200,6 +200,90 @@
                             </p>
                         </section>
 
+                        <!-- Brushless Motor Anatomy Diagram -->
+                        <div class="bg-gray-50 rounded-lg p-6 mb-8">
+                            <h3 class="font-bold text-gray-800 mb-4 text-center">Brushless Motor Anatomy</h3>
+                            <svg viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-xl mx-auto">
+                                <!-- Motor Can (Stator Housing) -->
+                                <rect x="150" y="40" width="300" height="200" rx="12" fill="#e2e8f0" stroke="#64748b" stroke-width="2"/>
+                                <rect x="155" y="45" width="290" height="190" rx="10" fill="#f1f5f9" stroke="#94a3b8" stroke-width="1"/>
+                                
+                                <!-- Stator Windings (3 phase coils) -->
+                                <ellipse cx="250" cy="140" rx="35" ry="55" fill="none" stroke="#9333ea" stroke-width="3" opacity="0.8"/>
+                                <ellipse cx="300" cy="110" rx="35" ry="55" fill="none" stroke="#3b82f6" stroke-width="3" opacity="0.8" transform="rotate(60, 300, 140)"/>
+                                <ellipse cx="350" cy="140" rx="35" ry="55" fill="none" stroke="#22c55e" stroke-width="3" opacity="0.8"/>
+                                
+                                <!-- Rotor (center shaft + magnets) -->
+                                <circle cx="300" cy="140" r="30" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+                                <circle cx="300" cy="140" r="22" fill="#334155"/>
+                                <!-- Magnet poles -->
+                                <path d="M 285 120 A 22 22 0 0 1 315 120" fill="#ef4444" opacity="0.8"/>
+                                <path d="M 315 160 A 22 22 0 0 1 285 160" fill="#3b82f6" opacity="0.8"/>
+                                <text x="300" y="127" text-anchor="middle" fill="white" font-size="9" font-weight="bold">N</text>
+                                <text x="300" y="167" text-anchor="middle" fill="white" font-size="9" font-weight="bold">S</text>
+                                
+                                <!-- Shaft -->
+                                <rect x="440" y="133" width="80" height="14" rx="3" fill="#475569" stroke="#334155" stroke-width="1.5"/>
+                                <rect x="80" y="135" width="70" height="10" rx="3" fill="#475569" stroke="#334155" stroke-width="1.5"/>
+                                
+                                <!-- Bearings -->
+                                <circle cx="150" cy="140" r="14" fill="#cbd5e1" stroke="#64748b" stroke-width="2"/>
+                                <circle cx="150" cy="140" r="7" fill="#94a3b8"/>
+                                <circle cx="450" cy="140" r="14" fill="#cbd5e1" stroke="#64748b" stroke-width="2"/>
+                                <circle cx="450" cy="140" r="7" fill="#94a3b8"/>
+                                
+                                <!-- Sensor PCB (small board at rear) -->
+                                <rect x="90" y="115" width="8" height="50" rx="2" fill="#16a34a" stroke="#15803d" stroke-width="1"/>
+                                
+                                <!-- Motor Wires (3 phase) -->
+                                <path d="M 155 80 L 120 60 L 80 60" fill="none" stroke="#9333ea" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M 155 100 L 120 80 L 80 80" fill="none" stroke="#3b82f6" stroke-width="3" stroke-linecap="round"/>
+                                <path d="M 155 120 L 120 100 L 80 100" fill="none" stroke="#22c55e" stroke-width="3" stroke-linecap="round"/>
+                                
+                                <!-- Sensor Wire -->
+                                <path d="M 94 165 L 70 180 L 40 180" fill="none" stroke="#64748b" stroke-width="2" stroke-dasharray="4,3" stroke-linecap="round"/>
+                                
+                                <!-- Labels -->
+                                <text x="60" y="57" text-anchor="end" fill="#9333ea" font-size="11" font-weight="600">Phase A</text>
+                                <text x="60" y="77" text-anchor="end" fill="#3b82f6" font-size="11" font-weight="600">Phase B</text>
+                                <text x="60" y="97" text-anchor="end" fill="#22c55e" font-size="11" font-weight="600">Phase C</text>
+                                <text x="35" y="195" text-anchor="end" fill="#64748b" font-size="10" font-weight="500">Sensor wire</text>
+                                
+                                <!-- Annotation lines & labels -->
+                                <!-- Stator label -->
+                                <line x1="250" y1="80" x2="250" y2="50" stroke="#9333ea" stroke-width="1" stroke-dasharray="3,2"/>
+                                <line x1="250" y1="50" x2="200" y2="30" stroke="#9333ea" stroke-width="1"/>
+                                <text x="198" y="27" text-anchor="end" fill="#9333ea" font-size="11" font-weight="600">Stator Windings</text>
+                                
+                                <!-- Rotor label -->
+                                <line x1="320" y1="140" x2="380" y2="60" stroke="#1e293b" stroke-width="1"/>
+                                <text x="383" y="57" fill="#1e293b" font-size="11" font-weight="600">Rotor + Magnets</text>
+                                
+                                <!-- Bearing label -->
+                                <line x1="450" y1="160" x2="480" y2="200" stroke="#64748b" stroke-width="1"/>
+                                <text x="483" y="203" fill="#64748b" font-size="11" font-weight="500">Bearing</text>
+                                
+                                <!-- Shaft label -->
+                                <text x="530" y="130" fill="#475569" font-size="11" font-weight="500">Output</text>
+                                <text x="530" y="143" fill="#475569" font-size="11" font-weight="500">Shaft</text>
+                                
+                                <!-- Sensor PCB label -->
+                                <line x1="94" y1="120" x2="60" y2="130" stroke="#16a34a" stroke-width="1"/>
+                                <text x="57" y="133" text-anchor="end" fill="#16a34a" font-size="10" font-weight="500">Sensor</text>
+                                <text x="57" y="145" text-anchor="end" fill="#16a34a" font-size="10" font-weight="500">PCB</text>
+                                
+                                <!-- Can/Housing label -->
+                                <text x="300" y="260" text-anchor="middle" fill="#64748b" font-size="11" font-weight="500">Aluminum Can (Heat Sink)</text>
+                                <line x1="300" y1="248" x2="300" y2="240" stroke="#64748b" stroke-width="1"/>
+                                
+                                <!-- Key info -->
+                                <rect x="120" y="280" width="360" height="50" rx="8" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1"/>
+                                <text x="300" y="298" text-anchor="middle" fill="#6d28d9" font-size="10" font-weight="600">KEY DIFFERENCE FROM BRUSHED</text>
+                                <text x="300" y="315" text-anchor="middle" fill="#4c1d95" font-size="10">Magnets spin (rotor) · Windings stay still (stator) · No brushes = no wear</text>
+                            </svg>
+                            <p class="text-xs text-gray-500 text-center mt-3">Cross-section of a typical sensored brushless RC motor. The ESC electronically switches current through the three phase windings to spin the rotor.</p>
+                        </div>
+
                         <section id="kv-ratings" class="mb-8">
                             <h2 class="text-2xl font-bold text-gray-900 mb-4">Understanding KV Ratings</h2>
                             <p class="mb-4">

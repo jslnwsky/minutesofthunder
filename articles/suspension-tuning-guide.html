@@ -148,6 +148,103 @@
                         A well-tuned car feels predictable and planted. It corners without rolling over, lands jumps flat, accelerates without wheelieing (unless you want it to), and stops straight. A poorly tuned car feels like it's fighting you at every input.
                     </p>
 
+                    <!-- Suspension Angles Diagram -->
+                    <div class="bg-gray-50 rounded-lg p-6 mb-6">
+                        <h3 class="font-bold text-gray-800 mb-4 text-center">Key Suspension Angles</h3>
+                        <svg viewBox="0 0 600 350" xmlns="http://www.w3.org/2000/svg" class="w-full max-w-xl mx-auto">
+                            <!-- === CAMBER (left) === -->
+                            <text x="100" y="22" text-anchor="middle" fill="#6d28d9" font-size="14" font-weight="700">Camber</text>
+                            <text x="100" y="36" text-anchor="middle" fill="#6b7280" font-size="9">(front view)</text>
+                            
+                            <!-- Ground line -->
+                            <line x1="20" y1="175" x2="180" y2="175" stroke="#94a3b8" stroke-width="1.5"/>
+                            
+                            <!-- Left wheel (negative camber - tilted inward at top) -->
+                            <rect x="38" y="80" width="16" height="90" rx="4" fill="#475569" stroke="#334155" stroke-width="1.5" transform="rotate(8, 46, 170)"/>
+                            <!-- Right wheel -->
+                            <rect x="146" y="80" width="16" height="90" rx="4" fill="#475569" stroke="#334155" stroke-width="1.5" transform="rotate(-8, 154, 170)"/>
+                            
+                            <!-- Chassis bar -->
+                            <rect x="55" y="85" width="90" height="12" rx="3" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+                            
+                            <!-- Vertical reference line (left) -->
+                            <line x1="46" y1="55" x2="46" y2="175" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+                            <!-- Camber angle arc -->
+                            <path d="M 46 75 A 30 30 0 0 1 52 75" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+                            <text x="30" y="68" fill="#ef4444" font-size="9" font-weight="600">−2°</text>
+                            
+                            <!-- Negative camber label -->
+                            <text x="100" y="200" text-anchor="middle" fill="#4c1d95" font-size="10" font-weight="600">Negative Camber</text>
+                            <text x="100" y="214" text-anchor="middle" fill="#6b7280" font-size="8.5">Tops tilt inward</text>
+                            <text x="100" y="226" text-anchor="middle" fill="#6b7280" font-size="8.5">= better cornering grip</text>
+                            
+                            <!-- === TOE (center) === -->
+                            <text x="300" y="22" text-anchor="middle" fill="#6d28d9" font-size="14" font-weight="700">Toe</text>
+                            <text x="300" y="36" text-anchor="middle" fill="#6b7280" font-size="9">(top view)</text>
+                            
+                            <!-- Car body outline (top view) -->
+                            <rect x="268" y="55" width="64" height="120" rx="8" fill="#e2e8f0" stroke="#94a3b8" stroke-width="1.5"/>
+                            <!-- Direction arrow -->
+                            <path d="M 300 50 L 295 58 L 305 58 Z" fill="#94a3b8"/>
+                            
+                            <!-- Left front wheel (toe-out) -->
+                            <rect x="245" y="60" width="18" height="35" rx="3" fill="#475569" stroke="#334155" stroke-width="1.5" transform="rotate(5, 254, 77)"/>
+                            <!-- Right front wheel (toe-out) -->
+                            <rect x="337" y="60" width="18" height="35" rx="3" fill="#475569" stroke="#334155" stroke-width="1.5" transform="rotate(-5, 346, 77)"/>
+                            
+                            <!-- Left rear wheel (toe-in) -->
+                            <rect x="245" y="135" width="18" height="35" rx="3" fill="#475569" stroke="#334155" stroke-width="1.5" transform="rotate(-4, 254, 152)"/>
+                            <!-- Right rear wheel (toe-in) -->
+                            <rect x="337" y="135" width="18" height="35" rx="3" fill="#475569" stroke="#334155" stroke-width="1.5" transform="rotate(4, 346, 152)"/>
+                            
+                            <!-- Front toe-out label -->
+                            <text x="300" y="105" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="600">Front: Toe-Out</text>
+                            <!-- Rear toe-in label -->
+                            <text x="300" y="165" text-anchor="middle" fill="#3b82f6" font-size="8" font-weight="600">Rear: Toe-In</text>
+                            
+                            <text x="300" y="200" text-anchor="middle" fill="#4c1d95" font-size="10" font-weight="600">Toe Angles</text>
+                            <text x="300" y="214" text-anchor="middle" fill="#6b7280" font-size="8.5">Front toe-out = quicker turn-in</text>
+                            <text x="300" y="226" text-anchor="middle" fill="#6b7280" font-size="8.5">Rear toe-in = straight-line stability</text>
+                            
+                            <!-- === CASTER (right) === -->
+                            <text x="500" y="22" text-anchor="middle" fill="#6d28d9" font-size="14" font-weight="700">Caster</text>
+                            <text x="500" y="36" text-anchor="middle" fill="#6b7280" font-size="9">(side view)</text>
+                            
+                            <!-- Ground line -->
+                            <line x1="420" y1="175" x2="580" y2="175" stroke="#94a3b8" stroke-width="1.5"/>
+                            
+                            <!-- Wheel (side view circle) -->
+                            <circle cx="500" cy="148" r="26" fill="none" stroke="#475569" stroke-width="3"/>
+                            <circle cx="500" cy="148" r="8" fill="#475569"/>
+                            
+                            <!-- Steering axis (tilted back = positive caster) -->
+                            <line x1="490" y1="55" x2="510" y2="175" stroke="#ef4444" stroke-width="2"/>
+                            
+                            <!-- Vertical reference -->
+                            <line x1="500" y1="55" x2="500" y2="175" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+                            
+                            <!-- Caster angle arc -->
+                            <path d="M 500 70 A 25 25 0 0 0 493 72" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+                            <text x="482" y="68" fill="#ef4444" font-size="9" font-weight="600">+25°</text>
+                            
+                            <!-- Direction arrow -->
+                            <path d="M 555 165 L 565 160 L 565 170 Z" fill="#94a3b8"/>
+                            <text x="565" y="155" fill="#94a3b8" font-size="8">FWD</text>
+                            
+                            <text x="500" y="200" text-anchor="middle" fill="#4c1d95" font-size="10" font-weight="600">Positive Caster</text>
+                            <text x="500" y="214" text-anchor="middle" fill="#6b7280" font-size="8.5">Steering axis tilts rearward</text>
+                            <text x="500" y="226" text-anchor="middle" fill="#6b7280" font-size="8.5">= self-centering steering</text>
+                            
+                            <!-- Bottom summary -->
+                            <rect x="60" y="250" width="480" height="85" rx="8" fill="#f5f3ff" stroke="#c4b5fd" stroke-width="1"/>
+                            <text x="300" y="272" text-anchor="middle" fill="#6d28d9" font-size="10" font-weight="600">TYPICAL STARTING POINTS (1/10 OFF-ROAD)</text>
+                            <text x="300" y="290" text-anchor="middle" fill="#4c1d95" font-size="9.5">Camber: −1° to −2° front · −2° to −3° rear</text>
+                            <text x="300" y="306" text-anchor="middle" fill="#4c1d95" font-size="9.5">Toe: 1°–2° out (front) · 2°–3° in (rear)</text>
+                            <text x="300" y="322" text-anchor="middle" fill="#4c1d95" font-size="9.5">Caster: 20°–30° (set by the C-hub or caster block)</text>
+                        </svg>
+                        <p class="text-xs text-gray-500 text-center mt-3">The three primary alignment angles on an RC car. Adjust these to balance steering response, cornering grip, and straight-line stability.</p>
+                    </div>
+
                     <!-- Shock Oil Weight -->
                     <h2 id="shock-oil" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Shock Oil Weight (Damping)</h2>
                     <p class="text-gray-700 mb-4 leading-relaxed">
