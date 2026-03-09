@@ -71,7 +71,7 @@ jobs:
 
         # --- Root files ---
         echo "📁 Root files..."
-        for f in index.html article-template.html .htaccess; do
+        for f in index.html article-template.html .htaccess sitemap.xml robots.txt; do
           [[ -f "$f" ]] && upload_file "$f"
         done
 
