@@ -63,11 +63,14 @@
                     <a href="/articles/" class="text-purple-600 font-medium">Articles</a>
                     <a href="/tools/" class="text-gray-600 hover:text-purple-600 font-medium">Tools</a>
                 </div>
-                <button id="mobileMenuBtn" class="md:hidden text-gray-600">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
+                <button class="md:hidden text-gray-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100 py-2">
+                <a href="/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Home</a>
+                <a href="/articles/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Articles</a>
+                <a href="/tools/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Tools</a>
             </div>
         </div>
     </nav>

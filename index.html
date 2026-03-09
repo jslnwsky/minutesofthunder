@@ -56,18 +56,24 @@
     <!-- Navigation -->
     <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
-                <div class="flex space-x-1">
-                    <a href="index.html" class="px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition font-medium">Home</a>
-                    <a href="articles/" class="px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition font-medium">Articles</a>
+            <div class="flex justify-between items-center py-2">
+                <div class="hidden md:flex space-x-1">
+                    <a href="/" class="px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition font-medium">Home</a>
+                    <a href="/articles/" class="px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition font-medium">Articles</a>
                     <a href="/tools/" class="px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition font-medium">Tools</a>
                     <a href="/articles/getting-started-rc-cars.html" class="px-4 py-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 rounded-lg transition font-medium">RC Guide</a>
                 </div>
-                <button class="md:hidden p-2" onclick="toggleMobileMenu()">
+                <button class="md:hidden p-2 text-gray-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
                 </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100 py-2">
+                <a href="/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Home</a>
+                <a href="/articles/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Articles</a>
+                <a href="/tools/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Tools</a>
+                <a href="/articles/getting-started-rc-cars.html" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">RC Guide</a>
             </div>
         </div>
     </nav>
@@ -237,10 +243,7 @@
     </footer>
 
     <script>
-        function toggleMobileMenu() {
-            // Mobile menu toggle functionality
-            console.log('Mobile menu toggled');
-        }
+        // No additional JS needed - mobile menu toggle is inline on the button
     </script>
 </body>
 </html>
