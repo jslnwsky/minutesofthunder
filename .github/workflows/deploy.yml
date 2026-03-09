@@ -87,6 +87,12 @@ jobs:
           [[ -f "$f" ]] && upload_file "$f"
         done
 
+        # --- Images ---
+        echo "📁 images/"
+        for f in images/*; do
+          [[ -f "$f" ]] && upload_file "$f"
+        done
+
         # --- Tools ---
         echo "📁 tools/"
         for f in tools/*; do
