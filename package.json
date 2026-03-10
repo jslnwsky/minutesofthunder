@@ -1,0 +1,16 @@
+{
+  "name": "minutesofthunder",
+  "version": "1.0.0",
+  "description": "A comprehensive, modern website for RC car enthusiasts featuring the latest technology, reviews, and community resources.",
+  "main": "index.js",
+  "scripts": {
+    "build:css": "tailwindcss -i css/tailwind-input.css -o css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i css/tailwind-input.css -o css/tailwind.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}
