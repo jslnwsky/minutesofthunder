@@ -79,6 +79,13 @@
                 Oops! Looks like you've gone off the racing line. The page you're looking for has hit the barriers or taken a wrong turn.
             </p>
 
+            <!-- Attempted URL Display -->
+            <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-8">
+                <p class="text-yellow-800 text-sm">
+                    <strong>You tried to visit:</strong> <span id="attemptedUrl" class="font-mono bg-yellow-100 px-2 py-1 rounded"></span>
+                </p>
+            </div>
+
             <!-- Quick Recovery Actions -->
             <div class="bg-white rounded-xl shadow-md p-8 mb-8">
                 <h2 class="text-2xl font-bold text-gray-800 mb-6">Get Back on Track</h2>
@@ -200,5 +207,10 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // Display the attempted URL for user context
+        document.getElementById('attemptedUrl').textContent = window.location.href;
+    </script>
 </body>
 </html>
