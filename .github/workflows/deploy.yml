@@ -71,7 +71,7 @@ jobs:
 
         # --- Root files ---
         echo "📁 Root files..."
-        for f in index.html article-template.html .htaccess sitemap.xml robots.txt favicon.svg; do
+        for f in index.html article-template.html 404.html .htaccess sitemap.xml robots.txt favicon.svg; do
           [[ -f "$f" ]] && upload_file "$f"
         done
 
@@ -87,11 +87,8 @@ jobs:
           [[ -f "$f" ]] && upload_file "$f"
         done
 
-        # --- Images ---
-        echo "📁 images/"
-        for f in images/*; do
-          [[ -f "$f" ]] && upload_file "$f"
-        done
+        # --- Images (skipped - directory is empty) ---
+        echo "📁 images/ skipped (empty directory)"
 
         # --- Tools ---
         echo "📁 tools/"
