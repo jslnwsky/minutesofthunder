@@ -45,16 +45,6 @@
     background: linear-gradient(135deg, #5a6fd8 0%, #6a4190 100%);
 }
 
-/* Mobile menu styles */
-.mobile-menu {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-}
-
-.mobile-menu.active {
-    transform: translateX(0);
-}
-
 /* Technology category badges */
 .tech-badge {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -97,34 +87,6 @@
     height: 4px;
     background-color: #d1d5db;
     border-radius: 50%;
-}
-
-/* Search bar styles */
-.search-container {
-    position: relative;
-}
-
-.search-input {
-    width: 100%;
-    padding: 0.75rem 1rem 0.75rem 2.5rem;
-    border: 2px solid #e5e7eb;
-    border-radius: 0.5rem;
-    font-size: 0.875rem;
-    transition: all 0.2s ease;
-}
-
-.search-input:focus {
-    outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
-}
-
-.search-icon {
-    position: absolute;
-    left: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #9ca3af;
 }
 
 /* Breadcrumb navigation */
@@ -212,50 +174,3 @@
     }
 }
 
-/* Dark mode support */
-@media (prefers-color-scheme: dark) {
-    .dark-mode-auto {
-        background-color: #1f2937;
-        color: #f9fafb;
-    }
-    
-    .dark-mode-auto .bg-white {
-        background-color: #374151 !important;
-    }
-    
-    .dark-mode-auto .text-gray-800 {
-        color: #f9fafb !important;
-    }
-    
-    .dark-mode-auto .text-gray-600 {
-        color: #d1d5db !important;
-    }
-}
-
-/* Performance optimizations */
-.gpu-accelerated {
-    transform: translateZ(0);
-    will-change: transform;
-}
-
-/* Focus styles for accessibility */
-.focus-visible:focus {
-    outline: 2px solid #667eea;
-    outline-offset: 2px;
-}
-
-/* Loading skeleton */
-.skeleton {
-    background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
-    background-size: 200% 100%;
-    animation: skeleton-loading 1.5s infinite;
-}
-
-@keyframes skeleton-loading {
-    0% {
-        background-position: 200% 0;
-    }
-    100% {
-        background-position: -200% 0;
-    }
-}

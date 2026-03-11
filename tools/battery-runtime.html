@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Battery Runtime Calculator | MinutesofThunder</title>
+    <meta name="description" content="Estimate RC car battery runtime based on pack capacity, average current draw, voltage, and reserve capacity. Plan race sessions and bash days with fewer battery surprises.">
+    <meta name="keywords" content="RC battery runtime calculator, LiPo runtime calculator, RC battery session planner, RC current draw calculator, RC battery capacity estimator">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://minutesofthunder.com/tools/battery-runtime.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RC Battery Runtime Calculator">
+    <meta property="og:description" content="Estimate RC runtime from battery capacity and current draw. Includes reserve planning and quick presets.">
+    <meta property="og:url" content="https://minutesofthunder.com/tools/battery-runtime.html">
+    <meta property="og:site_name" content="MinutesofThunder">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "RC Battery Runtime Calculator",
+      "description": "Estimate RC car battery runtime based on pack capacity, average current draw, voltage, and reserve capacity.",
+      "url": "https://minutesofthunder.com/tools/battery-runtime.html",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "isPartOf": { "@type": "WebSite", "name": "MinutesofThunder", "url": "https://minutesofthunder.com/" }
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    <style type="text/css">
+        .input-field { width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; }
+        .input-field:focus { outline: none; border-color: #9333ea; box-shadow: 0 0 0 2px rgba(147,51,234,0.2); }
+        .btn-primary { background: #9333ea; color: white; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: background 0.2s; }
+        .btn-primary:hover { background: #7e22ce; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold"><a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a></h1>
+                    <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="/tools/" class="bg-white/20 px-3 py-1 rounded-full text-sm hover:bg-white/30 transition-colors">Interactive Tools</a>
+                    <a href="/articles/batteries-power.html" class="bg-white/20 px-3 py-1 rounded-full text-sm hover:bg-white/30 transition-colors">Batteries & Power</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
+                    <a href="/articles/" class="text-gray-600 hover:text-purple-600 font-medium">Articles</a>
+                    <a href="/tools/" class="text-purple-600 font-medium">Tools</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <nav class="flex text-sm text-gray-600">
+                <a href="/" class="hover:text-purple-600">Home</a>
+                <span class="mx-2">/</span>
+                <a href="/tools/" class="hover:text-purple-600">Tools</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">Battery Runtime Calculator</span>
+            </nav>
+        </div>
+    </div>
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">RC Battery Runtime Calculator</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Estimate session runtime from pack capacity and average current draw. Add a reserve margin so you stop before the pack is overworked.</p>
+        </div>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Battery Capacity</label>
+                            <div class="flex gap-2">
+                                <input type="number" id="capacity" placeholder="e.g., 5000" class="input-field">
+                                <select id="capacity-unit" class="input-field max-w-[110px]">
+                                    <option value="mah">mAh</option>
+                                    <option value="ah">Ah</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Average Current Draw (amps)</label>
+                            <input type="number" id="current" placeholder="e.g., 25" step="0.1" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Battery Voltage</label>
+                            <select id="voltage" class="input-field">
+                                <option value="7.4">2S LiPo (7.4V)</option>
+                                <option value="11.1">3S LiPo (11.1V)</option>
+                                <option value="14.8">4S LiPo (14.8V)</option>
+                                <option value="22.2">6S LiPo (22.2V)</option>
+                                <option value="7.2">6-cell NiMH (7.2V)</option>
+                                <option value="8.4">7-cell NiMH (8.4V)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Reserve Capacity to Keep</label>
+                            <select id="reserve" class="input-field">
+                                <option value="0.2">20% reserve</option>
+                                <option value="0.15">15% reserve</option>
+                                <option value="0.1">10% reserve</option>
+                                <option value="0.25">25% reserve</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Driving Style Preset</label>
+                            <select id="driving-style" class="input-field" onchange="applyPresetCurrent()">
+                                <option value="">Manual current entry</option>
+                                <option value="12">Crawler / scale trail (~12A)</option>
+                                <option value="22">Club racing stock (~22A)</option>
+                                <option value="35">General bashing (~35A)</option>
+                                <option value="55">High-power speed run (~55A)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Session Length Goal (minutes)</label>
+                            <input type="number" id="target-minutes" placeholder="e.g., 12" step="1" class="input-field">
+                        </div>
+                    </div>
+                    <button onclick="calculateRuntime()" class="btn-primary w-full">Calculate Runtime</button>
+                </div>
+                <div id="runtimeResults" class="hidden">
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div class="text-center bg-gray-50 p-4 rounded-lg">
+                                <div class="text-3xl font-bold text-purple-600" id="usable-minutes">--</div>
+                                <div class="text-sm text-gray-500">Usable Runtime</div>
+                            </div>
+                            <div class="text-center bg-gray-50 p-4 rounded-lg">
+                                <div class="text-2xl font-bold text-gray-800" id="full-minutes">--</div>
+                                <div class="text-sm text-gray-500">Theoretical Full Runtime</div>
+                            </div>
+                            <div class="text-center bg-gray-50 p-4 rounded-lg">
+                                <div class="text-2xl font-bold text-gray-800" id="avg-power">--</div>
+                                <div class="text-sm text-gray-500">Average Power Draw</div>
+                            </div>
+                            <div class="text-center bg-gray-50 p-4 rounded-lg">
+                                <div class="text-2xl font-bold text-gray-800" id="required-capacity">--</div>
+                                <div class="text-sm text-gray-500">Capacity Needed for Goal</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Runtime by Driving Load</h2>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="text-left p-3 font-semibold text-gray-700">Current Draw</th>
+                                        <th class="text-center p-3 font-semibold text-gray-700">Usable Runtime</th>
+                                        <th class="text-center p-3 font-semibold text-gray-700">Average Power</th>
+                                        <th class="text-left p-3 font-semibold text-gray-700">Typical Use</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="runtimeTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="runtimeMessage" class="rounded-lg p-4 text-sm"></div>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Quick Presets</h2>
+                    <div class="space-y-3">
+                        <button onclick="loadRuntimePreset(5000,'mah',12,7.4,0.2,45)" class="w-full text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                            <div class="font-semibold text-gray-900">Crawler Pack</div>
+                            <div class="text-sm text-gray-600">5000mAh 2S pack, low draw trail driving</div>
+                        </button>
+                        <button onclick="loadRuntimePreset(5200,'mah',22,7.4,0.2,10)" class="w-full text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                            <div class="font-semibold text-gray-900">Club Race Session</div>
+                            <div class="text-sm text-gray-600">2S race pack with realistic stock-class load</div>
+                        </button>
+                        <button onclick="loadRuntimePreset(6800,'mah',35,11.1,0.15,15)" class="w-full text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                            <div class="font-semibold text-gray-900">3S Bash Session</div>
+                            <div class="text-sm text-gray-600">High-capacity 3S basher setup</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Use This Correctly</h2>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>Use <strong>average</strong> current draw, not peak current.</li>
+                        <li>Keep reserve in the pack instead of planning to run it flat.</li>
+                        <li>Cold weather, gearing, and terrain can reduce runtime fast.</li>
+                        <li>LiPo packs should usually stop around 15-20% remaining under practical use.</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Read Next</h2>
+                    <div class="space-y-3">
+                        <a href="/articles/lipo-battery-guide.html" class="block text-purple-600 hover:text-purple-700 font-medium">LiPo Battery Guide</a>
+                        <a href="/articles/lipo-charging-safety.html" class="block text-purple-600 hover:text-purple-700 font-medium">LiPo Charging Safety</a>
+                        <a href="/articles/best-lipo-batteries-rc-cars.html" class="block text-purple-600 hover:text-purple-700 font-medium">Best LiPo Batteries</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">MinutesofThunder</h3>
+                    <p class="text-gray-400">Your comprehensive guide to RC car technology, reviews, and the latest innovations in radio control vehicles.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">All Articles</a></li>
+                        <li><a href="/tools/" class="hover:text-white">Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/articles/beginners.html" class="hover:text-white">Beginner Guides</a></li>
+                        <li><a href="/articles/buyers-guides.html" class="hover:text-white">Buyer's Guides</a></li>
+                        <li><a href="/articles/batteries-power.html" class="hover:text-white">Batteries & Power</a></li>
+                        <li><a href="/articles/motors-esc.html" class="hover:text-white">Motors & ESC</a></li>
+                        <li><a href="/articles/racing-setup.html" class="hover:text-white">Racing & Setup</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Tools</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/tools/motor-comparison.html" class="hover:text-white">Motor Comparison</a></li>
+                        <li><a href="/tools/battery-runtime.html" class="hover:text-white">Battery Runtime</a></li>
+                        <li><a href="/tools/gear-ratio.html" class="hover:text-white">Gear Ratio</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 MinutesofThunder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function applyPresetCurrent() {
+            const value = document.getElementById('driving-style').value;
+            if (value) document.getElementById('current').value = value;
+        }
+
+        function loadRuntimePreset(capacity, unit, current, voltage, reserve, target) {
+            document.getElementById('capacity').value = capacity;
+            document.getElementById('capacity-unit').value = unit;
+            document.getElementById('current').value = current;
+            document.getElementById('voltage').value = voltage;
+            document.getElementById('reserve').value = reserve;
+            document.getElementById('target-minutes').value = target;
+            calculateRuntime();
+        }
+
+        function formatMinutes(minutes) {
+            if (minutes >= 60) {
+                const hours = Math.floor(minutes / 60);
+                const mins = Math.round(minutes % 60);
+                return mins ? `${hours}h ${mins}m` : `${hours}h`;
+            }
+            return `${minutes.toFixed(1)} min`;
+        }
+
+        function calculateRuntime() {
+            const capacityValue = parseFloat(document.getElementById('capacity').value) || 0;
+            const capacityUnit = document.getElementById('capacity-unit').value;
+            const current = parseFloat(document.getElementById('current').value) || 0;
+            const voltage = parseFloat(document.getElementById('voltage').value) || 0;
+            const reserve = parseFloat(document.getElementById('reserve').value) || 0;
+            const targetMinutes = parseFloat(document.getElementById('target-minutes').value) || 0;
+
+            if (!capacityValue || !current || !voltage) {
+                alert('Please enter battery capacity, average current draw, and voltage.');
+                return;
+            }
+
+            const capacityAh = capacityUnit === 'ah' ? capacityValue : capacityValue / 1000;
+            const usableAh = capacityAh * (1 - reserve);
+            const fullRuntimeMin = (capacityAh / current) * 60;
+            const usableRuntimeMin = (usableAh / current) * 60;
+            const avgPower = voltage * current;
+            const requiredAh = targetMinutes ? (current * (targetMinutes / 60)) / (1 - reserve) : 0;
+            const requiredMah = requiredAh ? Math.round(requiredAh * 1000) : 0;
+
+            document.getElementById('full-minutes').textContent = formatMinutes(fullRuntimeMin);
+            document.getElementById('usable-minutes').textContent = formatMinutes(usableRuntimeMin);
+            document.getElementById('avg-power').textContent = `${Math.round(avgPower)} W`;
+            document.getElementById('required-capacity').textContent = targetMinutes ? `${requiredMah.toLocaleString()} mAh` : '—';
+
+            const scenarios = [
+                { amps: Math.max(current * 0.6, 5), label: 'Light trail / efficient driving' },
+                { amps: current, label: 'Your entered average draw' },
+                { amps: current * 1.25, label: 'Hard driving / more punch' },
+                { amps: current * 1.5, label: 'Aggressive load / deep throttle use' }
+            ];
+
+            document.getElementById('runtimeTable').innerHTML = scenarios.map((scenario, index) => {
+                const minutes = (usableAh / scenario.amps) * 60;
+                const power = scenario.amps * voltage;
+                const rowClass = index === 1 ? 'bg-purple-50' : 'border-t';
+                return `<tr class="${rowClass}">
+                    <td class="p-3">${scenario.amps.toFixed(1)}A</td>
+                    <td class="p-3 text-center font-medium">${formatMinutes(minutes)}</td>
+                    <td class="p-3 text-center">${Math.round(power)}W</td>
+                    <td class="p-3 text-gray-600">${scenario.label}</td>
+                </tr>`;
+            }).join('');
+
+            const message = document.getElementById('runtimeMessage');
+            if (targetMinutes && usableRuntimeMin < targetMinutes) {
+                message.className = 'rounded-lg p-4 text-sm bg-red-50 border-l-4 border-red-500 text-gray-700';
+                message.innerHTML = `<strong>Session goal missed.</strong> At your current assumptions, you need about <strong>${requiredMah.toLocaleString()}mAh</strong> to hit ${targetMinutes} minutes while keeping reserve in the pack.`;
+            } else if (targetMinutes) {
+                message.className = 'rounded-lg p-4 text-sm bg-green-50 border-l-4 border-green-500 text-gray-700';
+                message.innerHTML = `<strong>Session goal covered.</strong> Your current setup should support about <strong>${formatMinutes(usableRuntimeMin)}</strong> of usable runtime with reserve intact.`;
+            } else {
+                message.className = 'rounded-lg p-4 text-sm bg-blue-50 border-l-4 border-blue-500 text-gray-700';
+                message.innerHTML = `<strong>Planning tip.</strong> Runtime math is only as good as your average current estimate. If you do not know it yet, compare light, normal, and hard-driving scenarios above before buying another pack.`;
+            }
+
+            document.getElementById('runtimeResults').classList.remove('hidden');
+            document.getElementById('runtimeResults').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

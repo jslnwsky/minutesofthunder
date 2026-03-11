@@ -8,6 +8,7 @@
     <meta name="keywords" content="RC car articles, RC guides, RC car tips, brushless motors, RC racing, RC upgrades, RC building">
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://minutesofthunder.com/articles/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="RC Car Articles & Guides | MinutesofThunder">
     <meta property="og:description" content="In-depth articles and guides about RC cars. From beginner guides to technical deep dives on motors, batteries, racing, and upgrades.">
@@ -15,7 +16,19 @@
     <meta property="og:site_name" content="MinutesofThunder">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary">
-    
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "RC Car Articles & Guides",
+      "description": "In-depth articles and guides about RC cars. From beginner guides to technical deep dives on motors, batteries, racing, and upgrades.",
+      "url": "https://minutesofthunder.com/articles/",
+      "isPartOf": { "@type": "WebSite", "name": "MinutesofThunder", "url": "https://minutesofthunder.com/" }
+    }
+    </script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
     <script>
@@ -88,6 +101,31 @@
                 Practical, no-nonsense guides written by RC enthusiasts. Whether you're just getting started or looking to step up your game, we've got you covered.
             </p>
         </div>
+
+        <section class="mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <a href="/articles/beginners.html" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow group">
+                    <div class="text-3xl mb-3">🏁</div>
+                    <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">Beginner Guides</h2>
+                    <p class="text-sm text-gray-600">Start here if you are learning the hobby and figuring out your first purchase.</p>
+                </a>
+                <a href="/articles/buyers-guides.html" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow group">
+                    <div class="text-3xl mb-3">🛒</div>
+                    <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">Buyer's Guides</h2>
+                    <p class="text-sm text-gray-600">Browse product roundups when you're comparing chargers, tires, crawlers, and batteries.</p>
+                </a>
+                <a href="/articles/batteries-power.html" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow group">
+                    <div class="text-3xl mb-3">🔋</div>
+                    <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">Batteries & Power</h2>
+                    <p class="text-sm text-gray-600">Understand LiPos, charging safety, and how to match packs and chargers correctly.</p>
+                </a>
+                <a href="/articles/motors-esc.html" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow group">
+                    <div class="text-3xl mb-3">⚡</div>
+                    <h2 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">Motors & ESC</h2>
+                    <p class="text-sm text-gray-600">Learn the specs behind speed, control, and smarter upgrade decisions.</p>
+                </a>
+            </div>
+        </section>
 
         <!-- Beginner Guides Section -->
         <section class="mb-12">
@@ -182,6 +220,30 @@
                         <p class="text-gray-600 text-sm">Proper charging procedures, balance charging, storage voltage, fire prevention, puffed batteries, and safe disposal.</p>
                     </div>
                 </a>
+
+                <a href="/articles/best-battery-traxxas-slash.html" class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group">
+                    <div class="bg-gradient-to-r from-teal-500 to-blue-500 h-2"></div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-teal-100 text-teal-700 text-xs font-medium px-2 py-1 rounded">Buyer's Guide</span>
+                            <span class="text-xs text-gray-500">8 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">Best Battery for Traxxas Slash</h3>
+                        <p class="text-gray-600 text-sm">2S and 3S LiPo picks for the Slash 2WD and 4x4, with size, connector, and charging guidance.</p>
+                    </div>
+                </a>
+
+                <a href="/articles/nimh-vs-lipo-rc-battery.html" class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group">
+                    <div class="bg-gradient-to-r from-yellow-500 to-green-500 h-2"></div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-yellow-100 text-yellow-700 text-xs font-medium px-2 py-1 rounded">Comparison</span>
+                            <span class="text-xs text-gray-500">8 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">NiMH vs LiPo Battery for RC Cars</h3>
+                        <p class="text-gray-600 text-sm">Side-by-side comparison of voltage, weight, runtime, cost, and safety. Which type is right for you?</p>
+                    </div>
+                </a>
             </div>
         </section>
 
@@ -224,6 +286,30 @@
                         </div>
                         <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">RC Transmitter & Receiver Guide</h3>
                         <p class="text-gray-600 text-sm">2.4GHz protocols, channels, dual rate, expo, endpoints, model memory, binding, and choosing the right radio system.</p>
+                    </div>
+                </a>
+
+                <a href="/articles/rc-esc-troubleshooting.html" class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group">
+                    <div class="bg-gradient-to-r from-red-500 to-yellow-500 h-2"></div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-red-100 text-red-700 text-xs font-medium px-2 py-1 rounded">Troubleshooting</span>
+                            <span class="text-xs text-gray-500">10 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">RC ESC Troubleshooting</h3>
+                        <p class="text-gray-600 text-sm">Diagnose no throttle response, blinking LEDs, thermal shutdown, motor stuttering, and burned ESC symptoms.</p>
+                    </div>
+                </a>
+
+                <a href="/articles/how-to-break-in-brushless-motor.html" class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group">
+                    <div class="bg-gradient-to-r from-green-500 to-blue-500 h-2"></div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-green-100 text-green-700 text-xs font-medium px-2 py-1 rounded">How-To</span>
+                            <span class="text-xs text-gray-500">7 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">How to Break In a Brushless Motor</h3>
+                        <p class="text-gray-600 text-sm">Do brushless motors need break-in? Sensored vs sensorless differences, the correct procedure, and maintenance tips.</p>
                     </div>
                 </a>
             </div>
@@ -338,6 +424,18 @@
                         <p class="text-gray-600 text-sm">Shock oil, springs, ride height, camber, toe, droop, anti-roll bars, and a quick-reference chart for common handling problems.</p>
                     </div>
                 </a>
+
+                <a href="/articles/rc-gear-ratio-explained.html" class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow group">
+                    <div class="bg-gradient-to-r from-orange-500 to-red-500 h-2"></div>
+                    <div class="p-6">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="bg-orange-100 text-orange-700 text-xs font-medium px-2 py-1 rounded">Technical</span>
+                            <span class="text-xs text-gray-500">9 min read</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2 group-hover:text-purple-600 transition">RC Car Gear Ratio Explained</h3>
+                        <p class="text-gray-600 text-sm">Pinion, spur, and final drive ratio demystified. Learn when to gear up or down and how it affects speed, torque, and temps.</p>
+                    </div>
+                </a>
             </div>
         </section>
 
@@ -372,18 +470,24 @@
                 <div>
                     <h4 class="font-bold mb-4">Categories</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="/articles/" class="hover:text-white">Beginner Guides</a></li>
-                        <li><a href="/articles/" class="hover:text-white">Electric RC</a></li>
-                        <li><a href="/articles/" class="hover:text-white">Nitro RC</a></li>
+                        <li><a href="/articles/beginners.html" class="hover:text-white">Beginner Guides</a></li>
+                        <li><a href="/articles/buyers-guides.html" class="hover:text-white">Buyer's Guides</a></li>
+                        <li><a href="/articles/batteries-power.html" class="hover:text-white">Batteries & Power</a></li>
+                        <li><a href="/articles/motors-esc.html" class="hover:text-white">Motors & ESC</a></li>
+                        <li><a href="/articles/racing-setup.html" class="hover:text-white">Racing & Setup</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-bold mb-4">Connect</h4>
-                    <p class="text-gray-400">Join the RC community and stay updated with the latest technology and reviews.</p>
+                    <h4 class="font-bold mb-4">Tools</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/tools/motor-comparison.html" class="hover:text-white">Motor Comparison</a></li>
+                        <li><a href="/tools/battery-runtime.html" class="hover:text-white">Battery Runtime</a></li>
+                        <li><a href="/tools/gear-ratio.html" class="hover:text-white">Gear Ratio</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
-                <p>&copy; 2024 MinutesofThunder. All rights reserved.</p>
+                <p>&copy; 2025 MinutesofThunder. All rights reserved.</p>
             </div>
         </div>
     </footer>

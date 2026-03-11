@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Gear Ratio Calculator | MinutesofThunder</title>
+    <meta name="description" content="Calculate RC final drive ratio, rollout, and pinion changes for more speed or more torque. Includes a pinion swap chart for quick gearing decisions.">
+    <meta name="keywords" content="RC gear ratio calculator, final drive ratio calculator, RC rollout calculator, pinion spur calculator, RC gearing tool">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://minutesofthunder.com/tools/gear-ratio.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="RC Gear Ratio Calculator">
+    <meta property="og:description" content="Calculate final drive ratio, rollout, and pinion swap effects for RC cars.">
+    <meta property="og:url" content="https://minutesofthunder.com/tools/gear-ratio.html">
+    <meta property="og:site_name" content="MinutesofThunder">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "RC Gear Ratio Calculator",
+      "description": "Calculate RC final drive ratio, rollout, and pinion changes for more speed or more torque.",
+      "url": "https://minutesofthunder.com/tools/gear-ratio.html",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "All",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+      "isPartOf": { "@type": "WebSite", "name": "MinutesofThunder", "url": "https://minutesofthunder.com/" }
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    <style type="text/css">
+        .input-field { width: 100%; padding: 8px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-size: 14px; }
+        .input-field:focus { outline: none; border-color: #9333ea; box-shadow: 0 0 0 2px rgba(147,51,234,0.2); }
+        .btn-primary { background: #9333ea; color: white; padding: 10px 24px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: background 0.2s; }
+        .btn-primary:hover { background: #7e22ce; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold"><a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a></h1>
+                    <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="/tools/" class="bg-white/20 px-3 py-1 rounded-full text-sm hover:bg-white/30 transition-colors">Interactive Tools</a>
+                    <a href="/articles/motors-esc.html" class="bg-white/20 px-3 py-1 rounded-full text-sm hover:bg-white/30 transition-colors">Motors & ESC</a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
+                    <a href="/articles/" class="text-gray-600 hover:text-purple-600 font-medium">Articles</a>
+                    <a href="/tools/" class="text-purple-600 font-medium">Tools</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-3">
+            <nav class="flex text-sm text-gray-600">
+                <a href="/" class="hover:text-purple-600">Home</a>
+                <span class="mx-2">/</span>
+                <a href="/tools/" class="hover:text-purple-600">Tools</a>
+                <span class="mx-2">/</span>
+                <span class="text-gray-900">Gear Ratio Calculator</span>
+            </nav>
+        </div>
+    </div>
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">RC Gear Ratio Calculator</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Calculate final drive ratio and rollout, then see how one-tooth pinion changes shift the balance between torque and top speed.</p>
+        </div>
+        <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Pinion Gear Teeth</label>
+                            <input type="number" id="gear-pinion" placeholder="e.g., 22" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Spur Gear Teeth</label>
+                            <input type="number" id="gear-spur" placeholder="e.g., 76" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Internal Ratio</label>
+                            <input type="number" id="gear-internal" placeholder="e.g., 2.6" step="0.1" class="input-field">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Tire Diameter (mm, optional)</label>
+                            <input type="number" id="gear-tire" placeholder="e.g., 90" class="input-field">
+                        </div>
+                    </div>
+                    <button onclick="calculateGearing()" class="btn-primary w-full">Calculate Gear Ratio</button>
+                </div>
+                <div id="gearResults" class="hidden">
+                    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                            <div class="text-center bg-gray-50 p-4 rounded-lg">
+                                <div class="text-3xl font-bold text-purple-600" id="gear-fdr">--</div>
+                                <div class="text-sm text-gray-500">Final Drive Ratio</div>
+                            </div>
+                            <div class="text-center bg-gray-50 p-4 rounded-lg">
+                                <div class="text-2xl font-bold text-gray-800" id="gear-ext">--</div>
+                                <div class="text-sm text-gray-500">External Ratio</div>
+                            </div>
+                            <div class="text-center bg-gray-50 p-4 rounded-lg">
+                                <div class="text-2xl font-bold text-gray-800" id="gear-int-display">--</div>
+                                <div class="text-sm text-gray-500">Internal Ratio</div>
+                            </div>
+                            <div class="text-center bg-gray-50 p-4 rounded-lg">
+                                <div class="text-2xl font-bold text-gray-800" id="gear-rollout-display">--</div>
+                                <div class="text-sm text-gray-500">Rollout</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl shadow-md p-6">
+                        <h2 class="text-xl font-bold text-gray-900 mb-3">Pinion Swap Chart</h2>
+                        <p class="text-sm text-gray-600 mb-4">See how one-tooth changes affect your ratio with the same spur gear.</p>
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-sm border-collapse">
+                                <thead>
+                                    <tr class="bg-gray-50">
+                                        <th class="text-left p-2 font-semibold">Pinion</th>
+                                        <th class="text-center p-2 font-semibold">Ext. Ratio</th>
+                                        <th class="text-center p-2 font-semibold">Final Ratio</th>
+                                        <th class="text-center p-2 font-semibold">Change</th>
+                                        <th class="text-left p-2 font-semibold">Effect</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="pinionTable"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="space-y-6">
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Quick Presets</h2>
+                    <div class="space-y-3">
+                        <button onclick="loadGearPreset(22,76,2.6,84)" class="w-full text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                            <div class="font-semibold text-gray-900">1/10 Buggy Baseline</div>
+                            <div class="text-sm text-gray-600">22/76 with 2.6 internal ratio</div>
+                        </button>
+                        <button onclick="loadGearPreset(18,64,2.85,64)" class="w-full text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                            <div class="font-semibold text-gray-900">Touring Car Baseline</div>
+                            <div class="text-sm text-gray-600">Common on-road gearing reference</div>
+                        </button>
+                        <button onclick="loadGearPreset(14,56,7.4,118)" class="w-full text-left p-4 border border-gray-200 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition">
+                            <div class="font-semibold text-gray-900">Crawler Example</div>
+                            <div class="text-sm text-gray-600">Very low final drive for torque and control</div>
+                        </button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Interpret the Result</h2>
+                    <ul class="text-sm text-gray-600 space-y-2">
+                        <li>Lower final ratio usually means more top speed and less mechanical advantage.</li>
+                        <li>Higher final ratio usually means more torque, cooler motor temps, and slower top speed.</li>
+                        <li>Rollout helps compare setups across different tire diameters.</li>
+                        <li>Small gearing changes can push motor and ESC temperatures hard, so recheck temps after testing.</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl shadow-md p-6">
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Read Next</h2>
+                    <div class="space-y-3">
+                        <a href="/articles/rc-motor-guide.html" class="block text-purple-600 hover:text-purple-700 font-medium">RC Motor Guide</a>
+                        <a href="/articles/esc-programming-guide.html" class="block text-purple-600 hover:text-purple-700 font-medium">ESC Programming Guide</a>
+                        <a href="/tools/motor-comparison.html" class="block text-purple-600 hover:text-purple-700 font-medium">Motor Comparison Tool</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">MinutesofThunder</h3>
+                    <p class="text-gray-400">Your comprehensive guide to RC car technology, reviews, and the latest innovations in radio control vehicles.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">All Articles</a></li>
+                        <li><a href="/tools/" class="hover:text-white">Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/articles/beginners.html" class="hover:text-white">Beginner Guides</a></li>
+                        <li><a href="/articles/buyers-guides.html" class="hover:text-white">Buyer's Guides</a></li>
+                        <li><a href="/articles/batteries-power.html" class="hover:text-white">Batteries & Power</a></li>
+                        <li><a href="/articles/motors-esc.html" class="hover:text-white">Motors & ESC</a></li>
+                        <li><a href="/articles/racing-setup.html" class="hover:text-white">Racing & Setup</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Tools</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/tools/motor-comparison.html" class="hover:text-white">Motor Comparison</a></li>
+                        <li><a href="/tools/battery-runtime.html" class="hover:text-white">Battery Runtime</a></li>
+                        <li><a href="/tools/gear-ratio.html" class="hover:text-white">Gear Ratio</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 MinutesofThunder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        function loadGearPreset(pinion, spur, internal, tire) {
+            document.getElementById('gear-pinion').value = pinion;
+            document.getElementById('gear-spur').value = spur;
+            document.getElementById('gear-internal').value = internal;
+            document.getElementById('gear-tire').value = tire;
+            calculateGearing();
+        }
+
+        function calculateGearing() {
+            const pinion = parseInt(document.getElementById('gear-pinion').value) || 0;
+            const spur = parseInt(document.getElementById('gear-spur').value) || 0;
+            const internal = parseFloat(document.getElementById('gear-internal').value) || 1;
+            const tire = parseFloat(document.getElementById('gear-tire').value) || 0;
+
+            if (!pinion || !spur) {
+                alert('Please enter pinion and spur teeth.');
+                return;
+            }
+
+            const extRatio = spur / pinion;
+            const fdr = extRatio * internal;
+            const rollout = tire ? ((tire * Math.PI) / fdr).toFixed(1) + ' mm' : '—';
+
+            document.getElementById('gear-fdr').textContent = fdr.toFixed(2) + ':1';
+            document.getElementById('gear-ext').textContent = extRatio.toFixed(2) + ':1';
+            document.getElementById('gear-int-display').textContent = internal.toFixed(2) + ':1';
+            document.getElementById('gear-rollout-display').textContent = rollout;
+
+            let html = '';
+            for (let p = Math.max(pinion - 4, 10); p <= pinion + 4; p++) {
+                const ext = spur / p;
+                const fd = ext * internal;
+                const diff = fd - fdr;
+                const isCurrent = p === pinion;
+                const cls = isCurrent ? 'bg-purple-50 font-bold' : 'border-t';
+                const diffStr = isCurrent ? '<span class="text-purple-600">Current</span>' :
+                    (diff > 0 ? `<span class="text-green-600">+${diff.toFixed(2)}</span>` : `<span class="text-blue-600">${diff.toFixed(2)}</span>`);
+                const effect = p < pinion ? 'More torque, less top speed' : p > pinion ? 'More top speed, less torque' : '—';
+                html += `<tr class="${cls}"><td class="p-2">${p}T</td><td class="p-2 text-center">${ext.toFixed(2)}</td><td class="p-2 text-center">${fd.toFixed(2)}</td><td class="p-2 text-center">${diffStr}</td><td class="p-2 text-gray-600">${effect}</td></tr>`;
+            }
+            document.getElementById('pinionTable').innerHTML = html;
+            document.getElementById('gearResults').classList.remove('hidden');
+            document.getElementById('gearResults').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

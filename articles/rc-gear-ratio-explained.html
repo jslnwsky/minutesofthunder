@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RC Car Gear Ratio Explained: Pinion, Spur &amp; Final Drive | MinutesofThunder</title>
+    <meta name="description" content="Understand RC car gear ratios. Learn how pinion and spur gears work, what final drive ratio means, how to gear for speed vs torque, and when to change your gearing.">
+    <meta name="keywords" content="RC gear ratio explained, RC pinion gear, RC spur gear, final drive ratio, RC gearing guide, gear ratio for speed, gear ratio for torque">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://minutesofthunder.com/articles/rc-gear-ratio-explained.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="RC Car Gear Ratio Explained: Pinion, Spur and Final Drive">
+    <meta property="og:description" content="Understand RC car gear ratios. Pinion, spur, final drive ratio, gearing for speed vs torque, and when to change.">
+    <meta property="og:url" content="https://minutesofthunder.com/articles/rc-gear-ratio-explained.html">
+    <meta property="og:site_name" content="MinutesofThunder">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "RC Car Gear Ratio Explained: Pinion, Spur and Final Drive",
+      "description": "Understand RC car gear ratios. Pinion, spur, final drive ratio, gearing for speed vs torque, and when to change.",
+      "url": "https://minutesofthunder.com/articles/rc-gear-ratio-explained.html",
+      "publisher": { "@type": "Organization", "name": "MinutesofThunder", "url": "https://minutesofthunder.com" },
+      "datePublished": "2025-02-20",
+      "dateModified": "2025-06-01"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does gear ratio mean in RC cars?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Gear ratio is the relationship between the number of teeth on the spur gear (attached to the drivetrain) and the pinion gear (attached to the motor). A ratio of 3:1 means the motor turns 3 times for every 1 turn of the spur gear. Lower ratios (taller gearing) give more top speed. Higher ratios (shorter gearing) give more torque and acceleration." }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I gear up or gear down my RC car?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Gear up (larger pinion or smaller spur) for more top speed on smooth surfaces. Gear down (smaller pinion or larger spur) for more torque, better acceleration, and cooler motor and ESC temps. When in doubt, gear down. It is safer for your electronics and you can always gear up one tooth at a time." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I calculate my RC car's gear ratio?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Divide the number of spur gear teeth by the number of pinion gear teeth. For example, an 87-tooth spur with a 22-tooth pinion gives a ratio of 87 / 22 = 3.95. For the final drive ratio, multiply this by the internal gear ratio of the transmission (found in your vehicle manual)." }
+        }
+      ]
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    <style type="text/css">
+        .reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #9333ea, #3b82f6); z-index: 1000; transition: width 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold"><a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a></h1>
+                    <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="/articles/racing-setup.html" class="bg-white/20 px-3 py-1 rounded-full text-sm hover:bg-white/30 transition-colors">Racing &amp; Setup</a>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">9 min read</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
+                    <a href="/articles/" class="text-purple-600 font-medium">Articles</a>
+                    <a href="/tools/" class="text-gray-600 hover:text-purple-600 font-medium">Tools</a>
+                </div>
+                <button class="md:hidden text-gray-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100 py-2">
+                <a href="/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Home</a>
+                <a href="/articles/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Articles</a>
+                <a href="/tools/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Tools</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <nav class="text-sm text-gray-500 mb-6">
+                <a href="/" class="hover:text-purple-600">Home</a> &gt;
+                <a href="/articles/" class="hover:text-purple-600">Articles</a> &gt;
+                <a href="/articles/racing-setup.html" class="hover:text-purple-600">Racing &amp; Setup</a> &gt;
+                <span class="text-gray-700">Gear Ratio Explained</span>
+            </nav>
+
+            <article class="bg-white rounded-xl shadow-md p-8 mb-8">
+                <header class="mb-8">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">RC Car Gear Ratio Explained: Pinion, Spur &amp; Final Drive</h1>
+                    <p class="text-gray-500 text-sm">Updated June 2025 &middot; Racing &amp; Setup</p>
+                </header>
+
+                <div class="bg-purple-50 rounded-lg p-6 mb-8">
+                    <h2 class="font-bold text-purple-800 mb-2">In This Guide</h2>
+                    <ul class="space-y-1 text-sm text-gray-700">
+                        <li><a href="#what-is-gear-ratio" class="text-purple-600 hover:text-purple-700">What Is Gear Ratio?</a></li>
+                        <li><a href="#pinion-spur" class="text-purple-600 hover:text-purple-700">Pinion and Spur Gears</a></li>
+                        <li><a href="#final-drive" class="text-purple-600 hover:text-purple-700">Final Drive Ratio</a></li>
+                        <li><a href="#speed-vs-torque" class="text-purple-600 hover:text-purple-700">Gearing for Speed vs Torque</a></li>
+                        <li><a href="#how-to-calculate" class="text-purple-600 hover:text-purple-700">How to Calculate Your Gear Ratio</a></li>
+                        <li><a href="#when-to-change" class="text-purple-600 hover:text-purple-700">When to Change Your Gearing</a></li>
+                        <li><a href="#common-mistakes" class="text-purple-600 hover:text-purple-700">Common Gearing Mistakes</a></li>
+                        <li><a href="#faq" class="text-purple-600 hover:text-purple-700">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <p class="text-gray-700 text-lg mb-6">Gearing is one of the simplest and most effective ways to change how your RC car performs. A single tooth change on the pinion gear can mean the difference between a car that accelerates hard out of corners and one that has a higher top speed on the straight. This guide explains how it all works.</p>
+
+                <h2 id="what-is-gear-ratio" class="text-2xl font-bold text-gray-900 mt-10 mb-4">What Is Gear Ratio?</h2>
+                <p class="text-gray-700 mb-4">Gear ratio is the relationship between two meshing gears. It tells you how many times the driving gear (the one attached to the motor) must turn to rotate the driven gear (the one attached to the drivetrain) once.</p>
+                <p class="text-gray-700 mb-4">In an RC car, the two main gears you can change are:</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6">
+                    <li><strong>Pinion gear:</strong> The small gear on the motor shaft.</li>
+                    <li><strong>Spur gear:</strong> The large gear on the transmission input.</li>
+                </ul>
+                <p class="text-gray-700 mb-6">The gear ratio is calculated by dividing the spur gear teeth by the pinion gear teeth. An 87T spur with a 22T pinion gives a ratio of 87 &divide; 22 = <strong>3.95:1</strong>. This means the motor turns 3.95 times for every one turn of the spur gear.</p>
+
+                <h2 id="pinion-spur" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Pinion and Spur Gears</h2>
+                <h3 class="text-lg font-bold text-gray-800 mb-3">Pinion Gear</h3>
+                <p class="text-gray-700 mb-4">The pinion is the small metal gear pressed onto the motor shaft. It is the primary gear you swap to adjust gearing. Pinion gears are sold in single-tooth increments (e.g., 18T, 19T, 20T). Changing the pinion by just one tooth has a noticeable effect on performance.</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 mb-4">
+                    <li><strong>Larger pinion</strong> = lower ratio = more top speed, less torque, hotter motor/ESC</li>
+                    <li><strong>Smaller pinion</strong> = higher ratio = more torque, less top speed, cooler motor/ESC</li>
+                </ul>
+
+                <h3 class="text-lg font-bold text-gray-800 mb-3">Spur Gear</h3>
+                <p class="text-gray-700 mb-4">The spur gear is the large plastic or composite gear inside the transmission. It meshes with the pinion. Spur gears are available in different tooth counts, but they are swapped less frequently than pinions because the range is usually limited to 2-3 options per vehicle.</p>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6">
+                    <li><strong>Smaller spur</strong> = lower ratio = more top speed (same effect as a larger pinion)</li>
+                    <li><strong>Larger spur</strong> = higher ratio = more torque (same effect as a smaller pinion)</li>
+                </ul>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                    <p class="text-yellow-800 text-sm"><strong>Tip:</strong> In practice, most people adjust the pinion and leave the spur stock. Pinions are cheaper, faster to swap, and available in finer increments.</p>
+                </div>
+
+                <h2 id="final-drive" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Final Drive Ratio (FDR)</h2>
+                <p class="text-gray-700 mb-4">The final drive ratio accounts for all gearing between the motor and the wheels, including the internal transmission gears (which you typically cannot change). The formula is:</p>
+                <div class="bg-gray-100 rounded-lg p-4 mb-4 font-mono text-sm text-gray-800">
+                    FDR = (Spur Teeth / Pinion Teeth) &times; Internal Ratio
+                </div>
+                <p class="text-gray-700 mb-4">The internal ratio is fixed by your vehicle's transmission design. You can find it in the vehicle manual or spec sheet. For example:</p>
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="text-left p-3 font-bold">Vehicle</th>
+                                <th class="text-left p-3 font-bold">Internal Ratio</th>
+                                <th class="text-left p-3 font-bold">Spur/Pinion</th>
+                                <th class="text-left p-3 font-bold">FDR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700">Traxxas Slash 4x4</td><td class="p-3 text-gray-700">2.72</td><td class="p-3 text-gray-700">86/22</td><td class="p-3 text-gray-700">10.63</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700">Arrma Senton 3S</td><td class="p-3 text-gray-700">2.85</td><td class="p-3 text-gray-700">57/17</td><td class="p-3 text-gray-700">9.55</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700">Associated B6.4</td><td class="p-3 text-gray-700">2.60</td><td class="p-3 text-gray-700">72/27</td><td class="p-3 text-gray-700">6.93</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-gray-700 mb-6">FDR is the number that matters most when comparing setups across different vehicles, because it accounts for the full drivetrain.</p>
+
+                <h2 id="speed-vs-torque" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Gearing for Speed vs Torque</h2>
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="text-left p-3 font-bold">Goal</th>
+                                <th class="text-left p-3 font-bold">Gearing Change</th>
+                                <th class="text-left p-3 font-bold">Effect</th>
+                                <th class="text-left p-3 font-bold">Tradeoff</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700">More top speed</td><td class="p-3 text-gray-700">Larger pinion or smaller spur</td><td class="p-3 text-gray-700">Lower FDR, higher wheel RPM</td><td class="p-3 text-gray-700">Hotter motor/ESC, slower accel</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700">More acceleration</td><td class="p-3 text-gray-700">Smaller pinion or larger spur</td><td class="p-3 text-gray-700">Higher FDR, more torque at wheel</td><td class="p-3 text-gray-700">Lower top speed, cooler temps</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700">Cooler temps</td><td class="p-3 text-gray-700">Gear down (smaller pinion)</td><td class="p-3 text-gray-700">Motor works less hard</td><td class="p-3 text-gray-700">Slightly less top speed</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="text-gray-700 mb-6">For racing, gearing is usually track-specific. Tight, technical tracks reward shorter gearing (more accel). Long straights reward taller gearing (more speed). Use our <a href="/tools/gear-ratio.html" class="text-purple-600 hover:text-purple-700 font-medium">Gear Ratio Calculator</a> to experiment with different pinion/spur combos before buying.</p>
+
+                <h2 id="how-to-calculate" class="text-2xl font-bold text-gray-900 mt-10 mb-4">How to Calculate Your Gear Ratio</h2>
+                <ol class="list-decimal list-inside text-gray-700 space-y-3 mb-6">
+                    <li><strong>Count pinion teeth.</strong> The tooth count is usually printed or engraved on the gear. If not, count them manually.</li>
+                    <li><strong>Count spur gear teeth.</strong> Same method. Common counts: 48P spurs range from 72T-90T; 32P spurs range from 50T-60T.</li>
+                    <li><strong>Divide spur by pinion.</strong> Example: 87T spur &divide; 22T pinion = 3.95 gear ratio.</li>
+                    <li><strong>Multiply by internal ratio.</strong> Find this in your vehicle manual. Example: 3.95 &times; 2.72 = 10.74 FDR.</li>
+                </ol>
+                <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
+                    <p class="text-blue-800 text-sm"><strong>Skip the math:</strong> Use our <a href="/tools/gear-ratio.html" class="text-blue-700 underline font-medium">Gear Ratio Calculator</a> to calculate FDR instantly and see how pinion swaps affect your ratio.</p>
+                </div>
+
+                <h2 id="when-to-change" class="text-2xl font-bold text-gray-900 mt-10 mb-4">When to Change Your Gearing</h2>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6">
+                    <li><strong>Motor or ESC running hot:</strong> Gear down one tooth on the pinion. This is the most common reason to change gearing.</li>
+                    <li><strong>Car feels sluggish off the line:</strong> Gear down for more torque.</li>
+                    <li><strong>You want more top speed and temps are fine:</strong> Gear up one tooth at a time. Check motor temp after each change.</li>
+                    <li><strong>Switching battery voltage:</strong> Going from 2S to 3S means more RPM. Gear down to compensate and keep temps safe.</li>
+                    <li><strong>New track or surface:</strong> Loose dirt or carpet may need different gearing than smooth asphalt.</li>
+                </ul>
+
+                <h2 id="common-mistakes" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Common Gearing Mistakes</h2>
+                <ul class="list-disc list-inside text-gray-700 space-y-2 mb-6">
+                    <li><strong>Gearing too tall from the start:</strong> Running the biggest pinion you have to chase top speed. This overheats the motor and ESC. Always start conservative and gear up gradually.</li>
+                    <li><strong>Ignoring gear mesh:</strong> After swapping a pinion, always check mesh. Too tight causes excessive friction and wear. Too loose causes gear skipping. A thin piece of paper between the gears during tightening gives a good starting mesh.</li>
+                    <li><strong>Mixing gear pitch:</strong> 48-pitch and 32-pitch gears are not interchangeable. Make sure the pinion and spur are the same pitch (also called module in metric).</li>
+                    <li><strong>Not checking temperature:</strong> After any gearing change, check motor temp with an IR thermometer after a 5-minute run. Stay under 170&deg;F (77&deg;C) for most setups.</li>
+                </ul>
+
+                <h2 id="faq" class="text-2xl font-bold text-gray-900 mt-10 mb-4">FAQ</h2>
+                <div class="space-y-4 mb-8">
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="font-bold text-gray-800 mb-2">What does gear ratio mean in RC cars?</h3>
+                        <p class="text-gray-600 text-sm">It is the relationship between spur and pinion teeth. A 3.95:1 ratio means the motor turns 3.95 times per spur gear revolution. Lower ratios give more speed; higher ratios give more torque.</p>
+                    </div>
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="font-bold text-gray-800 mb-2">Should I gear up or gear down?</h3>
+                        <p class="text-gray-600 text-sm">Gear up for more speed (if temps allow). Gear down for more torque, better acceleration, or to reduce motor/ESC heat. When in doubt, gear down.</p>
+                    </div>
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="font-bold text-gray-800 mb-2">How do I calculate my gear ratio?</h3>
+                        <p class="text-gray-600 text-sm">Spur teeth divided by pinion teeth gives the gear ratio. Multiply by the internal transmission ratio for final drive ratio (FDR).</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Choose Your Next Step</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="/tools/gear-ratio.html" class="block bg-white p-4 rounded-lg border border-gray-200 hover:border-purple-300 hover:shadow-md transition">
+                            <h3 class="font-bold text-gray-800 text-sm mb-1">Gear Ratio Calculator</h3>
+                            <p class="text-gray-500 text-xs">Calculate FDR and see how pinion swaps change your ratio.</p>
+                        </a>
+                        <a href="/articles/suspension-tuning-guide.html" class="block bg-white p-4 rounded-lg border border-gray-200 hover:border-purple-300 hover:shadow-md transition">
+                            <h3 class="font-bold text-gray-800 text-sm mb-1">Suspension Tuning Guide</h3>
+                            <p class="text-gray-500 text-xs">Tune handling to complement your gearing changes.</p>
+                        </a>
+                        <a href="/articles/rc-motor-guide.html" class="block bg-white p-4 rounded-lg border border-gray-200 hover:border-purple-300 hover:shadow-md transition">
+                            <h3 class="font-bold text-gray-800 text-sm mb-1">RC Motor Guide</h3>
+                            <p class="text-gray-500 text-xs">Understand KV and how it interacts with gearing.</p>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">MinutesofThunder</h3>
+                    <p class="text-gray-400">Your comprehensive guide to RC car technology, reviews, and the latest innovations in radio control vehicles.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">All Articles</a></li>
+                        <li><a href="/tools/" class="hover:text-white">Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/articles/beginners.html" class="hover:text-white">Beginner Guides</a></li>
+                        <li><a href="/articles/buyers-guides.html" class="hover:text-white">Buyer's Guides</a></li>
+                        <li><a href="/articles/batteries-power.html" class="hover:text-white">Batteries &amp; Power</a></li>
+                        <li><a href="/articles/motors-esc.html" class="hover:text-white">Motors &amp; ESC</a></li>
+                        <li><a href="/articles/racing-setup.html" class="hover:text-white">Racing &amp; Setup</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Tools</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/tools/motor-comparison.html" class="hover:text-white">Motor Comparison</a></li>
+                        <li><a href="/tools/battery-runtime.html" class="hover:text-white">Battery Runtime</a></li>
+                        <li><a href="/tools/gear-ratio.html" class="hover:text-white">Gear Ratio</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 MinutesofThunder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('readingProgress').style.width = (winScroll / height) * 100 + '%';
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>

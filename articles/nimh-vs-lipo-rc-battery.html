@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NiMH vs LiPo Battery for RC Cars: Which Should You Use? | MinutesofThunder</title>
+    <meta name="description" content="NiMH vs LiPo batteries for RC cars compared. Voltage, weight, runtime, cost, safety, and which battery type is right for beginners, bashers, and racers.">
+    <meta name="keywords" content="NiMH vs LiPo, RC battery comparison, NiMH battery RC, LiPo battery RC, best RC battery type, NiMH or LiPo for beginners">
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="canonical" href="https://minutesofthunder.com/articles/nimh-vs-lipo-rc-battery.html">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="NiMH vs LiPo Battery for RC Cars: Which Should You Use?">
+    <meta property="og:description" content="NiMH vs LiPo batteries compared. Voltage, weight, runtime, cost, safety, and which type is right for you.">
+    <meta property="og:url" content="https://minutesofthunder.com/articles/nimh-vs-lipo-rc-battery.html">
+    <meta property="og:site_name" content="MinutesofThunder">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "NiMH vs LiPo Battery for RC Cars: Which Should You Use?",
+      "description": "NiMH vs LiPo batteries for RC cars compared. Voltage, weight, runtime, cost, safety, and which battery type is right for beginners, bashers, and racers.",
+      "url": "https://minutesofthunder.com/articles/nimh-vs-lipo-rc-battery.html",
+      "publisher": { "@type": "Organization", "name": "MinutesofThunder", "url": "https://minutesofthunder.com" },
+      "datePublished": "2025-01-10",
+      "dateModified": "2025-06-01"
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Is LiPo better than NiMH for RC cars?",
+          "acceptedAnswer": { "@type": "Answer", "text": "LiPo batteries offer higher voltage, lighter weight, more consistent power delivery, and longer runtime per charge compared to NiMH. They are better for performance in almost every way. The tradeoff is that LiPo batteries require more careful handling: a balance charger, storage voltage management, and a LiPo-safe charging bag. For most RC drivers, the performance advantage is worth the extra care." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I use a LiPo battery in an RC car that came with NiMH?",
+          "acceptedAnswer": { "@type": "Answer", "text": "In most cases, yes. A 2S LiPo (7.4V) is close to the voltage of a 6-cell NiMH pack (7.2V) and will work with most stock ESCs. Check your ESC manual to confirm it supports LiPo, and make sure LiPo low-voltage cutoff is enabled to prevent over-discharging the pack. You may also need a different connector or adapter." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are NiMH batteries safer than LiPo?",
+          "acceptedAnswer": { "@type": "Answer", "text": "NiMH batteries are more forgiving of mistakes. They do not catch fire if overcharged or punctured, they do not require storage voltage management, and they can be charged with simpler chargers. LiPo batteries are safe when handled correctly, but they require proper charging procedures, storage voltage discipline, and a LiPo-safe bag during charging." }
+        }
+      ]
+    }
+    </script>
+
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LYGNC6WBGL');
+    </script>
+
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <link rel="stylesheet" href="/css/modern-styles.css">
+    <style type="text/css">
+        .reading-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #9333ea, #3b82f6); z-index: 1000; transition: width 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="reading-progress" id="readingProgress"></div>
+
+    <header class="bg-gradient-to-r from-purple-600 to-blue-600 text-white">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row items-center justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h1 class="text-2xl md:text-3xl font-bold"><a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a></h1>
+                    <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="/articles/batteries-power.html" class="bg-white/20 px-3 py-1 rounded-full text-sm hover:bg-white/30 transition-colors">Batteries &amp; Power</a>
+                    <span class="bg-white/20 px-3 py-1 rounded-full text-sm">8 min read</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <div class="hidden md:flex space-x-6">
+                    <a href="/" class="text-gray-600 hover:text-purple-600 font-medium">Home</a>
+                    <a href="/articles/" class="text-purple-600 font-medium">Articles</a>
+                    <a href="/tools/" class="text-gray-600 hover:text-purple-600 font-medium">Tools</a>
+                </div>
+                <button class="md:hidden text-gray-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100 py-2">
+                <a href="/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Home</a>
+                <a href="/articles/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Articles</a>
+                <a href="/tools/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Tools</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <nav class="text-sm text-gray-500 mb-6">
+                <a href="/" class="hover:text-purple-600">Home</a> &gt;
+                <a href="/articles/" class="hover:text-purple-600">Articles</a> &gt;
+                <a href="/articles/batteries-power.html" class="hover:text-purple-600">Batteries &amp; Power</a> &gt;
+                <span class="text-gray-700">NiMH vs LiPo</span>
+            </nav>
+
+            <article class="bg-white rounded-xl shadow-md p-8 mb-8">
+                <header class="mb-8">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">NiMH vs LiPo Battery for RC Cars: Which Should You Use?</h1>
+                    <p class="text-gray-500 text-sm">Updated June 2025 &middot; Batteries &amp; Power</p>
+                </header>
+
+                <div class="bg-purple-50 rounded-lg p-6 mb-8">
+                    <h2 class="font-bold text-purple-800 mb-2">In This Guide</h2>
+                    <ul class="space-y-1 text-sm text-gray-700">
+                        <li><a href="#quick-answer" class="text-purple-600 hover:text-purple-700">The Quick Answer</a></li>
+                        <li><a href="#comparison" class="text-purple-600 hover:text-purple-700">Side-by-Side Comparison</a></li>
+                        <li><a href="#nimh-pros-cons" class="text-purple-600 hover:text-purple-700">NiMH: Pros and Cons</a></li>
+                        <li><a href="#lipo-pros-cons" class="text-purple-600 hover:text-purple-700">LiPo: Pros and Cons</a></li>
+                        <li><a href="#switching" class="text-purple-600 hover:text-purple-700">Switching from NiMH to LiPo</a></li>
+                        <li><a href="#who-should-use" class="text-purple-600 hover:text-purple-700">Who Should Use Which?</a></li>
+                        <li><a href="#faq" class="text-purple-600 hover:text-purple-700">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <p class="text-gray-700 text-lg mb-6">Most RTR (Ready-to-Run) RC cars ship with a NiMH battery, but the RC community overwhelmingly recommends LiPo. Is the upgrade worth it? This guide compares both battery types head-to-head so you can make the right call for your situation.</p>
+
+                <h2 id="quick-answer" class="text-2xl font-bold text-gray-900 mt-10 mb-4">The Quick Answer</h2>
+                <div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+                    <p class="text-green-800"><strong>For most RC drivers:</strong> LiPo is the better battery. It is lighter, delivers more power, holds voltage more consistently through a run, and gives you longer runtime per charge. The only real downside is that LiPo requires a balance charger and careful handling.</p>
+                    <p class="text-green-800 mt-2"><strong>NiMH still makes sense</strong> for kids, casual use where simplicity matters most, or situations where the batteries might be left unattended for long periods without storage voltage management.</p>
+                </div>
+
+                <h2 id="comparison" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Side-by-Side Comparison</h2>
+                <div class="overflow-x-auto mb-6">
+                    <table class="w-full text-sm border-collapse">
+                        <thead>
+                            <tr class="bg-gray-100">
+                                <th class="text-left p-3 font-bold">Factor</th>
+                                <th class="text-left p-3 font-bold">NiMH</th>
+                                <th class="text-left p-3 font-bold">LiPo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700 font-medium">Voltage (typical)</td><td class="p-3 text-gray-700">7.2V (6-cell)</td><td class="p-3 text-gray-700">7.4V (2S) or 11.1V (3S)</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700 font-medium">Weight</td><td class="p-3 text-gray-700">Heavier (~350-400g for 3000mAh)</td><td class="p-3 text-gray-700">Lighter (~250-300g for 5000mAh)</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700 font-medium">Energy Density</td><td class="p-3 text-gray-700">Lower</td><td class="p-3 text-gray-700">Much higher</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700 font-medium">Voltage Under Load</td><td class="p-3 text-gray-700">Drops steadily through run</td><td class="p-3 text-gray-700">Holds flat, then drops sharply at end</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700 font-medium">Runtime</td><td class="p-3 text-gray-700">10-15 min (3000mAh typical)</td><td class="p-3 text-gray-700">15-25 min (5000mAh typical)</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700 font-medium">Charge Time (1C)</td><td class="p-3 text-gray-700">~60-90 min</td><td class="p-3 text-gray-700">~60 min</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700 font-medium">Cost</td><td class="p-3 text-gray-700">$15-25 per pack</td><td class="p-3 text-gray-700">$20-40 per pack</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700 font-medium">Charger Required</td><td class="p-3 text-gray-700">Basic peak-detect charger</td><td class="p-3 text-gray-700">Balance charger (required)</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700 font-medium">Safety Risk</td><td class="p-3 text-gray-700">Low (no fire risk)</td><td class="p-3 text-gray-700">Moderate (fire risk if mishandled)</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700 font-medium">Storage Care</td><td class="p-3 text-gray-700">None needed</td><td class="p-3 text-gray-700">Store at 3.8V/cell</td></tr>
+                            <tr class="border-t border-gray-200"><td class="p-3 text-gray-700 font-medium">Cycle Life</td><td class="p-3 text-gray-700">500+ cycles</td><td class="p-3 text-gray-700">200-500 cycles (with proper care)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h2 id="nimh-pros-cons" class="text-2xl font-bold text-gray-900 mt-10 mb-4">NiMH Batteries: Pros and Cons</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-green-50 rounded-lg p-5">
+                        <h3 class="font-bold text-green-800 mb-2">Pros</h3>
+                        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                            <li>Simple to charge (peak-detect chargers work)</li>
+                            <li>No fire risk from overcharging or damage</li>
+                            <li>No storage voltage management needed</li>
+                            <li>Good cycle life (500+ charges)</li>
+                            <li>Often included free with RTR cars</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 rounded-lg p-5">
+                        <h3 class="font-bold text-red-800 mb-2">Cons</h3>
+                        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                            <li>Heavier for less capacity</li>
+                            <li>Voltage sags steadily during use</li>
+                            <li>Lower energy density = shorter runtime</li>
+                            <li>Car feels slower mid-pack vs beginning</li>
+                            <li>Limited capacity options (typically 3000-5000mAh)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 id="lipo-pros-cons" class="text-2xl font-bold text-gray-900 mt-10 mb-4">LiPo Batteries: Pros and Cons</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                    <div class="bg-green-50 rounded-lg p-5">
+                        <h3 class="font-bold text-green-800 mb-2">Pros</h3>
+                        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                            <li>Lighter weight for more capacity</li>
+                            <li>Higher energy density = longer runtime</li>
+                            <li>Flat voltage curve (consistent power)</li>
+                            <li>Higher discharge rates available</li>
+                            <li>Wide range of sizes and capacities</li>
+                            <li>3S option for significantly more speed</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 rounded-lg p-5">
+                        <h3 class="font-bold text-red-800 mb-2">Cons</h3>
+                        <ul class="list-disc list-inside text-gray-700 text-sm space-y-1">
+                            <li>Requires a balance charger</li>
+                            <li>Must manage storage voltage (3.8V/cell)</li>
+                            <li>Fire risk if overcharged, punctured, or shorted</li>
+                            <li>Shorter cycle life than NiMH</li>
+                            <li>Slightly more expensive</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 id="switching" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Switching from NiMH to LiPo</h2>
+                <p class="text-gray-700 mb-4">If your RC car came with a NiMH pack and you want to switch to LiPo, here is what you need to check:</p>
+                <ol class="list-decimal list-inside text-gray-700 space-y-3 mb-6">
+                    <li><strong>ESC compatibility:</strong> Most modern ESCs support LiPo. Check your ESC manual. Look for a LiPo mode or LVC (low voltage cutoff) setting. If your ESC does not have LiPo cutoff, do not use LiPo — over-discharging will damage the cells.</li>
+                    <li><strong>Enable LiPo cutoff:</strong> Set the ESC's LVC to the correct threshold for your cell count. For 2S LiPo, this is typically 6.4V (3.2V per cell). This prevents the ESC from draining the pack below safe levels.</li>
+                    <li><strong>Get a balance charger:</strong> NiMH chargers cannot safely charge LiPo batteries. You need a charger with a balance port and LiPo charging mode. Budget options like the HTRC T150 or SkyRC IMAX B6 work well.</li>
+                    <li><strong>Check the connector:</strong> NiMH packs often use Tamiya connectors. LiPo packs typically use Deans (T-Plug), EC3, EC5, or XT60. You may need an adapter or to solder a new connector on the ESC wire.</li>
+                    <li><strong>Physical fit:</strong> Make sure the LiPo pack fits your battery tray. Most 2S stick packs are similar in size to 6-cell NiMH sub-C sticks, but always check dimensions.</li>
+                </ol>
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+                    <p class="text-yellow-800 text-sm"><strong>Important:</strong> A 2S LiPo (7.4V) is a near-direct replacement for a 6-cell NiMH (7.2V). Do not jump to 3S unless your ESC is rated for it. A 3S LiPo on an ESC rated only for 2S will damage the electronics immediately.</p>
+                </div>
+
+                <h2 id="who-should-use" class="text-2xl font-bold text-gray-900 mt-10 mb-4">Who Should Use Which?</h2>
+                <div class="space-y-4 mb-6">
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-bold text-gray-800 mb-1">Use NiMH if:</h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
+                            <li>The car is for a child who will not manage storage voltage</li>
+                            <li>You want zero fire risk and maximum simplicity</li>
+                            <li>You drive casually a few times a month and do not want the hassle</li>
+                            <li>The included NiMH pack already gives you enough runtime</li>
+                        </ul>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-5">
+                        <h3 class="font-bold text-gray-800 mb-1">Use LiPo if:</h3>
+                        <ul class="list-disc list-inside text-gray-600 text-sm space-y-1">
+                            <li>You want noticeably more speed and power</li>
+                            <li>You want longer runtime without adding weight</li>
+                            <li>You race or bash frequently and want consistent performance</li>
+                            <li>You are willing to use a balance charger and follow storage rules</li>
+                            <li>You want the option to run 3S for even more power (if ESC supports it)</li>
+                        </ul>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-6">Most RC hobbyists who start with NiMH switch to LiPo within a few months. The performance difference is immediately noticeable, and the extra care required becomes routine quickly.</p>
+
+                <h2 id="faq" class="text-2xl font-bold text-gray-900 mt-10 mb-4">FAQ</h2>
+                <div class="space-y-4 mb-8">
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="font-bold text-gray-800 mb-2">Is LiPo better than NiMH for RC cars?</h3>
+                        <p class="text-gray-600 text-sm">For performance, yes. LiPo is lighter, holds voltage better, and gives longer runtime. The tradeoff is that LiPo requires a balance charger and careful handling. For most drivers, the performance gain is worth it.</p>
+                    </div>
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="font-bold text-gray-800 mb-2">Can I use a LiPo in an RC car that came with NiMH?</h3>
+                        <p class="text-gray-600 text-sm">Usually yes. A 2S LiPo (7.4V) replaces a 6-cell NiMH (7.2V) in most setups. Confirm your ESC supports LiPo, enable low-voltage cutoff, and get a balance charger.</p>
+                    </div>
+                    <div class="border-b border-gray-200 pb-4">
+                        <h3 class="font-bold text-gray-800 mb-2">Are NiMH batteries safer than LiPo?</h3>
+                        <p class="text-gray-600 text-sm">NiMH is more forgiving. No fire risk, no storage voltage management, simpler chargers. LiPo is safe when handled correctly but requires proper charging and storage procedures.</p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h2 class="text-xl font-bold text-gray-800 mb-4">Choose Your Next Step</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <a href="/articles/lipo-battery-guide.html" class="block bg-white p-4 rounded-lg border border-gray-200 hover:border-purple-300 hover:shadow-md transition">
+                            <h3 class="font-bold text-gray-800 text-sm mb-1">LiPo Battery Guide</h3>
+                            <p class="text-gray-500 text-xs">Deep dive into cell count, C-rating, capacity, and connectors.</p>
+                        </a>
+                        <a href="/articles/lipo-charging-safety.html" class="block bg-white p-4 rounded-lg border border-gray-200 hover:border-purple-300 hover:shadow-md transition">
+                            <h3 class="font-bold text-gray-800 text-sm mb-1">LiPo Charging Safety</h3>
+                            <p class="text-gray-500 text-xs">Essential procedures for safe charging and storage.</p>
+                        </a>
+                        <a href="/tools/battery-runtime.html" class="block bg-white p-4 rounded-lg border border-gray-200 hover:border-purple-300 hover:shadow-md transition">
+                            <h3 class="font-bold text-gray-800 text-sm mb-1">Battery Runtime Calculator</h3>
+                            <p class="text-gray-500 text-xs">Estimate how long NiMH or LiPo will last in your car.</p>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">MinutesofThunder</h3>
+                    <p class="text-gray-400">Your comprehensive guide to RC car technology, reviews, and the latest innovations in radio control vehicles.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/articles/" class="hover:text-white">All Articles</a></li>
+                        <li><a href="/tools/" class="hover:text-white">Tools</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Categories</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/articles/beginners.html" class="hover:text-white">Beginner Guides</a></li>
+                        <li><a href="/articles/buyers-guides.html" class="hover:text-white">Buyer's Guides</a></li>
+                        <li><a href="/articles/batteries-power.html" class="hover:text-white">Batteries &amp; Power</a></li>
+                        <li><a href="/articles/motors-esc.html" class="hover:text-white">Motors &amp; ESC</a></li>
+                        <li><a href="/articles/racing-setup.html" class="hover:text-white">Racing &amp; Setup</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold mb-4">Tools</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/tools/motor-comparison.html" class="hover:text-white">Motor Comparison</a></li>
+                        <li><a href="/tools/battery-runtime.html" class="hover:text-white">Battery Runtime</a></li>
+                        <li><a href="/tools/gear-ratio.html" class="hover:text-white">Gear Ratio</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center text-gray-400">
+                <p>&copy; 2025 MinutesofThunder. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('readingProgress').style.width = (winScroll / height) * 100 + '%';
+        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
