@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found | MinutesofThunder</title>
-    <meta name="description" content="The page you're looking for doesn't exist. Browse our RC car guides, tools, and buyer's picks.">
+    <title>404 - Lost Track | MinutesofThunder</title>
+    <meta name="description" content="Oops! Looks like you've gone off track. Find your way back to our RC car guides, buyer's guides, and technical articles.">
+    
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <meta name="robots" content="noindex">
+    <link rel="canonical" href="https://minutesofthunder.com/404.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="404 - Lost Track | MinutesofThunder">
+    <meta property="og:description" content="Oops! Looks like you've gone off track. Find your way back to our RC car guides and articles.">
+    <meta property="og:url" content="https://minutesofthunder.com/404.html">
+    <meta property="og:site_name" content="MinutesofThunder">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
 
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LYGNC6WBGL"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -17,7 +24,6 @@
       gtag('config', 'G-LYGNC6WBGL');
     </script>
 
-    <!-- Tailwind CSS -->
     <link rel="stylesheet" href="/css/tailwind.css">
     <link rel="stylesheet" href="/css/modern-styles.css">
 </head>
@@ -27,14 +33,16 @@
         <div class="container mx-auto px-4 py-6">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <div class="mb-4 md:mb-0">
-                    <h1 class="text-2xl md:text-3xl font-bold"><a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a></h1>
+                    <h1 class="text-2xl md:text-3xl font-bold">
+                        <a href="/" class="text-white hover:text-purple-200">MinutesofThunder</a>
+                    </h1>
                     <p class="text-purple-100 mt-1">Your Complete RC Technology Hub</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Nav -->
+    <!-- Navigation -->
     <nav class="bg-white shadow-sm sticky top-0 z-40">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between py-4">
@@ -43,28 +51,110 @@
                     <a href="/articles/" class="text-gray-600 hover:text-purple-600 font-medium">Articles</a>
                     <a href="/tools/" class="text-gray-600 hover:text-purple-600 font-medium">Tools</a>
                 </div>
+                <button class="md:hidden text-gray-600" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+            </div>
+            <div id="mobileMenu" class="hidden md:hidden border-t border-gray-100 py-2">
+                <a href="/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Home</a>
+                <a href="/articles/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Articles</a>
+                <a href="/tools/" class="block px-4 py-2 text-gray-600 hover:bg-purple-50 hover:text-purple-600 font-medium">Tools</a>
             </div>
         </div>
     </nav>
 
-    <!-- Main -->
-    <main class="container mx-auto px-4 py-16">
-        <div class="max-w-2xl mx-auto text-center">
-            <h2 class="text-6xl font-bold text-gray-300 mb-4">404</h2>
-            <h3 class="text-2xl font-bold text-gray-900 mb-4">Page Not Found</h3>
-            <p class="text-gray-600 mb-8">The page you're looking for doesn't exist or has been moved. Try one of these instead:</p>
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                <a href="/" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-                    <h4 class="font-bold text-gray-900 mb-1">Home</h4>
-                    <p class="text-sm text-gray-600">Back to the main page</p>
-                </a>
-                <a href="/articles/" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-                    <h4 class="font-bold text-gray-900 mb-1">All Articles</h4>
-                    <p class="text-sm text-gray-600">Guides, reviews, and how-tos</p>
-                </a>
-                <a href="/tools/" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow">
-                    <h4 class="font-bold text-gray-900 mb-1">Tools</h4>
-                    <p class="text-sm text-gray-600">Calculators and comparisons</p>
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <!-- RC Car Visual -->
+            <div class="mb-8">
+                <div class="text-8xl md:text-9xl mb-4 animate-bounce">🏎️</div>
+                <div class="text-6xl md:text-7xl mb-4">💨</div>
+                <div class="text-4xl md:text-5xl mb-4">🏁</div>
+            </div>
+
+            <!-- 404 Message -->
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">404 - Lost Track</h1>
+            <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+                Oops! Looks like you've gone off the racing line. The page you're looking for has hit the barriers or taken a wrong turn.
+            </p>
+
+            <!-- Quick Recovery Actions -->
+            <div class="bg-white rounded-xl shadow-md p-8 mb-8">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6">Get Back on Track</h2>
+                
+                <!-- Hub Links -->
+                <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+                    <a href="/articles/beginners.html" class="bg-purple-50 rounded-lg p-4 hover:bg-purple-100 transition-colors group">
+                        <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">🏁</div>
+                        <h3 class="font-bold text-gray-800 text-sm">Beginner Guides</h3>
+                    </a>
+                    <a href="/articles/buyers-guides.html" class="bg-blue-50 rounded-lg p-4 hover:bg-blue-100 transition-colors group">
+                        <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">🛒</div>
+                        <h3 class="font-bold text-gray-800 text-sm">Buyer's Guides</h3>
+                    </a>
+                    <a href="/articles/batteries-power.html" class="bg-green-50 rounded-lg p-4 hover:bg-green-100 transition-colors group">
+                        <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">🔋</div>
+                        <h3 class="font-bold text-gray-800 text-sm">Batteries & Power</h3>
+                    </a>
+                    <a href="/articles/motors-esc.html" class="bg-orange-50 rounded-lg p-4 hover:bg-orange-100 transition-colors group">
+                        <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">⚡</div>
+                        <h3 class="font-bold text-gray-800 text-sm">Motors & ESC</h3>
+                    </a>
+                    <a href="/articles/racing-setup.html" class="bg-red-50 rounded-lg p-4 hover:bg-red-100 transition-colors group">
+                        <div class="text-3xl mb-2 group-hover:scale-110 transition-transform">🏆</div>
+                        <h3 class="font-bold text-gray-800 text-sm">Racing & Setup</h3>
+                    </a>
+                </div>
+
+                <!-- Popular Articles -->
+                <div class="border-t pt-6">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4">Popular Pit Stops</h3>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <a href="/articles/getting-started-rc-cars.html" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium text-gray-700 transition-colors">Getting Started</a>
+                        <a href="/articles/best-rc-cars-for-beginners.html" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium text-gray-700 transition-colors">Best RC Cars</a>
+                        <a href="/articles/lipo-battery-guide.html" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium text-gray-700 transition-colors">LiPo Guide</a>
+                        <a href="/articles/rc-motor-guide.html" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium text-gray-700 transition-colors">Motor Guide</a>
+                        <a href="/articles/best-lipo-batteries-rc-cars.html" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium text-gray-700 transition-colors">Best LiPos</a>
+                        <a href="/articles/suspension-tuning-guide.html" class="bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full text-sm font-medium text-gray-700 transition-colors">Suspension</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Search Suggestions -->
+            <div class="bg-purple-50 rounded-xl p-6 mb-8">
+                <h3 class="text-lg font-bold text-purple-800 mb-3">Looking for Something Specific?</h3>
+                <p class="text-purple-700 text-sm mb-4">Try searching for these common RC topics:</p>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <span class="bg-white px-3 py-1 rounded-full text-xs text-purple-700">Traxxas Slash</span>
+                    <span class="bg-white px-3 py-1 rounded-full text-xs text-purple-700">LiPo vs NiMH</span>
+                    <span class="bg-white px-3 py-1 rounded-full text-xs text-purple-700">ESC problems</span>
+                    <span class="bg-white px-3 py-1 rounded-full text-xs text-purple-700">Gear ratio</span>
+                    <span class="bg-white px-3 py-1 rounded-full text-xs text-purple-700">Motor break-in</span>
+                    <span class="bg-white px-3 py-1 rounded-full text-xs text-purple-700">Charging safety</span>
+                    <span class="bg-white px-3 py-1 rounded-full text-xs text-purple-700">RC racing</span>
+                    <span class="bg-white px-3 py-1 rounded-full text-xs text-purple-700">Crawlers</span>
+                </div>
+            </div>
+
+            <!-- Tools CTA -->
+            <div class="bg-white rounded-xl shadow-md p-6">
+                <h3 class="text-lg font-bold text-gray-800 mb-3">Need to Calculate Something?</h3>
+                <p class="text-gray-600 text-sm mb-4">Use our interactive tools to compare motors, estimate runtime, and calculate gear ratios.</p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="/tools/motor-comparison.html" class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition font-medium">Motor Comparison</a>
+                    <a href="/tools/battery-runtime.html" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition font-medium">Battery Runtime</a>
+                    <a href="/tools/gear-ratio.html" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition font-medium">Gear Ratio</a>
+                </div>
+            </div>
+
+            <!-- Home Link -->
+            <div class="mt-8">
+                <a href="/" class="inline-flex items-center text-purple-600 hover:text-purple-700 font-medium">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                    </svg>
+                    Back to Start Line
                 </a>
             </div>
         </div>
